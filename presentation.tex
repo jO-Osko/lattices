@@ -67,6 +67,7 @@
 
 \begin{frame}
 \section{Osnovne definicije}
+\subsection{Urejenost}
 \frametitle{Urejenost}
 
 \begin{definition}
@@ -89,7 +90,7 @@ Naj bo $\mathcal{L}$ množica urejena z relacijo delne urejenosti $\leq$ in $x,y
 \end{frame}
 
 \begin{frame}
-
+\subsection{Supremum in infimum}
 \frametitle{Supremum in infimum}
 
 \begin{definition}
@@ -113,6 +114,7 @@ označimo: $s = x \land y$
 \end{frame}
 
 \begin{frame}
+\subsection{Definicija mreže}
 \begin{definition}
 Množica $\mathcal{L}$ je \textbf{linearno urejena}, če za poljubna $x,y$ velja $x \leq y$ ali  $y \leq x$ 
 \end{definition}
@@ -124,7 +126,27 @@ Množica $\mathcal{L}$ je \textbf{mreža}, če ima poljuben par $x,y$ infimum in
 \end{frame}
 
 \begin{frame}
+\subsection{Osnovni primeri mrež}
+\frametitle{Osnovni primeri mrež}
 \begin{columns}
+
+\begin{column}{2cm}
+	\begin{center}
+	$\mathbb{N}, \leq$
+	\end{center}
+  \begin{figure}
+  \centering
+  \begin{tikzpicture}[scale=1]
+    \node (a) at (0,0) {};
+    \node (c) at (0,-2) {$2$};
+    \node (d) at (0,-3) {$1$};
+    \node (e) at (0,-4) {$0$};
+    \draw  (c) -- (d) -- (e);
+    \draw[dotted] (c) -- (a);
+  \end{tikzpicture}
+  \end{figure}
+\end{column}
+
 \begin{column}{2cm}
   \begin{figure}
   \centering
@@ -158,8 +180,59 @@ Množica $\mathcal{L}$ je \textbf{mreža}, če ima poljuben par $x,y$ infimum in
 \end{columns}
 \end{frame}
 
+\begin{frame}
+\frametitle{Potenčna množica naravnih števil za inkluzijo}
+\begin{center}
+$\mathcal{P}(\mathbb{N}), \subseteq$
+\end{center}
+\begin{figure}
+\centering
+\begin{tikzpicture} % should make python program :(
+  \node (one_s) at (1,4) {$\mathbb{N}$};
+  \node (one) at (-3,0) {$\{1\}$};
+  \node (two) at (0,0) {$\{2\}$};
+  \node (three) at (2,0) {$\{3\}$};
+  \node (four) at (3,0) {$\{4\}$};
+  \node (rest_single) at (4,0) {$\dots$};
+  \node (rest_single_2) at (5,0) {$\dots$};
+  \node (rest_pair) at (4,2) {$\dots$};
+  \node (rest_pair_2) at (5,2) {$\dots$};
+  
+  \node (one_two) at (-3,2) {$\{1,2\}$};
+  \node (one_three) at (-2,2) {$\{1,3\}$};
+  \node (one_four) at(-1,2) {$\{1,4\}$};
+  \node (two_three) at (0,2) {$\{2,3\}$};
+  \node (two_four) at (1,2) {$\{2,4\}$};
+  \node (three_four) at (2,2) {$\{3,4\}$};
+  
+  \node (zero) at (1,-2) {$\{ \ \}$};
+  
+  \draw (zero) -- (one) -- (one_two) -- (two);
+  \draw (zero) -- (two) -- (two_three) -- (three);
+  \draw (zero) -- (three) -- (three_four) -- (four) -- (zero);
+  \draw (zero) -- (rest_single);
+  \draw (zero) -- (rest_single_2);	
+	
+  
+  \draw (one) -- (one_three);
+  \draw (one) -- (one_four);
+  \draw (two) -- (two_four);
+  \draw (three) -- (one_three);
+  \draw (four) -- (one_four);
+  \draw (four) -- (two_four);  
+  
+
+  \draw[loosely dotted] (one_two) -- (one_s) -- (one_three) -- (one_s) -- (one_four) -- (one_s) -- (two_three) -- (one_s) -- (two_four) -- (one_s) -- (three_four);
+
+  \draw[loosely dotted] (rest_single) -- (rest_pair) -- (one_s);
+  \draw[loosely dotted] (rest_single_2) -- (rest_pair_2) -- (one_s);
+  
+\end{tikzpicture}
+\end{figure}
+\end{frame}
 
 \begin{frame}
+\frametitle{Naravna števila za deljivost}
 \begin{center}
 $\mathbb{N}, |$
 \end{center}
@@ -203,22 +276,23 @@ $\mathbb{N}, |$
   
 \end{tikzpicture}
 \end{figure}
-
-primeri in neprimeri mrež, hassejev diagram
-
-naravna števila, naraqvna za deljivost, potenčna za vsebovanost
-
 \end{frame}
 
+
 \begin{frame}
+\frametitle{Polne mreže}
 \begin{definition}
 Mreža $\mathcal{L}$ je polna, če za poljubno $\mathcal{A} \subseteq \mathcal{L}$ obstajata infimum in supremum za $\mathcal{A}$.
 \end{definition}
-Primeri(omejena lienarna), potenčna..., protiprimeri(realna), podgrupe dane množice
+
+\begin{example}
+Poljubna linearna omejena mreža je polna, na nasproten način pa dobimo mreže, ki niso polne: $\mathbb{R}, \leq$.
+\end{example}
 
 \end{frame}
 
 \begin{frame}
+\frametitle{Zakoni v mrežah}
 \begin{block}{Zakoni v mrežah}
 \begin{itemize}
 \item $x \lor x = x$, $x \land x = x$ (Idempotentnost)
@@ -413,7 +487,7 @@ Homomorfizem ohranja urejenost
 \begin{frame}
 
 \begin{theorem}
-Bijektivni homomorfizem $f$, $f \mathcal{L} \to \mathcal{L}'$ je izomorfizem, če ohranja red v obeh smereh
+Bijektivni homomorfizem $f$, $f : \mathcal{L} \to \mathcal{L}'$ je izomorfizem, če ohranja red v obeh smereh
 \end{theorem}
 
 \begin{proof}
