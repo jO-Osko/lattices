@@ -70,7 +70,7 @@
 \frametitle{Urejenost}
 
 \begin{definition}
-Naj bo $\mathcal{P}$ množica, relacija $\leq$ je \textbf{(šibka) delna urejenost}, če je
+Naj bo $\mathcal{L}$ množica, relacija $\leq$ je \textbf{(šibka) delna urejenost}, če je
 \begin{itemize}
 \item refleksivna ($a \leq a$)
 \item antisimetrična ($a \leq b \land b \leq a \implies a = b$)
@@ -83,7 +83,7 @@ Občasno smo nekoliko "šlampasti" in za lažjo predstavljivost uporabimo tudi r
 \end{remark}
 
 \begin{block}{Dogovor}
-Naj bo $\mathcal{P}$ množica urejena z relacijo delne urejenosti $\leq$ in $x,y \in \mathcal{P}$
+Naj bo $\mathcal{L}$ množica urejena z relacijo delne urejenosti $\leq$ in $x,y \in \mathcal{L}$
 \end{block}
 
 \end{frame}
@@ -96,7 +96,7 @@ Naj bo $\mathcal{P}$ množica urejena z relacijo delne urejenosti $\leq$ in $x,y
 $S$ je \textbf{supremum} $x$ in $y$, če velja: 
 \begin{itemize}
 \item $S \geq x \land S \geq y$ (Zgornja meja)
-\item $\forall S' \in \mathcal{P} \implies (S' \geq x \land S' \geq y \implies S \leq S')$ (Je najmanjša zgornja meja)
+\item $\forall S' \in \mathcal{L} \implies (S' \geq x \land S' \geq y \implies S \leq S')$ (Je najmanjša zgornja meja)
 \end{itemize}
 označimo: $S = x \lor y$ 
 \end{definition}
@@ -105,7 +105,7 @@ označimo: $S = x \lor y$
 $s$ je \textbf{infimum} $x$ in $y$, če velja: 
 \begin{itemize}
 \item $s \leq x \land s \leq y$ (Spodnja meja)
-\item $\forall s' \in \mathcal{P} \implies (s' \leq x \land s' \leq y \implies s' \leq s)$ (Je največja spodnja meja)
+\item $\forall s' \in \mathcal{L} \implies (s' \leq x \land s' \leq y \implies s' \leq s)$ (Je največja spodnja meja)
 \end{itemize}
 označimo: $s = x \land y$ 
 \end{definition}
@@ -114,16 +114,95 @@ označimo: $s = x \land y$
 
 \begin{frame}
 \begin{definition}
-Množica $\mathcal{P}$ je \textbf{linearno urejena}, če za poljubna $x,y$ velja $x \leq y$ ali  $y \leq x$ 
+Množica $\mathcal{L}$ je \textbf{linearno urejena}, če za poljubna $x,y$ velja $x \leq y$ ali  $y \leq x$ 
 \end{definition}
 
 \begin{definition}
-Množica $\mathcal{P}$ je \textbf{mreža}, če ima poljuben par $x,y$ infimum in supremum.
+Množica $\mathcal{L}$ je \textbf{mreža}, če ima poljuben par $x,y$ infimum in supremum.
 \end{definition}
 
 \end{frame}
 
 \begin{frame}
+\begin{columns}
+\begin{column}{2cm}
+  \begin{figure}
+  \centering
+  \begin{tikzpicture}[scale=1]
+    \node (a) at (0,0) {$a$};
+    \node (b) at (-1,-1) {$b$};
+    \node (c) at (-1,-2) {$c$};
+    \node (d) at (0,-3) {$d$};
+    \node (e) at (1,-1.5) {$e$};
+    \draw (a) -- (b) -- (c) -- (d) -- (e) -- (a);
+  \end{tikzpicture}
+  \end{figure}
+\end{column}
+
+\begin{column}{2cm}
+  \begin{figure}
+  \centering
+  \begin{tikzpicture}[scale=1]
+    \node (a) at (0,0) {$a$};
+    \node (b) at (-1,-1) {$b$};
+    \node (c) at (-1,-2) {$c$};
+    \node (d) at (0,-3) {$d$};
+    \node (e) at (1,-1.5) {$e$};
+    \node (f) at (1.5,-2.5) {$f$};
+    \draw (a) -- (b) -- (c) -- (d) -- (e) -- (a);
+    \draw (e) -- (f);
+  \end{tikzpicture}
+  \end{figure}
+\end{column}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+$\mathbb{N}, |$
+\end{center}
+\begin{figure}
+\centering
+\begin{tikzpicture} % should make python program :(
+  \node (one) at (1,4) {$0$};
+  \node (two) at (-3,0) {$2$};
+  \node (three) at (-1,0) {$3$};
+  \node (five) at (2,0) {$5$};
+  \node (rest_primes) at (4,0) {$\dots$};
+  \node (rest_primes_2) at (5,0) {$\dots$};
+  \node (rest_second) at (4,2) {$\dots$};
+  \node (rest_second_2) at (5,2) {$\dots$};
+  
+  \node (four) at (-3,2) {$4$};
+  \node (six) at (-2,2) {$6$};
+  \node (nine) at (-1,2) {$9$};
+  \node (ten) at (0,2) {$10$};
+  \node (fifteen) at (1, 2) {$15$};
+  \node (twentyfive) at (2,2) {$25$};
+  
+  \node (zero) at (1,-2) {$1$};
+  
+  \draw (zero) -- (two) -- (six) -- (three) -- (fifteen) -- (five) -- (zero) -- (rest_primes);
+  \draw (rest_primes_2) -- (zero) -- (three);
+
+
+  \draw (two) -- (four);
+  \draw (three) -- (nine);
+  \draw (two) -- (ten) -- (five);
+  \draw (five) -- (twentyfive);
+  \draw[loosely dotted] (four) -- (one);  
+  \draw[loosely dotted] (six) -- (one);  
+  \draw[loosely dotted] (nine) -- (one);  
+  \draw[loosely dotted] (ten) -- (one);
+  \draw[loosely dotted] (fifteen) -- (one);  
+  \draw[loosely dotted] (twentyfive) -- (one);  
+  \draw[loosely dotted] (rest_primes) -- (rest_second) -- (one);
+  \draw[loosely dotted] (rest_primes_2) -- (rest_second_2) -- (one);
+  
+\end{tikzpicture}
+\end{figure}
 
 primeri in neprimeri mrež, hassejev diagram
 
@@ -133,7 +212,7 @@ naravna števila, naraqvna za deljivost, potenčna za vsebovanost
 
 \begin{frame}
 \begin{definition}
-Mreža $\mathcal{P}$ je polna, če za poljubno $\mathcal{A} \subseteq \mathcal{P}$ obstajata infimum in supremum za $\mathcal{A}$.
+Mreža $\mathcal{L}$ je polna, če za poljubno $\mathcal{A} \subseteq \mathcal{L}$ obstajata infimum in supremum za $\mathcal{A}$.
 \end{definition}
 Primeri(omejena lienarna), potenčna..., protiprimeri(realna), podgrupe dane množice
 
@@ -172,7 +251,7 @@ Torej $x \leq x \land (x \lor y)$ in $x \geq x \land (x \lor y)$, dobimo $x = x 
 
 \begin{frame}
 \begin{theorem}
-Če imamo množico $\mathcal{P}$, za katero sta definirani operaciji $\lor, \land$ in če za te dve operacji veljajo zgornji zakoni, potem je ta množica mreža.
+Če imamo množico $\mathcal{L}$, za katero sta definirani operaciji $\lor, \land$ in če za te dve operacji veljajo zgornji zakoni, potem je ta množica mreža.
 \end{theorem}
 \end{frame}
 
@@ -208,11 +287,11 @@ Naravno se pojavi vprašanje, ali za operaciji v mrežah obstaja kakšne vrste e
 \end{block}
 
 \begin{definition}
-Če v mreži obstaja največji element, potem ta element označimo z $1$ ($\forall x \in \mathcal{P}. \ x \leq 1$)
+Če v mreži obstaja največji element, potem ta element označimo z $1$ ($\forall x \in \mathcal{L}. \ x \leq 1$)
 \end{definition}
 
 \begin{definition}
-Če v mreži obstaja najmanjši element, potem ta element označimo z $0$ ($\forall x \in \mathcal{P}. \ x \geq 0$)
+Če v mreži obstaja najmanjši element, potem ta element označimo z $0$ ($\forall x \in \mathcal{L}. \ x \geq 0$)
 \end{definition}
 
 \end{frame}
@@ -262,12 +341,49 @@ Med dvema je spet podmreža
 
 
 \begin{frame}
-Podobne mreže (najdi lepo sliko) (1,2,3,6), vsebovanost (1,2)
+\begin{columns}
+\begin{column}{5cm}
+\begin{center}
+$\{0,1\}, \subseteq$
+\end{center}
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=0.5]
+  \node (one) at (0,2) {$\{0,1\}$};
+  \node (a) at (-3,0) {$\{0\}$};
+  \node (d) at (3,0) {$\{1\}$};
+  \node (zero) at (0,-2) {$\{ \ \}$};
+  \draw (zero) -- (a) -- (one)  -- (d) -- (zero);
+\end{tikzpicture}
+\end{figure}
+\end{column}
+
+\begin{column}{5cm}
+\begin{center}
+$\{1,2,3,6\}, |$
+\end{center}
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=0.5]
+  \node (one) at (0,2) {$6$};
+  \node (a) at (-3,0) {$3$};
+  \node (d) at (3,0) {$2$};
+  \node (zero) at (0,-2) {$1$};
+  \draw (zero) -- (a) -- (one)  -- (d) -- (zero);
+\end{tikzpicture}
+\end{figure}
+\end{column}
+\end{columns}
+
+\begin{block}{}
+Mreži se zdita sumljivo podobni, ali lahko to kako posplošimo?
+\end{block}
+
 \end{frame}
 
 \begin{frame}
 \begin{definition}
-Preslikava $f \mathcal{L} \to \mathcal{L}'$ je \textbf{homomorfizem}, ča za poljubna $x,y \in \mathcal{L}$ velja:
+Preslikava $f :\mathcal{L} \to \mathcal{L}'$ je \textbf{homomorfizem}, ča za poljubna $x,y \in \mathcal{L}$ velja:
 \begin{itemize}
 \item $f(x \lor y) = f(x) \lor f(y)$
 \item $f(x \land y) = f(x) \land f(y)$
