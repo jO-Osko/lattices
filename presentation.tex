@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[slovene]{beamer}
 %AMDG
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{hyperref}
@@ -18,13 +18,25 @@
 \usepackage{multirow}
 \usepackage{mathtools}
 
+
+
+
 \usepackage{tikz}
+
+\usetikzlibrary{ matrix,      % For easy node positioning
+                 fit,         % For easily fitting nodes inside another one
+                 positioning, % For easy node-relative placements
+                 shapes, 	  % For elipse snd so
+               }
+
 
 \usetheme{Warsaw}
 
 \newenvironment{remark}
 {\textbf{Opomba:}}
 {}
+
+\newtheorem{proposition}[theorem]{\translate{Proposition}}
 
 \newcommand{\subscript}[2]{$#1 _ #2$}
 
@@ -381,7 +393,11 @@ Naravno se pojavi vprašanje, ali za operaciji v mrežah obstaja kakšne vrste e
 \end{itemize}
 \end{block}
 
-Primeri
+\pause
+\begin{example}
+$1,0$ za $\mathbb{N}, |$\\ $\{ \}, \mathbb{N}$ za $\mathcal{P}(\mathbb{N})$
+\end{example}
+
 \end{frame}
 
 \begin{frame}
@@ -400,7 +416,16 @@ Mrežo, v katri poljubnemu $x$ pripada \textbf{vsaj} en komplement imenujemo \te
 \end{frame}
 
 \begin{frame}
-Primeri(vektorski prostor na vsebovanost), komplementi
+\begin{example}
+Tipičen primer so vektorski podprostori nekega prostora $\mathcal{V}$, $1$ je celoten podprostor, $0$ je ničelni podprostor, komplementi poasmeznih elementov pa so kar pravokotni komplementi.
+\end{example}
+
+\begin{example}
+Ravnina, premice na njej in točke\\
+Komplementi premic so točke ki na njej ne ležijo, komplementi točk pa premice, ki ne vsebujejo teh točk.\\
+Imamo lahko več komplementov.
+\end{example}
+
 \end{frame}
 
 \begin{frame}
@@ -410,7 +435,75 @@ Neprazna množica $\mathcal{M} \subseteq \mathcal{L}$ je \textbf{podmreža}, če
 \end{frame}
 
 \begin{frame}
-Med dvema je spet podmreža
+\begin{block}{}
+Zanima nas lep način, kako bi iz obstoječih mrež lepo dobili podmreže\\ \pause
+Uporabimo stvar, ki jo v mrežah imamo in za podmrežo vzamemo kar vse, ki so med dvema elementoma.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{theorem}
+Če v mreži $\mathcal{L}$ vzamemo poljubna $x \leq y$, potem je množica $\mathcal{L}(x,y) := \{ z \in \mathcal{L} | \ x \leq z \leq y \}$ podmreža mreže $\mathcal{L}$.
+\end{theorem}
+
+\begin{proof}
+Preprosto preverimo obstoj imfimuma in supremuma\\ \pause
+Vzemimo poljubna $x',y' \in \mathcal{L}(x,y)$ in preverimo zaprtost\\ \pause $x \geq x' \lor y' \geq x' \land y' \geq y$
+\end{proof}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{$\mathcal{P}(\{1,2,3,4\}), \subseteq$}
+\begin{figure}
+\centering
+\begin{tikzpicture}[yscale=0.8] % should make python program :(
+  \node (one_s) at (0,6) {$\{1,2,3,4\}$};
+  \node (one) at (-3,0) {$\{1\}$};
+  \node (two) at (-1,0) {$\{2\}$};
+  \node (three) at (1,0) {$\{3\}$};
+  \node (four) at (3,0) {$\{4\}$};
+  
+  \node (one_two) at (-3,2) {$\{1,2\}$};
+  \node (one_three) at (-2,2) {$\{1,3\}$};
+  \node (one_four) at(-1,2) {$\{1,4\}$};
+  \node (two_three) at (0,2) {$\{2,3\}$};
+  \node (two_four) at (2,2) {$\{2,4\}$};
+  \node (three_four) at (3,2) {$\{3,4\}$};
+  
+  \node (four_m) at (-3,4) {$\{1,2,3\}$};
+
+  \node (three_m) at (-1,4) {$\{1,2,4\}$};
+  \node (two_m) at (1,4) {$\{1,3,4\}$};
+  \node (one_m) at (3,4) {$\{2,3,4\}$};
+      
+  \node (zero) at (0,-2) {$\{ \ \}$};
+  
+  \draw (zero) -- (one) -- (one_two) -- (four_m) -- (one_s) -- (two_m) -- (one_three);
+  \draw (zero) -- (two) -- (two_three) -- (three);
+  \draw (zero) -- (three) -- (three_four) -- (four) -- (zero);
+  \draw (one_two) -- (three_m) -- (one_s) -- (one_m) -- (three_four);
+  \draw (one_three) -- (four_m) -- (two_three) -- (one_m) -- (two_four) -- (three_m);
+  \draw (one_four) -- (three_m);
+  \draw (one_four) -- (two_m) -- (three_four);
+  
+  \draw (one) -- (one_three);
+  \draw (one) -- (one_four);
+  \draw (two_four)--(two) -- (one_two);
+  \draw (three) -- (one_three);
+  \draw (four) -- (one_four);
+  \draw (four) -- (two_four);  
+  
+  \draw[green, thick](two)--(two_three) -- (one_m) -- (two_four) -- (two);
+
+  \draw[red, thick](zero)-- (one) -- (one_four);
+  \draw[red, thick](three_m) -- (two_four) -- (four) -- (zero) -- (two) -- (one_two) -- (three_m) -- (one_four) -- (four);
+  \draw[red, thick] (one) --(one_two);
+  \draw[red, thick, dashed] (two) --(two_four);
+  
+\end{tikzpicture}
+\end{figure}
 \end{frame}
 
 
@@ -468,7 +561,7 @@ Preslikava $f :\mathcal{L} \to \mathcal{L}'$ je \textbf{homomorfizem}, ča za po
 
 
 \begin{block}{funkcija za prej}
-Funkcija za prej
+Funkcija za prej 
 \end{block}
 
 \end{frame}
