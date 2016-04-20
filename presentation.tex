@@ -398,7 +398,7 @@ Naravno se pojavi vprašanje, ali za operaciji v mrežah obstaja kakšne vrste e
 
 \pause
 \begin{example}
-$1,0$ za $\mathbb{N}, |$\\ $\{ \}, \mathbb{N}$ za $\mathcal{P}(\mathbb{N})$
+$0$ za $\mathbb{N}, |$\\ $\{ \}, \mathbb{N}$ za $\mathcal{P}(\mathbb{N})$
 \end{example}
 
 \end{frame}
@@ -420,7 +420,7 @@ Mrežo, v katri poljubnemu $x$ pripada \textbf{vsaj} en komplement imenujemo \te
 
 \begin{frame}
 \begin{example}
-Tipičen primer so vektorski podprostori nekega prostora $\mathcal{V}$, $1$ je celoten podprostor, $0$ je ničelni podprostor, komplementi poasmeznih elementov pa so kar pravokotni komplementi.
+Tipičen primer so vektorski podprostori nekega prostora $\mathcal{V}$, $1$ je celoten podprostor, $0$ je ničelni podprostor, komplementi poasmeznih elementov pa so kar ortogonalni komplementi.
 \end{example}
 
 \begin{example}
@@ -435,13 +435,6 @@ Imamo lahko več komplementov.
 \begin{definition}
 Neprazna množica $\mathcal{M} \subseteq \mathcal{L}$ je \textbf{podmreža}, če je tudi sama mreža za isti operaciji in se na njih ujema. Povedano drugače $x \lor y \in \mathcal{M}$ in $x \land y \in \mathcal{M}$
 \end{definition}
-\end{frame}
-
-\begin{frame}
-\begin{block}{}
-Zanima nas lep način, kako bi iz obstoječih mrež lepo dobili podmreže\\ \pause
-Uporabimo stvar, ki jo v mrežah imamo in za podmrežo vzamemo kar vse, ki so med dvema elementoma.
-\end{block}
 \end{frame}
 
 \begin{frame}
@@ -593,21 +586,13 @@ Homomorfizem ohranja urejenost
 \begin{frame}
 
 \begin{theorem}
-Bijektivni homomorfizem $f$, $f : \mathcal{L} \to \mathcal{L}'$ je izomorfizem, če ohranja red v obeh smereh
+Bijektivna preslikava $f$, $f : \mathcal{L} \to \mathcal{L}'$ je izomorfizem, če ohranja red v obeh smereh
 \end{theorem}
 
-\begin{proof}
-
-\end{proof}
-
-\end{frame}
-
-\begin{frame}
 \begin{block}{Red se mora ohranjati v obeh smereh}
-Protiprimer
+Identiteta : $(\mathbb{N}, |)  \to (\mathbb{N}, \leq) $
 \end{block}
 \end{frame}
-
 
 \begin{frame}
 \begin{definition}
@@ -620,7 +605,8 @@ Mreža je \textbf{distributivna}, če za $\lor$ in $\land$ veljata zakona:
 
 
 \begin{example}
-linarana je distributivna
+Linearno urejena množica je distributivna.
+Potenčna množica glede na inkluzijo je prav tako distributivna.
 \end{example}
 
 \end{frame}
@@ -631,13 +617,19 @@ linarana je distributivna
 \end{theorem}
 
 \begin{proof}
-Dokaz
+Naj bo $a$ poljuben element mreže. Naj bosta $a' in a''$ dva njegova komplementa.\\
+$$ a'' = 1 \land a'' = (a \lor a') \land a'' = (a  \land a'') \lor (a' \land a'') =  a' \land a''. $$
+
+Torej sledi $ a'' \leq a'$. Analogno pokažemo $a' \leq a''$ in sledi $ a' = a''.$
+
 \end{proof}
 
 \end{frame}
 
 \begin{frame}
-Primerji (če ima vsak element komplement, potem samo slikaš samo obrnjeno)
+\begin{definition}
+Distributivno mrežo v kateri ima vsak element komplement imenujemo \textbf{Boolova algebra}.
+\end{definition}
 \end{frame}
 
 \begin{frame}% pa pridimo do mreže brez urejenosti
@@ -664,15 +656,15 @@ Definiramo operaciji $\lor, \land$ in pokažimo, da je to mreža
 \end{frame}
 
 
-\begin{frame}
-\begin{definition}
-Komplementarno in distributivno mrežo imenujemo \textbf{Boolova algebra}.
-\end{definition}
+%\begin{frame} Bom to omenil jaz.
+%\begin{definition}
+%Komplementarno in distributivno mrežo imenujemo \textbf{Boolova algebra}.
+%\end{definition}
 
-\begin{block}{}
-To ni algebra?????
-\end{block}
-\end{frame}
+%\begin{block}{}
+%To ni algebra?????
+%\end{block}
+%\end{frame}
 
 \begin{frame}
 \section{Modulske mreže}
@@ -696,7 +688,10 @@ Mreža podgrup edink je modulska.
 \end{frame}
 
 \begin{frame}
-dokaz da je modulska.
+\begin{block}{Dokaz:}
+Naj bo $\mathcal{G}$ grupa in $\mathcal{H}$, $\mathcal{K}$ in $\mathcal{L}$ njene podgrupe edinke in naj velja $\mathcal{H} \leq \mathcal{L}$. Vemo, da $\mathcal{H} \lor \mathcal{K} =\mathcal{H}\mathcal{K}.$\\
+Poglejmo si ($\mathcal{H} \lor \mathcal{K}) \land \mathcal{L}$.
+\end{block}
 \end{frame}
 
 \begin{frame}
@@ -716,10 +711,9 @@ Brez dokaza navedimo naslednji izrek:
 \begin{theorem}
 Vse verige, ki v modulski mreži vežejo isti par elementov, so enako dolge.
 \end{theorem}
-\end{frame}
-
-\begin{frame}
-nekaj o dimenziji mrez
+\begin{block}{}
+Ideja o definiranju dimenzije mreže.
+\end{block}
 \end{frame}
 
 \end{document}
