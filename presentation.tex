@@ -114,6 +114,7 @@ $S$ je \textbf{supremum} $x$ in $y$, če velja:
 označimo: $S = x \lor y$ 
 \end{definition}
 
+\pause
 \begin{definition}
 $s$ je \textbf{infimum} $x$ in $y$, če velja: 
 \begin{itemize}
@@ -130,7 +131,7 @@ označimo: $s = x \land y$
 \begin{definition}
 Množica $\mathcal{L}$ je \textbf{linearno urejena}, če za poljubna $x,y$ velja $x \leq y$ ali  $y \leq x$ 
 \end{definition}
-
+\pause
 \begin{definition}
 Množica $\mathcal{L}$ je \textbf{mreža}, če ima poljuben par $x,y$ infimum in supremum.
 \end{definition}
@@ -320,21 +321,40 @@ Poljubna linearna omejena mreža je polna, na nasproten način pa dobimo mreže,
 
 
 \begin{frame}
+\frametitle{Asociativnost}
 \begin{proof}
-Naj bo $a = (x \lor y) \lor z$ in $b = x \lor (y \lor z)$ \\ \pause
-Iz definicje ali sledi $a \geq z$ in $a \geq (x \lor y)$ in torej $a \geq x, a \geq y$ \\ \pause
-Potem velja tudi $a \geq (y \lor z)$ in $a \geq x \lor (y \lor z)$ torej $a \geq b$\\ \pause
-Na skoraj enak naredimo iz druge strani in dobimo $b \geq a$, ker pa je zaradi antisimetričnosti relacije mogoče zgolj, kadar velja $a=b$
+$$a = (x \lor y) \lor z, \ \ b = x \lor (y \lor z)$$ 
+$$a \geq z, a \geq (x \lor y) \implies a \geq x, a \geq y$$\pause 
+$$a \geq (y \lor z), a \geq x \lor (y \lor z) \implies a \geq b $$ \\ 
+\centering Podobno v drugo smer, zaradi antisimetričnosti
+$$ a = b$$
+
 \end{proof}
+
+%\begin{proof}
+%Naj bo $a = (x \lor y) \lor z$ in $b = x \lor (y \lor z)$ \\ \pause
+%Iz definicje ali sledi $a \geq z$ in $a \geq (x \lor y)$ in torej $a \geq x, a \geq y$ \\ \pause
+%Potem velja tudi $a \geq (y \lor z)$ in $a \geq x \lor (y \lor z)$ torej $a \geq b$\\ \pause
+%Na skoraj enak naredimo iz druge strani in dobimo $b \geq a$, ker pa je zaradi antisimetričnosti %relacije mogoče zgolj, kadar velja $a=b$
+%\end{proof}
 \end{frame}
 
 \begin{frame}
-\begin{proof}
-Iz definicije ali vemo $x \leq (x \lor y)$ in $x \leq x$ torej $x \leq x \land (x \lor y)$\\ \pause
-Iz definicije in pa sledi $x \geq x \land (x \lor y)$\\ \pause
-Torej $x \leq x \land (x \lor y)$ in $x \geq x \land (x \lor y)$, dobimo $x = x \land (x \lor y)$
+\frametitle{Absorbcija}
 
+%\begin{proof}
+%Iz definicije ali vemo $x \leq (x \lor y)$ in $x \leq x$ torej $x \leq x \land (x \lor y)$\\ \pause
+%Iz definicije in pa sledi $x \geq x \land (x \lor y)$\\ \pause
+%Torej $x \leq x \land (x \lor y)$ in $x \geq x \land (x \lor y)$, dobimo $x = x \land (x \lor y)$
+%\end{proof}
+
+\begin{proof}
+$$ x \leq (x \lor y), \ x \leq x \implies x \leq x \land (x \lor y)$$
+$$x \geq x \land (x \lor y)$$
+$$x \leq x \land (x \lor y), x \geq x \land (x \lor y)$$ \pause
+$$x = x \land (x \lor y)$$
 \end{proof}
+
 \end{frame}
 
 
@@ -347,26 +367,46 @@ Torej $x \leq x \land (x \lor y)$ in $x \geq x \land (x \lor y)$, dobimo $x = x 
 \begin{frame}
 
 \begin{block}{Dokaz}
-Najprej definiramo relacijo, naj za $x,y \in \mathcal{L}$ velja $x \leq y \iff x \land y = x$\\ in preverimo, da je to delna urejenost \\ \pause
-Refleksivnost: \pause$x \land x = x$ torej $x \leq x$\\ \pause
-Antisimetričnost: \pause $x \leq y$ in $y \leq x$, torej $x \land y = x$ in $y \land x = y$, uporabimo komutativnost in dobimo $x = y$\\ \pause
-Tranzitivnost: \pause $x \leq y$ in $y \leq z$ torej velja $x = x \land y$ in $y = y \land z$ \\ \pause
-Namesto $y$ uporabimo $y \land z$ in dobimo $x = x \land (y \land z) = (x \land y) \land z = x \land z$ torej \pause $x \leq z$ \\ \pause
+\centering Definiramo: $x \leq y \iff x \land y = x$ \\ Preverimo, da je to delna urejenost \\ \pause 
+Refleksivnost: $x \land x = x \implies x \leq x$\\ \pause
+Antisimetričnost: $x \leq y, \ y \leq x \implies x \land y = x, y \land x = y$, uporabimo komutativnost in dobimo $x = y$\\ \pause
+Tranzitivnost:  $x \leq y, y \leq z \implies x = x \land y, y = y \land z$ \\
+$x = x \land (y \land z) = (x \land y) \land z = x \land z \implies x \leq z$ \\ \pause
 Preverimo še, da velja $x \land y = x \iff x \lor y = y$\\ \pause
-Uporabimo zadnji zakon in $x \lor b = (x \lor y) \land y = b$ in identično v drugo smer.
-
+Uporabimo zadnji zakon in $x \lor y = (x \lor y) \land y = b$ in identično v drugo smer.
 \end{block}
+
+%\begin{block}{Dokaz}
+%Najprej definiramo relacijo, naj za $x,y \in \mathcal{L}$ velja $x \leq y \iff x \land y = x$\\ in preverimo, da je to delna urejenost \\ \pause
+%Refleksivnost: \pause$x \land x = x$ torej $x \leq x$\\ \pause
+%Antisimetričnost: \pause $x \leq y$ in $y \leq x$, torej $x \land y = x$ in $y \land x = y$, uporabimo komutativnost in dobimo $x = y$\\ \pause
+%Tranzitivnost: \pause $x \leq y$ in $y \leq z$ torej velja $x = x \land y$ in $y = y \land z$ \\ \pause
+%Namesto $y$ uporabimo $y \land z$ in dobimo $x = x \land (y \land z) = (x \land y) \land z = x \land z$ torej \pause $x \leq z$ \\ \pause
+%Preverimo še, da velja $x \land y = x \iff x \lor y = y$\\ \pause
+%Uporabimo zadnji zakon in $x \lor y = (x \lor y) \land y = b$ in identično v drugo smer.
+%\end{block}
 
 \end{frame}
 
 
 \begin{frame}
 \begin{proof}
-Preveriti moramo še infimume in supremume\pause, poglejmo si samo supremum\\ \pause
-Sama od sebe se nam kot zgornja meja $x$ in $y$ ponuja $x \lor y$, ki je očitno zgornja meja \\ \pause%ker smo obstoj relacije že dokazali, lahko sedaj uporabljamo vse kar nam de
-Naj bo $z$ neka zgornja meja $x,y$, $x \lor z = y \lor z = z$\\ \pause
-Dobimo $(x \lor y) \lor z = x \lor (y \lor z) = x \lor z = z$, kar pomeni, da $x \lor y \leq z$, torej je $x \lor y$ natančna zgornja meja. 
+\centering
+Poglejmo si zgolj supremum\\ \pause
+Ponuja se $x \lor y$, ki je očitno zgornja meja
+\begin{center}
+$z \geq x, z \geq y \implies x \lor z = y \lor z = z$ \pause
+\end{center} 
+$$(x \lor y) \lor z = x \lor (y \lor z) = x \lor z = z \implies x \lor y \leq z$$
 \end{proof}
+
+%\begin{proof}
+%Preveriti moramo še infimume in supremume\pause, poglejmo si samo supremum\\ \pause
+%Sama od sebe se nam kot zgornja meja $x$ in $y$ ponuja $x \lor y$, ki je očitno zgornja meja \\ \pause%ker smo obstoj relacije že dokazali, lahko sedaj uporabljamo vse kar nam de
+%Naj bo $z$ neka zgornja meja $x,y$, $x \lor z = y \lor z = z$\\ \pause
+%Dobimo $(x \lor y) \lor z = x \lor (y \lor z) = x \lor z = z$, kar pomeni, da $x \lor y \leq z$, torej je $x \lor y$ natančna zgornja meja. 
+%\end{proof}
+
 \end{frame}
 
 \begin{frame}
