@@ -17,7 +17,8 @@
 \usepackage{fancyhdr}
 \usepackage{multirow}
 \usepackage{mathtools}
-
+\usepackage{graphicx}
+\graphicspath{ {img/} }
 
 
 
@@ -657,7 +658,7 @@ Potenčna množica glede na inkluzijo je prav tako distributivna.
 \end{theorem}
 
 \begin{proof}
-Naj bo $a$ poljuben element mreže. Naj bosta $a' in a''$ dva njegova komplementa.\\
+Naj bo $a$ poljuben element mreže. Naj bosta $a'$ in $a''$ dva njegova komplementa.\\
 $$ a'' = 1 \land a'' = (a \lor a') \land a'' = (a  \land a'') \lor (a' \land a'') =  a' \land a''. $$
 
 Torej sledi $ a'' \leq a'$. Analogno pokažemo $a' \leq a''$ in sledi $ a' = a''.$
@@ -670,29 +671,160 @@ Torej sledi $ a'' \leq a'$. Analogno pokažemo $a' \leq a''$ in sledi $ a' = a''
 \begin{definition}
 Distributivno mrežo v kateri ima vsak element komplement imenujemo \textbf{Boolova algebra}.
 \end{definition}
+\begin{example}
+$\mathcal{P}(\mathbb{N}), \subseteq$, $\mathcal{A}' = \mathcal{A}^c$ 
+\end{example}
 \end{frame}
+
+\begin{frame}
+\begin{theorem}
+V Boolovi algebri veljata pravili:
+\begin{itemize}
+\item $(x \lor y)' = x' \land y'$
+\item $(x \land y)' = y' \lor x'$ 
+\end{itemize}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\begin{proof}
+$$(x \land y) \lor (x' \lor y')$$  $$(x \lor x' \lor y') \land (y \lor x' \lor y')$$  $$(1 \lor y') \land (1 \lor x') = 1 \lor 1 = 1$$
+
+$$(x \land y) \land (x' \lor y')$$  $$(x \land x' \land y') \lor (y \land x' \land y')$$  $$(0 \land y') \lor (0 \land x') = 0 \lor 0 = 0$$
+
+\end{proof}
+
+\end{frame}
+
 
 \begin{frame}% pa pridimo do mreže brez urejenosti
 \begin{definition}
 Kolobar, v katerem je vsak element idempotenten imenujemo \textbf{Boolov kolobar}.
 \end{definition}
+\begin{example}
+$\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \dots \oplus \mathbb{Z}_2$
+\end{example}
 \end{frame}
 
 
 \begin{frame}
 \begin{theorem}
-Boolov klobar je komutativen s karakteristiko $2$
+Boolov klobar ima karakteristiko $2$
 \end{theorem}
-
+\pause
 \begin{proof}
-Dokaza
+$$(x + x) = (x + x)^2 = x^2 + x^2 + x^2 + x^2 = x + x = 2x$$ 
+$$2x = 0 \implies x = -x$$
+\end{proof}
+\end{frame}
+
+\begin{frame}
+
+
+\begin{theorem}
+Boolov kolobar je komutativen
+\end{theorem}
+\pause
+\begin{proof}
+$$(x + y) = (x+y)^2 = x^2 + xy + yx + y^2 = x + xy + yx + y$$ 
+$$xy + yx = 0 \implies xy = -ba \implies xy = yx $$
+\end{proof}
+\end{frame}
+
+\begin{frame}
+\begin{theorem}
+Boolov kolobar je mreža za operaciji $x \lor y := x + y + xy$ in $x \land y := xy$
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\begin{proof}
+Preverimo pravila
+\begin{itemize}
+\item $x \lor x = x + x + x^2 = 0 + x = x$, $x \land x = x^2 = x$
+\item $x \lor y = x + y + xy = y + x + yx = y \lor x$, $x \land y = xy = yx = y \land y$\pause
+\item $(x \lor y) \lor z  = x + y + z + xz + yz +xyz = x \lor (y \lor z)$\pause
+$(x \land y) \land z = xyz = x \land (y \land z)$ 
+\item $x \land (x \lor y) = x + xy + xy = x$\\ \pause
+$x \lor (x \land y) = x + xy + xy = x$
+\end{itemize}
+\end{proof}
+\end{frame}
+
+\begin{frame}
+\begin{theorem}
+Boolov kolobar je distributivna mreža
+\end{theorem}
+\begin{proof}
+$(x \lor y) \land z = xz + yz + xyz = (x \land z) \lor (y \land z)$ \\
+$(x \land y) \lor z = xy + z + xyz = (x \lor z) \land (y \lor z)$
 \end{proof}
 \end{frame}
 
 \begin{frame}
 \begin{block}{}
-Definiramo operaciji $\lor, \land$ in pokažimo, da je to mreža
+$0$ je tudi $0$ za mrežo, $1$ prav tako(če obstaja)
 \end{block}
+
+\begin{block}{}
+$x' = 1-x $ \\ \pause
+$x \land (1-x) = x(1-x) = x - x = 0 $
+$x \lor x'= x + (1-x) + x(1-x) = 1 $
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Boolov kolobar}
+\begin{center}
+$\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$
+\end{center}
+\begin{figure}
+\centering
+\begin{tikzpicture} % should make python program :(
+  \node (one) at (0,0) {$111 $};
+  \node (two) at (-2,-4) {$001 $};
+  \node (three) at (0,-4) {$010 $};
+  \node (five) at (2,-4) {$100 $};
+  
+  \node (four) at (-2,-2) {$011 $};
+  \node (six) at (0,-2) {$101 $};
+  \node (nine) at (2,-2) {$110 $};
+  
+  \node (zero) at (0,-6) {$000 $};
+  
+  \draw (zero) -- (two) -- (four) -- (one) -- (six) -- (two);  
+  \draw (zero) -- (three) -- (four);
+  \draw (zero) -- (five) -- (six);
+  \draw (three) -- (nine);
+  \draw (one) -- (nine) -- (five);
+  
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lastnosti boolovih kolobarjev}
+\begin{block}{}
+\begin{itemize}
+\item Boolove mreže imajo $2^n$ elementov za nek $n \in \mathbb{N}$
+\item Za poljubno naravno število $n$ je mreža vseh deljiteljev tega števila boolova mreža natanko tedaj, ko $n$ ni deljiv s kvadratom kakega naravnega števila\\
+\item Mreža $n$ kopij $\mathbb{Z}_2$ je graf $n-$kocke
+\item Elementi v boolovi mreži so direktno povezani z elementi, ki so od njih \textit{oddaljeni} za največ $1$
+\item Boolovi mreži sta si izomorfni, če imata enako število elementov
+\item Deljitelji $30$ urejeni po deljivosti so boolova mreža, ki je izomorfna $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$
+\end{itemize}
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Boolove mreže}
+\includegraphics[scale=0.2]{bool1}
+\includegraphics[scale=0.2]{bool2}
+\includegraphics[scale=0.2]{bool3}
+\includegraphics[scale=0.29]{bool4}
 \end{frame}
 
 
