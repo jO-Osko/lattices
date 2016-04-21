@@ -1,4 +1,4 @@
-\documentclass[slovene]{beamer}
+\documentclass{beamer}
 %AMDG
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{hyperref}
@@ -37,7 +37,14 @@
 {\textbf{Opomba:}}
 {}
 
-\newtheorem{proposition}[theorem]{\translate{Proposition}}
+\uselanguage{Slovene}
+\languagepath{Slovene}
+
+\usetheme{Copenhagen}
+
+\deftranslation[to=Slovene]{Theorem}{Izrek}
+\deftranslation[to=Slovene]{Example}{Primer}
+\deftranslation[to=Slovene]{Definition}{Definicija}
 
 \newcommand{\subscript}[2]{$#1 _ #2$}
 
@@ -709,7 +716,7 @@ $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \dots \oplus \mathbb{Z}_2$
 
 \begin{frame}
 \begin{theorem}
-Boolov klobar ima karakteristiko $2$
+Boolov kolobar ima karakteristiko $2$
 \end{theorem}
 \pause
 \begin{proof}
@@ -773,6 +780,13 @@ $x \lor x'= x + (1-x) + x(1-x) = 1 $
 \end{block}
 
 
+\end{frame}
+
+\begin{frame}
+\begin{block}
+V kolikor ima boolov kolobar enoto, potem je booova algebra (komplementarna distributivna mreža)
+Velja pa tudi obratno, v komplementarni distributivni mreži lahko definiramo z $\lor, \land$ definiramo seštevanje in množenje kot notranji operaciji.
+\end{block}
 \end{frame}
 
 \begin{frame}
