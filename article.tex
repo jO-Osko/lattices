@@ -1,0 +1,291 @@
+\documentclass[a4paper]{article}
+%AMDG
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{hyperref}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{epigraph}
+\usepackage{pdftexcmds}
+\usepackage{fancyref, nameref}
+\usepackage{epigraph}
+\usepackage{cleveref}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage[nomessages]{fp}
+\usepackage{fancyhdr}
+\usepackage{multirow}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{tikz}
+
+
+\parindent=0pt
+
+
+% \epigraphsize{\small}% Default
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother
+
+
+\newcounter{environment:definition_counter}
+
+\newenvironment{definition}[1][\unskip]
+{\vspace{0.5cm}\refstepcounter{environment:definition_counter}\textbf{Definicija \arabic{environment:definition_counter}: \textbf{#1}}\itshape}
+{\bigskip}
+
+\newcounter{environment:theorem_counter}
+
+\newenvironment{theorem}[1][\unskip]
+{\refstepcounter{environment:theorem_counter}\textbf{Izrek \arabic{environment:theorem_counter}:\textit{#1}}\\}
+{\bigskip}
+
+\newcounter{environment:statement_counter}
+
+\newenvironment{statement}[1][\unskip]
+{\refstepcounter{environment:statement_counter}\textbf{Trditev \arabic{environment:statement_counter}:\textit{#1}}}
+{\bigskip}
+
+\newcounter{example:example_counter}
+
+\newenvironment{example}
+{\textbf{Primer:}\\}
+{\setcounter{example:example_counter}{0}}
+
+\newenvironment{example_case}
+{\refstepcounter{example:example_counter} \arabic{example:example_counter}.}
+{\\}
+
+\newenvironment{remark}
+{\textbf{Opomba:}}
+{}
+
+\newenvironment{corollary}
+{\underline{\textbf{Posledica:}}}
+{}
+
+%should rethink this
+\newtheorem{lemma}{Lema}
+
+\newcommand{\subscript}[2]{$#1 _ #2$}
+
+\newcommand{\twopartdef}[4]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 & \mbox{; } #2 \\
+			#3 & \mbox{; } #4
+		\end{array}
+	\right.
+}
+
+
+\pagestyle{headings}
+\pagestyle{fancy}
+%\fancyhead[LE,RO]{\itshape \nouppercase \rightmark}
+%\fancyhead[LO,RE]{\itshape \nouppercase Chapter \arabic{chapter}}
+
+
+\lfoot{Mreže}
+\rfoot{Filip Koprivec, Samo Kralj}
+
+%operatorji
+\newcommand{\ord}{\ensuremath{\operatorname{red}}} % red grupe/elementa
+\newcommand{\Mod}[1]{ \ (\text{mod}\ #1)}
+
+\begin{document}	
+\title{Mreže}
+\author{Filip Koprivec, Samo Kralj}
+\date{\today}
+\maketitle
+
+\epigraph{“If I find in myself desires which nothing in this world can satisfy, the only logical explanation is that I was made for another world.”}{--- \textup{C. S. Lewis}}
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Uvod}
+
+Mreža je množica z dodatno strukturo (delno urejenostjo), ki zadošča poguju, da ima poljuben par elementov infimum in supremum. Najprej si bomo pogledali mreže s stališča matematične logike in urejenosti, kasneje pa si jih bomo ogledali še s stališča algebraičnih operacij nad njimi, ter pokazali, zakaj sta ta dva pogleda ekvivalentna.
+
+%TODO uredi uvod
+
+\subsection{Osnovne definicje}
+\begin{definition}
+Naj bo $\mathcal{L}$ množica, relacija $\leq$ je \textbf{(šibka) delna urejenost}, če je
+\begin{itemize}
+\item refleksivna ($a \leq a$)
+\item antisimetrična ($a \leq b \land b \leq a \implies a = b$)
+\item tranzitivna ($a \leq b \land b \leq c \implies a \leq c$)
+\end{itemize}
+Pišemo $a$ je manjši ali enak $b$, občasno tudi $a$ je pod $b$.
+\end{definition}
+
+\begin{remark}
+Zgolj iz preprostosti definiramo še drugo relacijo $a \geq b \iff b \leq a$, ki je očitno tudi delna urejenost.
+\end{remark}
+\\
+\\
+\begin{remark}
+Poznamo tudi \textbf{strogo delno urejenost}, ki jo definiramo kot $a < b \iff a \leq b \land a \neq b$  
+\end{remark}
+
+\begin{example}
+Tipičen primer delne urejenosti je kar sama motivacija za vpeljavo relacije. Vzemimo množico realnih števil $\mathbb{R}$ in na njej relacijo $\leq$, za katero preprosto preverimo da je delna urejenost.
+\end{example}
+\\
+\\
+\begin{statement}
+Relacija deljivosti ($\mid$) na množici $\mathbb{N}$ je delna urejenost.
+\end{statement}
+\begin{proof}
+Preverili bomo da ta relacija zadošča vsem zahtevam. Spomnimo se, da $a$ deli $b$ natanko tedaj, kadar obstaja tako celo število $k$, da zadosti enakosti $b = ka$, oziroma $a \mid b \iff \exists k \in \mathbb{Z}. \ b = ka$.
+\begin{itemize}
+\item Refleksivnost: $a = 1*a$, torej $a \mid a$
+\item Antisimetričnost: $a \mid b \implies b = k_1a$, $b \mid a \implies a = k_2b$, vstavimo $a$ v prvo enakost in dobimo $b = k_1k_2 b$, torej $k_1 = k_2^{-1}$, torej $k_1 = k_2 = 1$ in dobimo $b = a$
+\item Tranzitivnost: $a \mid b \land b \mid c \implies a \mid c$, vemo torej $b = k_1a$ in $c = k_2b$, vstavimo prvo enakost v drugo in dobimo $c = \underbrace{k_2k_1}_{\in \mathbb{Z}}a$ torej $a \mid c$.
+\end{itemize}
+\end{proof}
+
+\begin{remark}
+Preprosto preverimo, da je za poljubno množico $\mathcal{A}$, relacija $\subseteq$ delna urejenost na potenčni množici množice $\mathcal{A}$ ($P(\mathcal{A})$).
+\end{remark}
+
+\begin{definition}
+Množica $\mathcal{L}$ je \textbf{linearno urejena}, če za poljubna $x,y$ velja $x \leq y$ ali  $y \leq x$ 
+\end{definition}
+
+\begin{example}
+Množica $\mathbb{N}$ z urejenostjo $\leq$ je linearno urejena, saj za poljubna $x$ in $y$ velja $x \leq y \lor y \leq x$, če pa velja $x=y$, potem pa sta pravilna celo oba dela izjave. Množica $\mathbb{N}$ urejena glede na relacijo deljivosti pa \textbf{ni} linearno urejena, saj za recimo dve poljubni praštevilo velja $p_1 \nmid p_2 \land p_2 \nmid p_1$.
+\end{example}
+\\
+\begin{remark}
+Pridstavitem linearno urejenih množic s Hassejevim diagramom nas spominja na premico, od torej tudi izraz. To je lepo vidno na sliki (\ref{im:natural_numbers_hasse_example}).
+\end{remark}
+\\
+Za lepšo predstavo splošnih linearnih urejenih diagramov si pomagamo s Hassejevim diagramom, ki s pomočjo povezav med točkami prikaže relacije med njimi.
+
+\begin{definition}
+Naj bo $\mathcal{L}$ delno urejena množica glede na neko relacijo, ki o označimo z $\leq$. Hassejev diagram je graf, katerega točke so elementi $\mathcal{L}$, med točkama $x$ in $y$ pa je povazava natnko tedaj, kadar velja: $$ x \leq y \land \nexists z \in \mathcal{L}. \ x \leq z \leq y$$
+\end{definition}
+
+\begin{figure}[h]
+  \begin{subfigure}[b]{0.1\textwidth}
+    \begin{tikzpicture}
+      \node (a) at (0,0) {};
+      \node (c) at (0,-2) {$2$};
+      \node (d) at (0,-3) {$1$};
+      \node (e) at (0,-4) {$0$};
+      \draw  (c) -- (d) -- (e);
+      \draw[dotted] (c) -- (a);
+    \end{tikzpicture}
+    \caption{$\mathbb{N}, \leq$}
+    \label{im:natural_numbers_hasse_example}
+  \end{subfigure}  
+  \hfill
+  \begin{subfigure}[b]{0.8\textwidth}
+\begin{tikzpicture} % should make python program :(
+  \node (one) at (1,4) {$0$};
+  \node (two) at (-3,0) {$2$};
+  \node (three) at (-1,0) {$3$};
+  \node (five) at (2,0) {$5$};
+  \node (rest_primes) at (4,0) {$\dots$};
+  \node (rest_primes_2) at (5,0) {$\dots$};
+  \node (rest_second) at (4,2) {$\dots$};
+  \node (rest_second_2) at (5,2) {$\dots$};
+  
+  \node (four) at (-3,2) {$4$};
+  \node (six) at (-2,2) {$6$};
+  \node (nine) at (-1,2) {$9$};
+  \node (ten) at (0,2) {$10$};
+  \node (fifteen) at (1, 2) {$15$};
+  \node (twentyfive) at (2,2) {$25$};
+  
+  \node (zero) at (1,-2) {$1$};
+  
+  \draw (zero) -- (two) -- (six) -- (three) -- (fifteen) -- (five) -- (zero) -- (rest_primes);
+  \draw (rest_primes_2) -- (zero) -- (three);
+
+
+  \draw (two) -- (four);
+  \draw (three) -- (nine);
+  \draw (two) -- (ten) -- (five);
+  \draw (five) -- (twentyfive);
+  \draw[loosely dotted] (four) -- (one);  
+  \draw[loosely dotted] (six) -- (one);  
+  \draw[loosely dotted] (nine) -- (one);  
+  \draw[loosely dotted] (ten) -- (one);
+  \draw[loosely dotted] (fifteen) -- (one);  
+  \draw[loosely dotted] (twentyfive) -- (one);  
+  \draw[loosely dotted] (rest_primes) -- (rest_second) -- (one);
+  \draw[loosely dotted] (rest_primes_2) -- (rest_second_2) -- (one);
+  
+\end{tikzpicture}
+  \caption{Hassejev diagram za $(\mathbb{N}, \mid)$}
+  \label{im:natural_nubmers_subset_hasse_example}
+  \end{subfigure}
+\caption{Primer Hassejevih diagramov}
+\label{im:hasse_diagram_example}
+  \end{figure}
+
+\subsection{Supremum in infimum}
+
+
+
+\begin{definition}
+$S$ je \textbf{supremum} $x$ in $y$, če velja: 
+\begin{itemize}
+\item $S \geq x \land S \geq y$ (Zgornja meja)
+\item $\forall S' \in \mathcal{L} \implies (S' \geq x \land S' \geq y \implies S \leq S')$ (Je najmanjša zgornja meja)
+\end{itemize}
+Torej je $S$ natačna zgornja meja $x$ in $y$, če je njuna zgornja meja, hkrati pa je vsaka od $S$ različna zgornja meja večja ali enaka $S$. Označimo: $S = x \lor y$. 
+\end{definition}
+
+
+\begin{definition}
+$s$ je \textbf{infimum} $x$ in $y$, če velja: 
+\begin{itemize}
+\item $s \leq x \land s \leq y$ (Spodnja meja)
+\item $\forall s' \in \mathcal{L} \implies (s' \leq x \land s' \leq y \implies s' \leq s)$ (Je največja spodnja meja)
+\end{itemize}
+Torej je $s$ natačna spodnja meja $x$ in $y$, če je njuna spodnja meja, hkrati pa je vsaka od $s$ različna zgornja meja manjša ali enaka $s$. Označimo: $s = x \land y$ .
+\end{definition}
+
+\begin{remark}
+V literaturi se za supremum občasno uporablja tudi oznaka $\cup$, za infimum pa $\cap$. 
+\end{remark}
+
+\begin{example}
+\begin{example_case}
+Za množico $\mathbb{R}$, ki je urejena glede na $\leq$ in poljubni števili $x,y$ velja: $x \lor y = max\{x,y\}$ in $x \land y = min\{x,y\}$.
+\end{example_case}
+\begin{example_case}
+Za množico $\mathbb{N}$, ki je urejena glede na relacijo deljivosti in poljubni števili $x,y$ velja: $x \lor y = lcm\{x,y\}$ (najmanjši skupni večkratnik) in $x \land y = gcd\{x,y\}$ (največji skupni delitelj).
+\end{example_case}
+\end{example}
+
+\subsection{Definicja mreže}
+
+\begin{definition}
+Množica $\mathcal{L}$ je \textbf{mreža}, če za poljuben par $x,y$ v $\mathcal{L}$ obstajata infimum in supremum.
+\end{definition}
+
+\begin{example}
+Naravna števila so mreža tako za urejenost glede na relacijo $\leq$, kot tudi za urejenost glede na relacijo deljivosti. To lahko lepo vidimo na sliki (\ref{im:hasse_diagram_example}). 
+\end{example}
+
+\section{Osnovni primeri mrež}
+
+\end{document}
