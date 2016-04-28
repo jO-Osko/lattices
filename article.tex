@@ -72,7 +72,7 @@
 {}
 
 \newenvironment{corollary}
-{\underline{\textbf{Posledica: }}}
+{\underline{\textbf{Posledica:}}} 
 {}
 
 %should rethink this
@@ -91,7 +91,7 @@
 }
 
 
-\pagestyle{headings}
+
 \pagestyle{fancy}
 %\fancyhead[LE,RO]{\itshape \nouppercase \rightmark}
 %\fancyhead[LO,RE]{\itshape \nouppercase Chapter \arabic{chapter}}
@@ -505,6 +505,8 @@ Analogno dokažemo, da je infimum $x \land y$.
 
 \section{Podmreže, enote in komplementarne mreže}
 
+\subsection{Podmreže}
+
 Prej smo že podali primer, da je množica $\mathbb{N}$ z relacijo $\mid$ mreža, prav tako pa je mreža tudi množica vseh deliteljev števila $30$ urejena glede na enako relacijo. Naravno nas zanima, ali lahko podobno kot pri drugih algebraičnih strukturah tudi pri mrežah najdemo podstrukture, ki bi ustrezale našim pričakovanjem.
 
 \begin{definition}
@@ -516,13 +518,46 @@ Neprazna množica $\mathcal{M} \subseteq \mathcal{L}$ je \textbf{podmreža}, če
 Če vzamemo $\mathbb{R}$ z relacijo $\leq$, potem je poljubna podmnožica tudi podmreža.
 \end{example_case}
 \begin{example_case}
-Slika (\ref{im:lattice_with_sublattices}) prikazuje dva primera podmrež na že znanih mrežah. Tako sta na primer množica deliteljev števila $10$, kot tudi množica$\{2,6,10,30\}$ podmreža mreže deliteljev števila $30$ (slika \ref{im:divisors_of_30_with_sublattices}). Prav tako pa je $P(\{1,2,4\})$ podmreža mreže $P(\{1,2,3,4\})$ (slika \ref{im:lattice_1234_with_sublattices}).
+Slik (\ref{im:divisors_of_30_with_sublattices} in \ref{im:lattice_1234_with_sublattices}) prikazujeti dva primera podmrež na že znanih mrežah. Tako sta na primer množica deliteljev števila $10$, kot tudi množica$\{2,6,10,30\}$ podmreža mreže deliteljev števila $30$ (slika \ref{im:divisors_of_30_with_sublattices}). Prav tako pa je $P(\{1,2,4\})$ podmreža mreže $P(\{1,2,3,4\})$ (slika \ref{im:lattice_1234_with_sublattices}).
 \end{example_case}
 \end{example}
 
-\begin{figure}[h]
+  \begin{figure}[h]
   \centering
-  \begin{subfigure}[h]{1\textwidth}
+  \begin{tikzpicture}[scale=1]
+  \node (one) at (0,0) {$30 $};
+  \node (two) at (-2,-4) {$2 $};
+  \node (three) at (0,-4) {$3 $};
+  \node (five) at (2,-4) {$5 $};
+  
+  \node (four) at (-2,-2) {$6 $};
+  \node (six) at (0,-2) {$10 $};
+  \node (nine) at (2,-2) {$15 $};
+  
+  \node (zero) at (0,-6) {$1 $};
+  
+  \draw (zero) -- (two) -- (four) -- (one) -- (six) -- (two);  
+  \draw (zero) -- (three) -- (four);
+  \draw (zero) -- (five) -- (six);
+  \draw (three) -- (nine);
+  \draw (one) -- (nine) -- (five);
+  
+  \draw[green, thick](one) --(six) -- (two) -- (four) -- (one);
+  \draw[red, thick](two) --(zero) -- (five) -- (six);
+  \draw[red, thick, dashed] (two) --(six); 
+
+  
+  \draw[blue, thick](zero) -- (three) -- (nine) -- (one);
+  \draw[blue, thick](five) -- (nine);
+  \draw[blue, thick](zero) -- (five);
+  \draw[red, thick, dashed] (zero) -- (five); 
+  \end{tikzpicture}
+  \caption{Mreža deljiteljev števila $30$ s tremi podmrežami}
+  \label{im:divisors_of_30_with_sublattices}
+  \end{figure}
+
+
+  \begin{figure}[h!]
   \centering
   \begin{tikzpicture}[scale=1]
   \node (one_s) at (0,6) {$\{1,2,3,4\}$};
@@ -570,11 +605,100 @@ Slika (\ref{im:lattice_with_sublattices}) prikazuje dva primera podmrež na že 
   \end{tikzpicture}
     \caption{Mreža $(\{1,2,3,4\}, \subseteq)$ z dvema podmrežama}
     \label{im:lattice_1234_with_sublattices}
-  \end{subfigure}  
+  \end{figure}  
 
-  \par \medskip
 
-  \begin{subfigure}[h]{1\textwidth}
+
+Naravno nas zanima, ali lahko iz že obstoječih mrež na preprost način dobimo podmreže, če si pogledamo prejšnje primere lahko iz vseh razen modrega na sliki (\ref{im:divisors_of_30_with_sublattices}) ugotovimo da so to podmreže sestavljene iz elementoc, ki so med dvema elementoma v mreži. Zanima nas, ali lahko to posplošimo.
+\\
+
+
+\begin{statement}
+Če v mreži $\mathcal{L}$ vzamemo poljubna $x \leq y$, potem je množica $\mathcal{L}(x,y) := \{ z \in \mathcal{L} | \ x \leq z \leq y \}$ podmreža mreže $\mathcal{L}$.
+\end{statement}
+
+
+\begin{proof}
+Preprosto preverimo obstoj imfimuma in supremuma\\ 
+Vzemimo poljubna $x',y' \in \mathcal{L}(x,y)$ in preverimo zaprtost\\ $x \geq x' \lor y' \geq x' \land y' \geq y$
+\end{proof}
+
+\subsection{Enote in komplementi}
+
+Ob preučevanju do sedaj predstavljenih mrež smo opazili, da so nekateri njihovi elementi posebni, tako smo recimo za prazno množico pri urejenosti glede na inkluzijo, da je vedno pod vsem ostalimi podmnožicami, seveda bi sedaj radi to ugotovitev posplošili še na ostale mreže, kadar to lahko storimo.
+
+\begin{definition}
+Če v mreži $\mathcal{L}$ obstaja tak $x$, da za poljuben $y \in \mathcal{L}$ velja $x \geq y$, potem takemu elementu rečemo \textbf{največji element} in ga označimo z $1$ ( $\forall x \in \mathcal{L}. \ x \leq 1$).
+\end{definition}
+
+\begin{definition}
+Če v mreži $\mathcal{L}$ obstaja tak $x$, da za poljuben $y \in \mathcal{L}$ velja $x \leq y$, potem takemu elementu rečemo \textbf{najmanjši element} in ga označimo z $0$. ( $\forall x \in \mathcal{L}. \ x \geq 0$).
+\end{definition}
+
+\begin{corollary}
+Če v mreži $\mathcal{L}$ obstajata $0$ in $1$, potem za poljuben $x \in \mathcal{L}$ veljjo naslednje trditve:
+\begin{itemize}
+\item $x \lor 1 = 1$
+\item $x \lor 0 = x$
+\item $x \land 0 = 0$
+\item $x \land 1 = x$
+\end{itemize}
+\end{corollary}
+
+\begin{proof}
+Te trditve so zgolj prevod relacije $\leq$ v njihovo formulacijo glede na operaciji $\lor$ in $\land$.
+\end{proof}
+
+\begin{remark}
+Vidimo, da je $1$ enota za operacijo $\land$ in $0$ enota za operacijo $\lor$.
+\end{remark} 
+\\\\
+\begin{example}
+\begin{example_case}
+Za interval $[0,1]$ oznake za mrežo kar sovpadajo z števili. Tako je element $0$ kar število $0$, element $1$ pa število $1$.
+\end{example_case}
+\begin{example_case}
+Za potenčno množico neke množice $\mathcal{A}$ urejeno glede na relacijo inkluzije je element $0$ prazna množica ($\{ \}$), element $1$ pa kar celotna množica $\mathcal{A}$.
+\end{example_case}
+\begin{example_case}
+Za mrežo $(\mathbb{N}, |)$ je $0$ število $1$, saj deli vsa druga naravna števila, element $1$ pa število $0$, saj jo delijo vsa naravna števila.
+\end{example_case}
+\end{example}
+
+Sedaj ko imamo enoto za operacije se nam zdi naravno, da bi definirali tudi neke vrste inverz
+
+\begin{definition}
+Naj bo $\mathcal{L}$ mreža z elemetoma $0$ in $1$ in $x \in x' \in \mathcal{L}$. Elementa $x$ in $x'$ imenujemo \textbf{komplementarna elementa}, če veljata naslednji enakosti:
+\begin{itemize}
+\item $x \lor x' = 1$
+\item $x \land x' = 0$
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Mrežo, v kateri poljubnemu $x$ pripada \textbf{vsaj} en komplementarni element imenujemo \textbf{komplementarna mreža}.
+\end{definition}
+
+\begin{remark}
+Obstoj komplementarnega elementa v mreži z $0$ in $1$ ni zagotovljen, prav tako pa ima lahko poljuben element več komplementov.
+\end{remark}
+
+\begin{example}
+\begin{example_case}
+Lep primer komplementarnih prostorov so vektorski podprostori vektorskega prostora $V$, ki je opremljen s skalarnim produktom. Tu je infimum dveh podprostorov kar njun presek, medtem ko je supremum njuna direktna vsota. $1$ je kar celoten prostor $V$, medtem ko je $0$ njegov ničelni podprostor. Tako je komplement poljubnega podprostora kar njegov ortogonalni komplement, tako je presek dveh komplementarnih elementov ničelni prostor, direktna vsota pa kar celoten prostor $V$.
+\end{example_case}
+\begin{example_case}
+Drug primer komplementarne mreže je mreža sestavljena iz ravnine ter na njej ležečih premic in točk. Tako je komplement premice poljubna točka, ki na njej ne leži, komplement točke pa je poljubna premica, ki ne vsebuje te točke. Vidimo, da ima lahko element več komplementov (celo neskončno).
+\end{example_case}
+\begin{example_case}
+V mreži $(\{1,2,3,4\}, \subseteq)$ so komplementi posameznih elementov kar njihovi komplementi v smislu teorije množic, prav tako vidimo, da ima vsak element natančno en komplement
+\end{example_case}
+\begin{example_case}
+V mreži deliteljev števila $30$ urejeni glede na deljivost velja da je komplement elementa $x$ kar $\frac{30}{x}$, ta lastnost pa nam nakazuje neko zelo pomembno značilnost takih mrež, ki jo bomo spoznali v nadaljevanju, komplementi so lepo vidni na sliki (\ref{im:lattice_30_with_some_complements}).
+\end{example_case}
+\end{example}
+
+\begin{figure}[h]
   \centering
   \begin{tikzpicture}[scale=1]
   \node (one) at (0,0) {$30 $};
@@ -594,36 +718,22 @@ Slika (\ref{im:lattice_with_sublattices}) prikazuje dva primera podmrež na že 
   \draw (three) -- (nine);
   \draw (one) -- (nine) -- (five);
   
-  \draw[green, thick](one) --(six) -- (two) -- (four) -- (one);
-  \draw[red, thick](two) --(zero) -- (five) -- (six);
-  \draw[red, thick, dashed] (two) --(six); 
+  \draw[blue, thick] (one) circle [radius=0.4cm];
+  \draw[blue, thick] (zero) circle [radius=0.4cm];
 
-  
-  \draw[blue, thick](zero) -- (three) -- (nine) -- (one);
-  \draw[blue, thick](five) -- (nine);
-  \draw[blue, thick](zero) -- (five);
-  \draw[red, thick, dashed] (zero) -- (five); 
+  \draw[red, thick] (two) circle [radius=0.4cm];
+  \draw[red, thick] (nine) circle [radius=0.4cm];
+    
+  \draw[green, thick] (six) circle [radius=0.4cm];
+  \draw[green, thick] (three) circle [radius=0.4cm];    
+    
   \end{tikzpicture}
-  \caption{Mreža deljiteljev števila $30$ s tremi podmrežami}
-  \label{im:divisors_of_30_with_sublattices}
-  \end{subfigure}
+    \caption{Mreža deliteljev števila $30$ z označenimi nekaterimi komplementi}
+    \label{im:lattice_30_with_some_complements}
+  \end{figure}  
 
-\caption{Mreži s podmrežama}
-\label{im:lattice_with_sublattices}
-\end{figure}
+\section{Homomorfizmi mrež}
 
-Naravno nas zanima, ali lahko iz že obstoječih mrež na preprost način dobimo podmreže, če si pogledamo prejšnje primere lahko iz vseh razen modrega na sliki (\ref{im:divisors_of_30_with_sublattices}) ugotovimo da so to podmreže sestavljene iz elementoc, ki so med dvema elementoma v mreži. Zanima nas, ali lahko to posplošimo.
-\\
-
-\begin{statement}
-Če v mreži $\mathcal{L}$ vzamemo poljubna $x \leq y$, potem je množica $\mathcal{L}(x,y) := \{ z \in \mathcal{L} | \ x \leq z \leq y \}$ podmreža mreže $\mathcal{L}$.
-\end{statement}
-
-
-\begin{proof}
-Preprosto preverimo obstoj imfimuma in supremuma\\ 
-Vzemimo poljubna $x',y' \in \mathcal{L}(x,y)$ in preverimo zaprtost\\ $x \geq x' \lor y' \geq x' \land y' \geq y$
-\end{proof}
 
 
 \end{document}
