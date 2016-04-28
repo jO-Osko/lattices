@@ -42,7 +42,7 @@
 \newcounter{environment:definition_counter}
 
 \newenvironment{definition}[1][\unskip]
-{\vspace{0.5cm}\refstepcounter{environment:definition_counter}\textbf{Definicija \arabic{environment:definition_counter}: \textbf{#1}}\itshape}
+{\vspace{0.5cm}\refstepcounter{environment:definition_counter}\textbf{Definicija \arabic{environment:definition_counter}: \textbf{#1} }\itshape}
 {\bigskip}
 
 \newcounter{environment:theorem_counter}
@@ -54,7 +54,7 @@
 \newcounter{environment:statement_counter}
 
 \newenvironment{statement}[1][\unskip]
-{\refstepcounter{environment:statement_counter}\textbf{Trditev \arabic{environment:statement_counter}:\textit{#1}}}
+{\refstepcounter{environment:statement_counter}\textbf{Trditev \arabic{environment:statement_counter}:\textit{#1} }}
 {\bigskip}
 
 \newcounter{example:example_counter}
@@ -68,11 +68,11 @@
 {\\}
 
 \newenvironment{remark}
-{\textbf{Opomba:}}
+{\textbf{Opomba: }}
 {}
 
 \newenvironment{corollary}
-{\underline{\textbf{Posledica:}}}
+{\underline{\textbf{Posledica: }}}
 {}
 
 %should rethink this
@@ -299,7 +299,7 @@ Poljubna končna mreža je tudi polna mreža. Preprosto za infumum in supremum v
 
 Od prej se spomnimo, je poljubna podmnožica $\mathbb{R}$, urejena glede na relacijo $\leq$ mreža. Za poljubni števili $x,y$ velja: $x \lor y = max\{x,y\}$ in $x \land y = min\{x,y\}$, seveda pa sta tako infimum kot supremum v mreži. Opazimo, da so te množice vedno liearno urejene.
 \\\\
-Množica naravnih števil pa nam poleg urejenosti z $\leq$ omogoča tudi ureditev z $\mid$. V tem primeru dobima Hassejev diagram iz slike (\ref{im:natural_nubmers_divisibility_hasse_example}). Ta množica nima liearne ureditve, opazimo, pa da elementa $0$ in $1$ na nek način zaključujeta mrežo, saj so vsa naravna števila pod $0$ (delijo $0$), hkrati pa $1$ deli vsa ostala naravna števila. S slike tudi lepo opazimo, da s v prvem nivoju urejenosti samo preštevila, v drugem nivoju urejenosti števila z natančno dvema deliteljema in v $n$-tem, nivoju ptevila z $n$ delitelji.
+Množica naravnih števil pa nam poleg urejenosti z $\leq$ omogoča tudi ureditev z $\mid$. V tem primeru dobimo Hassejev diagram iz slike (\ref{im:natural_nubmers_divisibility_hasse_example}). Ta množica nima liearne ureditve, opazimo, pa da elementa $0$ in $1$ na nek način zaključujeta mrežo, saj so vsa naravna števila pod $0$ (delijo $0$), hkrati pa $1$ deli vsa ostala naravna števila. S slike tudi lepo opazimo, da s v prvem nivoju urejenosti samo preštevila, v drugem nivoju urejenosti števila z natančno dvema deliteljema in v $n$-tem, nivoju ptevila z $n$ delitelji.
 \\\\
 \begin{remark}
 Če v naravna števila vključimo tudi $0$, potem formula za supremum in infimum glede na najmanjše skupne večkratnike in največje skupne delitelje ne deluje več kadar je eden izmed argumentov $0$.
@@ -325,7 +325,7 @@ Množica naravnih števil pa nam poleg urejenosti z $\leq$ omogoča tudi uredite
   \draw (three) -- (nine);
   \draw (one) -- (nine) -- (five);
 \end{tikzpicture}
-\caption{Mreža deliteljev števila $15$ urejena glede na relacijo deljivosti}
+\caption{Mreža deliteljev števila $30$ urejena glede na relacijo deljivosti}
 \label{im:divisors_of_30_hasse_diagram}
 \end{figure}
 
@@ -496,6 +496,134 @@ Definiramo: $x \leq y \iff x \land y = x$ in preverimo, da to ustreza zahtevam d
 Da ustreza relaciji na mreži moramo preveriti še da velja: $x \land y = x \iff x \lor y = y$:\\ 
 Uporabimo zadnji zakon in dobimo $x \lor y = (x \lor y) \land y = y$, v drugo smer pa postopamo identično.
 \end{itemize}
+
+Da pa bo množica skupaj s to operacijo mreža, moramo še preveriti obstoj supremuma in infimuma za poljubna dva elementa. \\
+Za supremum se ponuja $x \lor y$. Vemo, da je $x \lor y \geq x$, $x \lor y \geq y$ po definicji relacije $\leq$. Preverimo, še da je to natančna zgornja meja. Naj bo $z$ neka druga zgornja meja, velja torej $z \lor x = z \lor y = z$. Potem velja $(x \lor y) \lor z = x \lor (y \lor z) = z$, kar pomeni da $x \lor y \leq z$ in je torej natančna zgornja meja.\\
+Analogno dokažemo, da je infimum $x \land y$. 
+
 \end{proof}
+
+\section{Podmreže, enote in komplementarne mreže}
+
+Prej smo že podali primer, da je množica $\mathbb{N}$ z relacijo $\mid$ mreža, prav tako pa je mreža tudi množica vseh deliteljev števila $30$ urejena glede na enako relacijo. Naravno nas zanima, ali lahko podobno kot pri drugih algebraičnih strukturah tudi pri mrežah najdemo podstrukture, ki bi ustrezale našim pričakovanjem.
+
+\begin{definition}
+Neprazna množica $\mathcal{M} \subseteq \mathcal{L}$ je \textbf{podmreža}, če je tudi sama mreža za isti operaciji in se na njih ujema. Povedano drugače $\forall x,y \in \mathcal{M}. \ x \lor y \in \mathcal{M}$ in $x \land y \in \mathcal{M}$.
+\end{definition}
+
+\begin{example}
+\begin{example_case}
+Če vzamemo $\mathbb{R}$ z relacijo $\leq$, potem je poljubna podmnožica tudi podmreža.
+\end{example_case}
+\begin{example_case}
+Slika (\ref{im:lattice_with_sublattices}) prikazuje dva primera podmrež na že znanih mrežah. Tako sta na primer množica deliteljev števila $10$, kot tudi množica$\{2,6,10,30\}$ podmreža mreže deliteljev števila $30$ (slika \ref{im:divisors_of_30_with_sublattices}). Prav tako pa je $P(\{1,2,4\})$ podmreža mreže $P(\{1,2,3,4\})$ (slika \ref{im:lattice_1234_with_sublattices}).
+\end{example_case}
+\end{example}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[h]{1\textwidth}
+  \centering
+  \begin{tikzpicture}[scale=1]
+  \node (one_s) at (0,6) {$\{1,2,3,4\}$};
+  \node (one) at (-3,0) {$\{1\}$};
+  \node (two) at (-1,0) {$\{2\}$};
+  \node (three) at (1,0) {$\{3\}$};
+  \node (four) at (3,0) {$\{4\}$};
+  
+  \node (one_two) at (-3,2) {$\{1,2\}$};
+  \node (one_three) at (-2,2) {$\{1,3\}$};
+  \node (one_four) at(-1,2) {$\{1,4\}$};
+  \node (two_three) at (0,2) {$\{2,3\}$};
+  \node (two_four) at (2,2) {$\{2,4\}$};
+  \node (three_four) at (3,2) {$\{3,4\}$};
+  
+  \node (four_m) at (-3,4) {$\{1,2,3\}$};
+
+  \node (three_m) at (-1,4) {$\{1,2,4\}$};
+  \node (two_m) at (1,4) {$\{1,3,4\}$};
+  \node (one_m) at (3,4) {$\{2,3,4\}$};
+      
+  \node (zero) at (0,-2) {$\{ \ \}$};
+  
+  \draw (zero) -- (one) -- (one_two) -- (four_m) -- (one_s) -- (two_m) -- (one_three);
+  \draw (zero) -- (two) -- (two_three) -- (three);
+  \draw (zero) -- (three) -- (three_four) -- (four) -- (zero);
+  \draw (one_two) -- (three_m) -- (one_s) -- (one_m) -- (three_four);
+  \draw (one_three) -- (four_m) -- (two_three) -- (one_m) -- (two_four) -- (three_m);
+  \draw (one_four) -- (three_m);
+  \draw (one_four) -- (two_m) -- (three_four);
+  
+  \draw (one) -- (one_three);
+  \draw (one) -- (one_four);
+  \draw (two_four)--(two) -- (one_two);
+  \draw (three) -- (one_three);
+  \draw (four) -- (one_four);
+  \draw (four) -- (two_four);  
+  
+  \draw[green, thick](two)--(two_three) -- (one_m) -- (two_four) -- (two);
+
+  \draw[red, thick](zero)-- (one) -- (one_four);
+  \draw[red, thick](three_m) -- (two_four) -- (four) -- (zero) -- (two) -- (one_two) -- (three_m) -- (one_four) -- (four);
+  \draw[red, thick] (one) --(one_two);
+  \draw[red, thick, dashed] (two) --(two_four);
+  \end{tikzpicture}
+    \caption{Mreža $(\{1,2,3,4\}, \subseteq)$ z dvema podmrežama}
+    \label{im:lattice_1234_with_sublattices}
+  \end{subfigure}  
+
+  \par \medskip
+
+  \begin{subfigure}[h]{1\textwidth}
+  \centering
+  \begin{tikzpicture}[scale=1]
+  \node (one) at (0,0) {$30 $};
+  \node (two) at (-2,-4) {$2 $};
+  \node (three) at (0,-4) {$3 $};
+  \node (five) at (2,-4) {$5 $};
+  
+  \node (four) at (-2,-2) {$6 $};
+  \node (six) at (0,-2) {$10 $};
+  \node (nine) at (2,-2) {$15 $};
+  
+  \node (zero) at (0,-6) {$1 $};
+  
+  \draw (zero) -- (two) -- (four) -- (one) -- (six) -- (two);  
+  \draw (zero) -- (three) -- (four);
+  \draw (zero) -- (five) -- (six);
+  \draw (three) -- (nine);
+  \draw (one) -- (nine) -- (five);
+  
+  \draw[green, thick](one) --(six) -- (two) -- (four) -- (one);
+  \draw[red, thick](two) --(zero) -- (five) -- (six);
+  \draw[red, thick, dashed] (two) --(six); 
+
+  
+  \draw[blue, thick](zero) -- (three) -- (nine) -- (one);
+  \draw[blue, thick](five) -- (nine);
+  \draw[blue, thick](zero) -- (five);
+  \draw[red, thick, dashed] (zero) -- (five); 
+  \end{tikzpicture}
+  \caption{Mreža deljiteljev števila $30$ s tremi podmrežami}
+  \label{im:divisors_of_30_with_sublattices}
+  \end{subfigure}
+
+\caption{Mreži s podmrežama}
+\label{im:lattice_with_sublattices}
+\end{figure}
+
+Naravno nas zanima, ali lahko iz že obstoječih mrež na preprost način dobimo podmreže, če si pogledamo prejšnje primere lahko iz vseh razen modrega na sliki (\ref{im:divisors_of_30_with_sublattices}) ugotovimo da so to podmreže sestavljene iz elementoc, ki so med dvema elementoma v mreži. Zanima nas, ali lahko to posplošimo.
+\\
+
+\begin{statement}
+Če v mreži $\mathcal{L}$ vzamemo poljubna $x \leq y$, potem je množica $\mathcal{L}(x,y) := \{ z \in \mathcal{L} | \ x \leq z \leq y \}$ podmreža mreže $\mathcal{L}$.
+\end{statement}
+
+
+\begin{proof}
+Preprosto preverimo obstoj imfimuma in supremuma\\ 
+Vzemimo poljubna $x',y' \in \mathcal{L}(x,y)$ in preverimo zaprtost\\ $x \geq x' \lor y' \geq x' \land y' \geq y$
+\end{proof}
+
 
 \end{document}
