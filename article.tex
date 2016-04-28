@@ -420,12 +420,36 @@ Delno urejene množice lahko predstavimo zgolj s Hassejevim diagramom. Poglejmo 
 \label{im:hasse_diagram_natural_subset}
 \end{figure}
 
-Pomemben primer mreže je tudi potenčna množica poljubne množice urejena glede na relacijo inkluzije ($\subseteq$), to lepo vidimo na sliki (\ref{im:hasse_diagram_natural_subset}). Da se prepričamo, da je ta množica mreža, preprosto preverimo supremume in infimume. Vidimo, da velja $x \lor y = x \cup y$ in $x \land y = x \cap y$, kar nam pojasni, zakaj se občasno za označevanje supremuma in infimuma uporablja oznaki $\cap, \cup$, saj naravno sledita iz potenčne množice kot mreže.
+Pomemben primer mreže je tudi potenčna množica poljubne množice urejena glede na relacijo inkluzije ($\subseteq$), to lepo vidimo na sliki (\ref{im:hasse_diagram_natural_subset}). Da se prepričamo, da je ta množica mreža, preprosto preverimo supremume in infimume. 
+
+Vidimo, da velja $x \lor y = x \cup y$ in $x \land y = x \cap y$, kar nam pojasni, zakaj se občasno za označevanje supremuma in infimuma uporablja oznaki $\cap, \cup$, saj naravno sledita iz potenčne množice kot mreže.
+
 Takoj opazimo, da je tako kot mreža $(\mathbb{N}, \mid)$ tudi ta mreža omejena, saj je $\{\}$ pod vsemi ostalimi, $\mathbb{N}$ pa nad vsemi. Prav tako pa vidimo da v $n$ tem nivoju nastopajo vse možne $n$-elementne podmnožice začetne množice.
 \\\\
 \begin{remark}
 Če bi za mrežo vzeli potenčno množico kakšne končne množice bi lahko s pomočjo kombinatorike lepo prešteli število množic v posameznem nivoju. Tako je za množico moči $n$ v $k$-tem nivoju $\binom {n}{k}$ elementov.
 \end{remark}
 
+\section{Zakoni v mrežah}
+
+Mreže smo si do sedaj pogledali s stališča linearne urejenosti, kmalu pa bomo videli tudi, da lahko zgolj iz nekaterih zakonov, ki veljajo za infimume in supremume na poljubni množici za to množico dobimo delno urejenost in tako iz nje mrežo.
+\\
+\\
+\\
+\begin{theorem}
+Za poljubno mrežo $\mathcal{L}$ in poljubne $x,y,z \in \mathcal{L}$ veljajo naslednji zakoni:
+\begin{itemize}
+\item $x \lor x = x$, $x \land x = x$ (Idempotentnost)
+\item $x \lor y = y \lor x$, $x \land y = y \land x$ (Komutativnost)
+\item $(x \lor y) \lor z = x \lor (y \lor z)$\\ $(x \land y) \land z = x \land (y \land z)$ (Asociativnost)
+\item $ x \lor (x \land y) = x$\\ $x \land (x \lor y) = x$ (Absorbcija)
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{proof}
 
 \end{document}
