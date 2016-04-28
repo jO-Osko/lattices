@@ -234,7 +234,7 @@ Naj bo $\mathcal{L}$ delno urejena množica glede na neko relacijo, ki o označi
   
 \end{tikzpicture}
   \caption{Hassejev diagram za $(\mathbb{N}, \mid)$}
-  \label{im:natural_nubmers_subset_hasse_example}
+  \label{im:natural_nubmers_divisibility_hasse_example}
   \end{subfigure}
 \caption{Primer Hassejevih diagramov}
 \label{im:hasse_diagram_example}
@@ -286,6 +286,146 @@ Množica $\mathcal{L}$ je \textbf{mreža}, če za poljuben par $x,y$ v $\mathcal
 Naravna števila so mreža tako za urejenost glede na relacijo $\leq$, kot tudi za urejenost glede na relacijo deljivosti. To lahko lepo vidimo na sliki (\ref{im:hasse_diagram_example}). 
 \end{example}
 
+\begin{definition}
+Mreža $\mathcal{L}$ je polna, če za poljubno $\mathcal{A} \subseteq \mathcal{L}$ obstajata infimum in supremum za $\mathcal{A}$.
+\end{definition}
+
+\begin{example}
+Poljubna končna mreža je tudi polna mreža. Preprosto za infumum in supremum vzamemo infimum in supremum elementov po parih. Na podoben način pa dobimo mreže, ki niso polne. $\mathbb{R}, \leq$ ni polna, saj množica $\mathbb{N}$ nima niti infimuma niti supremuma.
+\end{example}
+
 \section{Osnovni primeri mrež}
+
+Od prej se spomnimo, je poljubna podmnožica $\mathbb{R}$, urejena glede na relacijo $\leq$ mreža. Za poljubni števili $x,y$ velja: $x \lor y = max\{x,y\}$ in $x \land y = min\{x,y\}$, seveda pa sta tako infimum kot supremum v mreži. Opazimo, da so te množice vedno liearno urejene.
+\\\\
+Množica naravnih števil pa nam poleg urejenosti z $\leq$ omogoča tudi ureditev z $\mid$. V tem primeru dobima Hassejev diagram iz slike (\ref{im:natural_nubmers_divisibility_hasse_example}). Ta množica nima liearne ureditve, opazimo, pa da elementa $0$ in $1$ na nek način zaključujeta mrežo, saj so vsa naravna števila pod $0$ (delijo $0$), hkrati pa $1$ deli vsa ostala naravna števila. S slike tudi lepo opazimo, da s v prvem nivoju urejenosti samo preštevila, v drugem nivoju urejenosti števila z natančno dvema deliteljema in v $n$-tem, nivoju ptevila z $n$ delitelji.
+\\\\
+\begin{remark}
+Če v naravna števila vključimo tudi $0$, potem formula za supremum in infimum glede na najmanjše skupne večkratnike in največje skupne delitelje ne deluje več kadar je eden izmed argumentov $0$.
+\end{remark}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+  \node (one) at (0,0) {$30 $};
+  \node (two) at (-2,-4) {$2 $};
+  \node (three) at (0,-4) {$3 $};
+  \node (five) at (2,-4) {$5 $};
+  
+  \node (four) at (-2,-2) {$6 $};
+  \node (six) at (0,-2) {$10 $};
+  \node (nine) at (2,-2) {$15 $};
+  
+  \node (zero) at (0,-6) {$1 $};
+  
+  \draw (zero) -- (two) -- (four) -- (one) -- (six) -- (two);  
+  \draw (zero) -- (three) -- (four);
+  \draw (zero) -- (five) -- (six);
+  \draw (three) -- (nine);
+  \draw (one) -- (nine) -- (five);
+\end{tikzpicture}
+\caption{Mreža deliteljev števila $15$ urejena glede na relacijo deljivosti}
+\label{im:divisors_of_30_hasse_diagram}
+\end{figure}
+
+Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega števila. To lepo vidmo na sliki (\ref{im:divisors_of_30_hasse_diagram}).
+
+Delno urejene množice lahko predstavimo zgolj s Hassejevim diagramom. Poglejmo si nekaj množic, ki niso mreže in razložimo zakaj ne.
+
+\begin{figure}[h]
+  \begin{subfigure}[h]{0.5\textwidth}
+  \centering
+  \begin{tikzpicture}
+    \node (a) at (0,0) {$a$};
+    \node (b) at (-1,-1) {$b$};
+    \node (c) at (-1,-2) {$c$};
+    \node (d) at (0,-3) {$d$};
+    \node (e) at (1,-1) {$e$};
+    \node (f) at (1,-2) {$f$};
+    \draw (a) -- (b) -- (c) -- (d) -- (f) -- (e) -- (a);
+    \draw (f) -- (b);
+    \draw (c) -- (e);
+  \end{tikzpicture}
+    \caption{Delno urejena množica, ki ni mreža}
+    \label{im:not_lattice_1}
+  \end{subfigure}  
+  \hfill
+  \begin{subfigure}[h]{0.5\textwidth}
+  \centering
+  \begin{tikzpicture}
+    \node (a) at (0,0) {$12$};
+    \node (b) at (-1,-1) {$4$};
+    \node (c) at (-1,-2) {$2$};
+    \node (d) at (0,-3) {$1$};
+    \node (e) at (1,-1.5) {$3$};
+    \node (f) at (1.5,-2.5) {$-3$};
+    \draw (a) -- (b) -- (c) -- (d) -- (e) -- (a);
+    \draw (e) -- (f);
+  \end{tikzpicture}
+  \caption{$(\{-3,1,2,3,4,12\}, |)$, ni mreža}
+  \label{im:not_lattice_2}
+  \end{subfigure}
+\caption{Primer delno urejenih množic, ki niso mreže}
+\label{im:not_lattice_example}
+  \end{figure}
+
+Če si pogledamo sliko (\ref{im:not_lattice_example}) lahko hitro vidimo, zakaj te množici nista mreži. Množica na sliki (\ref{im:not_lattice_1}) ni mreža, saj elementa $c$ in $f$ nimata natančno določenega supremuma. Vidimo, da bi to lahko bila tako element $e$ kot tudi element $b$, vendar pa ju med samo ne moremo primerjati. Množica na sliki (\ref{im:not_lattice_1}) zato ni mreža. Bi pa postala mreža, če bi odstranili povezamo med $c$ in $e$.
+\\\\
+Če pa pogledamo sliko (\ref{im:not_lattice_2}) vidimo, da je problematičen element $-3$. Tako recimo elementa $2 \lor -3 = 12$, medtem, ko je $2 \land -3$ nedoločen in zato množica ni mreža, bi pa to postala, če bi iz nje odstranili element $-3$ in tako dobili mrežo vseh deliteljev števila $12$. 
+\\\\
+\begin{figure}
+\centering
+\begin{tikzpicture} % should make python program :(
+  \node (one_s) at (1,4) {$\mathbb{N}$};
+  \node (one) at (-3,0) {$\{1\}$};
+  \node (two) at (0,0) {$\{2\}$};
+  \node (three) at (2,0) {$\{3\}$};
+  \node (four) at (3,0) {$\{4\}$};
+  \node (rest_single) at (4,0) {$\dots$};
+  \node (rest_single_2) at (5,0) {$\dots$};
+  \node (rest_pair) at (4,2) {$\dots$};
+  \node (rest_pair_2) at (5,2) {$\dots$};
+  
+  \node (one_two) at (-3,2) {$\{1,2\}$};
+  \node (one_three) at (-2,2) {$\{1,3\}$};
+  \node (one_four) at(-1,2) {$\{1,4\}$};
+  \node (two_three) at (0,2) {$\{2,3\}$};
+  \node (two_four) at (1,2) {$\{2,4\}$};
+  \node (three_four) at (2,2) {$\{3,4\}$};
+  
+  \node (zero) at (1,-2) {$\{ \ \}$};
+  
+  \draw (zero) -- (one) -- (one_two) -- (two);
+  \draw (zero) -- (two) -- (two_three) -- (three);
+  \draw (zero) -- (three) -- (three_four) -- (four) -- (zero);
+  \draw (zero) -- (rest_single);
+  \draw (zero) -- (rest_single_2);	
+	
+  
+  \draw (one) -- (one_three);
+  \draw (one) -- (one_four);
+  \draw (two) -- (two_four);
+  \draw (three) -- (one_three);
+  \draw (four) -- (one_four);
+  \draw (four) -- (two_four);  
+  
+
+  \draw[loosely dotted] (one_two) -- (one_s) -- (one_three) -- (one_s) -- (one_four) -- (one_s) -- (two_three) -- (one_s) -- (two_four) -- (one_s) -- (three_four);
+
+  \draw[loosely dotted] (rest_single) -- (rest_pair) -- (one_s);
+  \draw[loosely dotted] (rest_single_2) -- (rest_pair_2) -- (one_s);
+  
+\end{tikzpicture}
+\caption{Hassejev diagram za $\mathcal{P}(\mathbb{N}), \subseteq$}
+\label{im:hasse_diagram_natural_subset}
+\end{figure}
+
+Pomemben primer mreže je tudi potenčna množica poljubne množice urejena glede na relacijo inkluzije ($\subseteq$), to lepo vidimo na sliki (\ref{im:hasse_diagram_natural_subset}). Da se prepričamo, da je ta množica mreža, preprosto preverimo supremume in infimume. Vidimo, da velja $x \lor y = x \cup y$ in $x \land y = x \cap y$, kar nam pojasni, zakaj se občasno za označevanje supremuma in infimuma uporablja oznaki $\cap, \cup$, saj naravno sledita iz potenčne množice kot mreže.
+Takoj opazimo, da je tako kot mreža $(\mathbb{N}, \mid)$ tudi ta mreža omejena, saj je $\{\}$ pod vsemi ostalimi, $\mathbb{N}$ pa nad vsemi. Prav tako pa vidimo da v $n$ tem nivoju nastopajo vse možne $n$-elementne podmnožice začetne množice.
+\\\\
+\begin{remark}
+Če bi za mrežo vzeli potenčno množico kakšne končne množice bi lahko s pomočjo kombinatorike lepo prešteli število množic v posameznem nivoju. Tako je za množico moči $n$ v $k$-tem nivoju $\binom {n}{k}$ elementov.
+\end{remark}
+
 
 \end{document}
