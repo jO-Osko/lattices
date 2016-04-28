@@ -20,6 +20,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage[justification=centering]{caption}
 
 \usepackage{tikz}
 
@@ -333,7 +334,7 @@ Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega š
 Delno urejene množice lahko predstavimo zgolj s Hassejevim diagramom. Poglejmo si nekaj množic, ki niso mreže in razložimo zakaj ne.
 
 \begin{figure}[h]
-  \begin{subfigure}[h]{0.5\textwidth}
+  \begin{subfigure}[h]{0.3\textwidth}
   \centering
   \begin{tikzpicture}
     \node (a) at (0,0) {$a$};
@@ -350,7 +351,23 @@ Delno urejene množice lahko predstavimo zgolj s Hassejevim diagramom. Poglejmo 
     \label{im:not_lattice_1}
   \end{subfigure}  
   \hfill
-  \begin{subfigure}[h]{0.5\textwidth}
+  \begin{subfigure}[h]{0.3\textwidth}
+  \centering
+  \begin{tikzpicture}
+    \node (a) at (0,0) {$a$};
+    \node (b) at (-1,-1) {$b$};
+    \node (c) at (-1,-2) {$c$};
+    \node (d) at (0,-3) {$d$};
+    \node (e) at (1,-1.5) {$e$};
+    \node (f) at (1.5,-2.5) {$f$};
+    \draw (a) -- (b) -- (c) -- (d) -- (e) -- (a);
+    \draw (e) -- (f);
+  \end{tikzpicture}
+  \caption{$\{a,b,c,d,e,f\}$, ni mreža}
+  \label{im:not_lattice_2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[h]{0.3\textwidth}
   \centering
   \begin{tikzpicture}
     \node (a) at (0,0) {$12$};
@@ -358,20 +375,19 @@ Delno urejene množice lahko predstavimo zgolj s Hassejevim diagramom. Poglejmo 
     \node (c) at (-1,-2) {$2$};
     \node (d) at (0,-3) {$1$};
     \node (e) at (1,-1.5) {$3$};
-    \node (f) at (1.5,-2.5) {$-3$};
     \draw (a) -- (b) -- (c) -- (d) -- (e) -- (a);
-    \draw (e) -- (f);
   \end{tikzpicture}
-  \caption{$(\{-3,1,2,3,4,12\}, |)$, ni mreža}
-  \label{im:not_lattice_2}
+  \caption{$(\{1,2,3,4,6\}, |)$, je mreža}  
+  \label{im:divisors_of_6_lattice}
   \end{subfigure}
+
 \caption{Primer delno urejenih množic, ki niso mreže}
 \label{im:not_lattice_example}
   \end{figure}
 
 Če si pogledamo sliko (\ref{im:not_lattice_example}) lahko hitro vidimo, zakaj te množici nista mreži. Množica na sliki (\ref{im:not_lattice_1}) ni mreža, saj elementa $c$ in $f$ nimata natančno določenega supremuma. Vidimo, da bi to lahko bila tako element $e$ kot tudi element $b$, vendar pa ju med samo ne moremo primerjati. Množica na sliki (\ref{im:not_lattice_1}) zato ni mreža. Bi pa postala mreža, če bi odstranili povezamo med $c$ in $e$.
 \\\\
-Če pa pogledamo sliko (\ref{im:not_lattice_2}) vidimo, da je problematičen element $-3$. Tako recimo elementa $2 \lor -3 = 12$, medtem, ko je $2 \land -3$ nedoločen in zato množica ni mreža, bi pa to postala, če bi iz nje odstranili element $-3$ in tako dobili mrežo vseh deliteljev števila $12$. 
+Če pa pogledamo sliko (\ref{im:not_lattice_2}) vidimo, da je problematičen element $f$. Tako recimo elementa $c \lor f = a$, medtem, ko je $c \land f$ nedoločen in zato množica ni mreža, bi pa to postala, če bi iz nje odstranili element $f$ in tako dobili mrežo vseh deliteljev števila $12$. 
 \\\\
 \begin{figure}
 \centering
@@ -427,13 +443,12 @@ Vidimo, da velja $x \lor y = x \cup y$ in $x \land y = x \cap y$, kar nam pojasn
 Takoj opazimo, da je tako kot mreža $(\mathbb{N}, \mid)$ tudi ta mreža omejena, saj je $\{\}$ pod vsemi ostalimi, $\mathbb{N}$ pa nad vsemi. Prav tako pa vidimo da v $n$ tem nivoju nastopajo vse možne $n$-elementne podmnožice začetne množice.
 \\\\
 \begin{remark}
-Če bi za mrežo vzeli potenčno množico kakšne končne množice bi lahko s pomočjo kombinatorike lepo prešteli število množic v posameznem nivoju. Tako je za množico moči $n$ v $k$-tem nivoju $\binom {n}{k}$ elementov.
+Če bi za mrežo vzeli potenčno množico kakšne končne množice bi lahko s pomočjo kombinatorike lepo prešteli število množic v posameznem nivoju. Tako je za množico moči $n$ v $k$-tem nivoju $\binom {n}{k}$ elementov. Seštevek množic po vseh nivojih pa ravno $2^n$, torej ravno moč potenčne množice.
 \end{remark}
 
 \section{Zakoni v mrežah}
 
-Mreže smo si do sedaj pogledali s stališča linearne urejenosti, kmalu pa bomo videli tudi, da lahko zgolj iz nekaterih zakonov, ki veljajo za infimume in supremume na poljubni množici za to množico dobimo delno urejenost in tako iz nje mrežo.
-\\
+Mreže smo si do sedaj pogledali s stališča linearne urejenosti, kmalu pa bomo videli tudi, da lahko zgolj iz nekaterih zakonov, ki veljajo za infimume in supremume na poljubni množici za to množico dobimo delno urejenost in tako iz množice skupaj s temi zakoni tudi mrežo.
 \\
 \\
 \begin{theorem}
@@ -446,9 +461,40 @@ Za poljubno mrežo $\mathcal{L}$ in poljubne $x,y,z \in \mathcal{L}$ veljajo nas
 \end{itemize}
 \end{theorem}
 
-\begin{proof}
+\begin{proof}\leavevmode
 \begin{itemize}
-\item 
+\item Idempotentnost: Zaradi relfeksivnosti velja $x \leq x$ in je torej tako zgornja kot spodnja meja $x, x$, prav tako pa so vse ostale spodnje ali zgornje meje manjše ali večje od $x$.
+\item Komutativnost: Preprosto sledi iz definicije, saj je meja neodvisna od vrstnega reda elementov
+\item Asociativnost: Preverimo za $\lor$: \\
+Naj bo $a = (x \lor y) \lor z$ in $b = x \lor (y \lor z)$ \\ 
+Iz definicje ali sledi $a \geq z$ in $a \geq (x \lor y)$ in torej $a \geq x, a \geq y$ \\ 
+Potem velja tudi $a \geq (y \lor z)$ in $a \geq x \lor (y \lor z)$ torej $a \geq b$\\ 
+Podobno postopamo za nasprotno stran in tako dobimo $b \geq a$, ker pa je zaradi antisimetričnosti relacije mogoče zgolj, kadar velja $a=b$\\
+Na analogen način preverimo tudi za $\land$, samo da $a$ in $b$ omejimo navzgor.
+\item Absorbcija: Preverimo za $x \land (x \lor y) = x$:\\
+Iz definicije $\lor$ vemo $x \leq (x \lor y)$ in $x \leq x$ torej $x \leq x \land (x \lor y)$\\ 
+Iz definicije $\land$ pa sledi $x \geq x \land (x \lor y)$\\
+Torej $x \leq x \land (x \lor y)$ in $x \geq x \land (x \lor y)$, dobimo $x = x \land (x \lor y)$\\
+Drugo enakost preverimo analogno.
+\end{itemize}
+\end{proof}
+
+Pomembno ugotovitev pa nam prinaša naslednji izrek, ki nam pove, da sta si ta dva pogoja za mrežo ekvivalentna.
+\\
+\\
+\begin{theorem}
+Če imamo množico $\mathcal{L}$, za katero sta definirani operaciji $\lor, \land$ in če za te dve operacji veljajo zgornji zakoni(idempotentnost, komutativost, asociativnost, absorbcija), potem je ta množica mreža.
+\end{theorem}
+
+\begin{proof}
+Najprej si s pomočjo supremuma in infimuma definirajo relacijo delne urejenosti.\\
+Definiramo: $x \leq y \iff x \land y = x$ in preverimo, da to ustreza zahtevam delne urejenosti:
+\begin{itemize}
+\item Refleksivnost: $x \land x = x \implies x \leq x$
+\item Antisimetričnost: $x \leq y$ in $y \leq x$, torej $x \land y = x$ in $y \land x = y$, uporabimo komutativnost in dobimo $x = y$
+\item Tranzitivnost: $x \leq y$ in $y \leq z$ torej velja $x = x \land y$ in $y = y \land z$ \\ Namesto $y$ uporabimo $y \land z$ in dobimo $x = x \land (y \land z) = (x \land y) \land z = x \land z$ torej  $x \leq z$\\
+Da ustreza relaciji na mreži moramo preveriti še da velja: $x \land y = x \iff x \lor y = y$:\\ 
+Uporabimo zadnji zakon in dobimo $x \lor y = (x \lor y) \land y = y$, v drugo smer pa postopamo identično.
 \end{itemize}
 \end{proof}
 
