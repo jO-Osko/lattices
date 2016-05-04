@@ -781,8 +781,88 @@ To pa je ekvivalentno, da je $a_{2} \leq a_{1}$. Z analognim razmislekom dobimo 
 $$ a_{1} = a_{2} $$
 Torej je v distributivnih mrežah komplement elementa, v primeru da obstaja, le en sam. Seveda pa nam nič ne zagotavlja, da bi element distributivne mreže komplement sploh imel.
 \end{example}
+
 \section{Modulske mreže}
+Pogoj distributivnosti je zahteven pogoj in marsikatere mreže, ki so uporabne, pogoju distributivnosti ne zadoščajo. Zadoščajo pa nekoliko lažjemu pogoju, ki ga imenujemo modularni zakon.\\
+\begin{definition}
+Mreža L je modulska, če za vsak $a$, $b$, $c$ $\in$ $L$, pri pogoju, da je $a$ $\leq$ $c$, velja:
+$$ (a \lor b) \land c = a \lor (b \land c)$$
+\end{definition}\\
+Da ugotovimo, da je to res šibkejši pogoj od distributivnosti si poglejmo, da so distributivne mreže hkrati tudi modulske, obratno pa ni res.
+Če je mreža distributivna namreč velja:
+$$  (a \lor b) \land c = (a \land c) \lor (b \land c) =a \lor (b \land c) $$
+To pa je ravno pogoj modularnosti.
+Tu smo uporabili distributivnost in nato predpostavko $a \leq c$.
+Da pa pokažemo da obratno ni res, pa si poglejmo naslednji primer:\\
+%Slika neke male modulske mreže, ki ni distributivna.
+
+Preden se lotimo naslednjega primera pa si poglejmo še formulo, ki velja za prav vsako mrežo. \\
+Naj bodo $a, b, c \in L$ in naj velja $a \leq c$. Ker je $a \leq c$ in $a \leq (a \lor b)$ sledi, da je $$a \leq (a \lor b) \land c$$Vemo tudi, da velja, da je $b \land c \leq b \leq a \lor b.$ in $b \land c \leq c$. Torej je tudi 
+$$ b \land c \leq (a \lor b) \land c $$
+Iz te in zgornje ugotovitve pa vidimo, da velja še
+$$ a \lor (b \land c) \leq (a \lor b) \land c $$
+
+Za lep primer modulskih mrež pa bomo pokazali, da je množica podgrup edink grupe $G$, urejena glede na vsebovanost, modulska mreža.\\
+Naprej preverimo, da je to sploh mreža. Množica gotovo ni prazna, saj vemo, da sta $\{ 1 \}$ in $G$ podgrupi edinki. \\
+Naj bosta $H$ in $K$ poljubni podgrupi $G$. Za infinum dveh podrup edink vemo, da je $H \cap K$ najmanjša podgrupa, ki ju vsebuje. Za supremum dveh podgrup pa $H \cup K$ seveda ni nujno podgrupa. Vemo pa, da je najmanjša podgrupa, ki  $H$ in $K$ vsebuje podgrupa:
+$$ HK = \{ hk | h \in H, k \in K \}$$
+
+Za dano podgrupo pa se hitro prepičamo, da je tudi edinka.
+Naj bo $ c \in G$ in 
+$$ c  h k  c^{-1} = c h c^{-1}  c k c^{-1} $$
+Ker sta $H$ in $K$ edinki velja $c h c^{-1} \in H$ in $c k c^{-1} \in K$. Od tod pa, da je $chkc^{-1} \in HK$. Sledi, da je HK podgrupa edinka.\\
+
+\begin{theorem}
+Mreža podgrup edink grupe $G$ je modulska.
+\end{theorem}
+\begin{proof}
+Naj bo $G$ grupa in naj bodo $H_{1}, H_{2}, H_{3} \triangleleft G$. Od zgoraj že vemo, da velja 
+$$ H_{1}(H_{2} \cap H_{3}) \leq (H_{1}H_{2}) \cap H_{3}$$
+Pokazati moramo še, da velja obratno.  Torej:
+$$(H_{1}H_{2}) \cap H_{3}\leq H_{1}(H_{2} \cap H_{3})$$
+V množici $(H_{1}H_{2}) \cap H_{3}$ so vsi elementi, za katere velja enakost $ab = c$, kjer je $a \in H_{1}$, $b \in H_{2}$ in $c \in H_{3}.$. Zapišimo drugače: $b = a^{-1}c$. Ker je $H_{1} \subseteq H_{3}$ je $a^{-1} \in H_{3}$ in sledi, da je $a^{-1}c = b \in H_{3}$.\\
+Od tod sledi, da je $b \in H_{2}H_{3}$ in zaključimo, da je $ab \in H_{1}(H_{2} \cap H_{3})$.\\
+S tem smo pokazali:
+$$(H_{1}H_{2}) \cap H_{3}\leq H_{1}(H_{2} \cap H_{3})$$
+in zaradi antisimetričnosti sledi enakost.
+$$(H_{1}H_{2}) \cap H_{3} = H_{1}(H_{2} \cap H_{3})$$
+\end{proof}
 \section{Boolovi kolobarji}
+\begin{definition}
+Boolov kolobar $K$ je kolobar, v katerem je vsak element idempotenten. Torej $\forall a \in K$ velja,
+$$ a^2 = a $$
+\end{definition}\\
+Najbolj enostaven Boolovega kolobarja je kar kolobar $\mathbb{Z}_{2}$ z operacijo navadnega seštevanja in množenja. Še kakšen drug primer Boolovega kolobarja pa najlaže dobimo tako, da skupaj vzamemo več kopij $\mathbb{Z}_{2}$. Še več, da se pokazati, da so prav vsi Boolovi kolobarji izomorfni nekemu številu kopij $\mathbb{Z}_{2}$.\\
+
+\begin{theorem}
+Boolov kolobar ima karakteristiko $2$ in je komutativen.
+\end{theorem}
+\begin{proof}
+Vemo, da velja 
+$$ (a + a)^2 = (a + a) $$
+Razpišimo:
+$$ a^2 + 2aa + a^2 = 2a $$
+$$ 4a = 2a $$
+Dobimo $2a = 0$. Ker je bil $a$ poljuben ima kolobar karakteristiko $2$.
+Še komutativnost:
+$$ (a + b)^2 = (a + b) $$
+$$ a^2 + ab + ba + b^2 = a + b $$
+Nato pa sledi $ab = - ba$. Zaradi karakteristike $2$ pa sledi $ab = ba$.
+\end{proof}
+Pokažimo sedaj, da lahko iz boolovega kolobarja pridemo do mreže. V ta namen definirajmo operaciji supremum in infinum in pokažimo, da zadoščata aksimom mreže.
+$$ a \lor b = a + b + ab $$
+$$ a \land b = ab $$
+\begin{enumerate}
+\item(Idempotentnost) $$ a \lor a = a + a + a^2 = a $$
+$$ a \land a = aa = a $$
+\item(Komutativnost) smo že pokazali.
+\item(Asociativnost)
+$$ (a \lor b) \lor c = (a + b + ab) \lor c = a + b + c + ab + ac + bc + abc $$
+$$ a \lor (b \lor c)  = a \lor (b + c + bc) = a + b + c + ab + ac + bc + abc$$
+$$ (a \land b) \land c = (ab)c = a(bc) = a \land (b \land c)$$
+\item(Absorpcija)
+$$ $$
+\end{enumerate}
 
 
 
