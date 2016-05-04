@@ -731,8 +731,58 @@ V mreži deliteljev števila $30$ urejeni glede na deljivost velja da je komplem
     \caption{Mreža deliteljev števila $30$ z označenimi nekaterimi komplementi}
     \label{im:lattice_30_with_some_complements}
   \end{figure}  
-
+\newpage
 \section{Homomorfizmi mrež}
+Če si pogledamo zgornji mreži opazimo, da se zdita zelo podobni. Tako kot pri vseh algebrskih strukturah tudi tukaj definiramo pojem homomorfizma, s pomočjo katerega bomo lahko podobne objekte med seboj "enačili".
+\newline
+\newline
+\begin{definition}
+Naj bosta $L_{1}$ in $L_{2}$ mreži. Funkcija $f$ : $L_{1}$ $\rightarrow$ $L_{2}$ je homomorfizem, če velja:
+$$f(a\land b) = f(a) \land f(b) $$
+$$f(a \lor b) = f(a) \lor f(b)$$
+za vsaka $a$, $b$ $\in$ $L_{1}$.
+
+\end{definition}
+
+Ena izmed stvari, ki jih pri homorfizmu opazimo, je da homomorfizem ohranja smer urejenosti elementov. Torej, da velja $a$ $\leq$ $b$ $\Rightarrow$ $f(a)$ $\leq$ $f(b)$. To vidimo takole:
+$$a \leq b \iff a = a \land b$$
+Torej imamo 
+$$f(a) = f(a \land b) = f(a) \land f(b),$$
+kar pa ravno pomeni, da je $f(a)$ $\leq$ $f(b).$
+\newline
+
+\begin{theorem}
+Bijektivna preslikava iz $L_{1}$ v $L_{2}$ je izomorfizem, če ohranja smer urejenosti  iz $L_{1}$ v $L_{2}$ in nazaj.
+\end{theorem}
+\begin{proof}
+
+\end{proof} 
+
+\section{Distributivne mreže}
+Za mrežo pravimo, da je \textbf{distributivna}, če zanjo veljata naslednja zakona:
+$$ (f(a) \land f(b)) \lor f(c) = (f(a) \lor f(c)) \land (f(b) \lor f(c))$$
+$$ (f(a) \lor f(b)) \land f(c) = (f(a) \land f(c)) \lor (f(b) \land f(c))$$
+in to za vse $a$, $b$ in $c$ iz mreže. \\ \\
+\begin{example}
+\begin{example_case}
+Za mrežo vzemimo potenčno množico $\mathbb{N}$ urejeno glede na $\subseteq$. V tem primeru se operacija supremum dveh elementov ujema z unijo dveh množic. Prav tako se infinum dveh elementov ujema s presekom dveh množic. Iz teorije množic pa vemo, da za unijo in presek veljajo distributivni zakoni. Torej je $(\mathcal{P}(\mathbb{N}),\subseteq)$ distributivna mreža.
+\end{example_case}
+\begin{example_case}
+Linearno urejeno množico $L$ lahko hitro prevedemo na prejšnji primer. To storimo tako, da poljuben element $a$ $\in$ $L$ slikamo v množico, ki vsebujejo vse elementa, ki so $a$ manjši.
+$$ a \rightarrow \{ x \in L  |  x \leq a \}$$
+Od tukaj naprej pa iz prejšnega primera vemo, da veljajo distributivni zakoni.
+\end{example_case}\\
+Ena izmed lepih lastnosti distributivnih mrež je ta, da če ima nek $a \in L$ komplement, potem je ta komplement gotovo en sam. Recimo, da ima $a \in L$ dva komplementa $a_{1}$ in $a_{2}$.\\
+Sledi:
+$$ a_{2} = 1 \land a_{2} = (a_{1} \lor a) \land a_{2} = (a_{1} \land a_{2}) \lor (a \land a_{2}) $$
+Ker velja $a \land a_{2} = 0$ in $(a_{1} \land a_{2}) \lor 0 = a_{1} \land a_{2},$ dobimo:
+$$ a_{2} = a_{2} \land a_{1} $$ 
+To pa je ekvivalentno, da je $a_{2} \leq a_{1}$. Z analognim razmislekom dobimo še $a_{1} \leq a_{2}$ in od tod zaradi antisimetričnosti sledi:
+$$ a_{1} = a_{2} $$
+Torej je v distributivnih mrežah komplement elementa, v primeru da obstaja, le en sam. Seveda pa nam nič ne zagotavlja, da bi element distributivne mreže komplement sploh imel.
+\end{example}
+\section{Modulske mreže}
+\section{Boolovi kolobarji}
 
 
 
