@@ -733,6 +733,7 @@ V mreži deliteljev števila $30$ urejeni glede na deljivost velja da je komplem
   \end{figure}  
 \newpage
 \section{Homomorfizmi mrež}
+%Sliki mrež, ki sta si izomorfni
 Če si pogledamo zgornji mreži opazimo, da se zdita zelo podobni. Tako kot pri vseh algebrskih strukturah tudi tukaj definiramo pojem homomorfizma, s pomočjo katerega bomo lahko podobne objekte med seboj "enačili".
 \newline
 \newline
@@ -744,7 +745,7 @@ za vsaka $a$, $b$ $\in$ $L_{1}$.
 
 \end{definition}
 
-Ena izmed stvari, ki jih pri homorfizmu opazimo, je da homomorfizem ohranja smer urejenosti elementov. Torej, da velja $a$ $\leq$ $b$ $\Rightarrow$ $f(a)$ $\leq$ $f(b)$. To vidimo takole:
+Ena izmed stvari, ki jih pri homorfizmu opazimo je, da homomorfizem ohranja smer urejenosti elementov. Torej, da velja $a$ $\leq$ $b$ $\Rightarrow$ $f(a)$ $\leq$ $f(b)$. To vidimo takole:
 $$a \leq b \iff a = a \land b$$
 Torej imamo 
 $$f(a) = f(a \land b) = f(a) \land f(b),$$
@@ -804,7 +805,7 @@ $$ a \lor (b \land c) \leq (a \lor b) \land c $$
 
 Za lep primer modulskih mrež pa bomo pokazali, da je množica podgrup edink grupe $G$, urejena glede na vsebovanost, modulska mreža.\\
 Naprej preverimo, da je to sploh mreža. Množica gotovo ni prazna, saj vemo, da sta $\{ 1 \}$ in $G$ podgrupi edinki. \\
-Naj bosta $H$ in $K$ poljubni podgrupi $G$. Za infinum dveh podrup edink vemo, da je $H \cap K$ najmanjša podgrupa, ki ju vsebuje. Za supremum dveh podgrup pa $H \cup K$ seveda ni nujno podgrupa. Vemo pa, da je najmanjša podgrupa, ki  $H$ in $K$ vsebuje podgrupa:
+Naj bosta $H$ in $K$ poljubni podgrupi $G$. Za infinum dveh podrup edink vemo, da je $H \cap K$ najmanjša podgrupa, ki ju vsebuje. Za supremum dveh podgrup pa $H \cup K$ seveda ni nujno podgrupa. Vemo pa, da je najmanjša podgrupa, ki  $H$ in $K$ vsebuje, podgrupa:
 $$ HK = \{ hk | h \in H, k \in K \}$$
 
 Za dano podgrupo pa se hitro prepičamo, da je tudi edinka.
@@ -861,8 +862,18 @@ $$ (a \lor b) \lor c = (a + b + ab) \lor c = a + b + c + ab + ac + bc + abc $$
 $$ a \lor (b \lor c)  = a \lor (b + c + bc) = a + b + c + ab + ac + bc + abc$$
 $$ (a \land b) \land c = (ab)c = a(bc) = a \land (b \land c)$$
 \item(Absorpcija)
-$$ $$
+$$ a \land (a \lor b) = a \land (a + b + ab) = a^2 + ab + ab = a$$
+$$ a \lor (a \land b) = a \lor ab = a + ab + a^2b = a $$
 \end{enumerate}
+S tem smo pokazali, da je boolov kolobar z operacijama supremum in infinum kot smo ju definirali, zgoraj mreža.
+
+Za boolove kolobarje pa velja še celo več. Velja namreč, da je ta mreža distributivna. To najlaže pokažemo kar z direktnim računom.
+$$ a \land (b \lor c) = a \land (b + c + bc) = ab + ac + abc $$
+$$ (a \land b) \lor (a \land c) = ab \lor ac = ab + ac + abc $$
+V boolovem kolobarju ničelni element sovpada z minimalnim elementom mreže. Prav tako tudi element $1$.
+$$ a \land 0 = a  0 = 0 $$ $$ a \lor 0 = a + 0 + a0 = a $$ 
+$$ a \land 1 = 1a = a $$ $$ a \lor 1 = a + 1 + a = 1 $$
+
 
 
 
