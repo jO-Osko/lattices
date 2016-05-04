@@ -21,6 +21,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage[justification=centering]{caption}
+\graphicspath{ {img/} }
 
 \usepackage{tikz}
 
@@ -107,10 +108,10 @@
 \begin{document}	
 \title{Mreže}
 \author{Filip Koprivec, Samo Kralj}
-\date{\today}
+\date{April 2016}
 \maketitle
 
-\epigraph{“If I find in myself desires which nothing in this world can satisfy, the only logical explanation is that I was made for another world.”}{--- \textup{C. S. Lewis}}
+
 \newpage
 
 \tableofcontents
@@ -121,7 +122,6 @@
 
 Mreža je množica z dodatno strukturo (delno urejenostjo), ki zadošča poguju, da ima poljuben par elementov infimum in supremum. Najprej si bomo pogledali mreže s stališča matematične logike in urejenosti, kasneje pa si jih bomo ogledali še s stališča algebraičnih operacij nad njimi, ter pokazali, zakaj sta ta dva pogleda ekvivalentna.
 
-%TODO uredi uvod
 
 \subsection{Osnovne definicje}
 \begin{definition}
@@ -897,7 +897,35 @@ $$(H_{1}H_{2}) \cap H_{3} = H_{1}(H_{2} \cap H_{3})$$
 Boolov kolobar $K$ je kolobar, v katerem je vsak element idempotenten. Torej $\forall a \in K$ velja,
 $$ a^2 = a $$
 \end{definition}\\
-Najbolj enostaven Boolovega kolobarja je kar kolobar $\mathbb{Z}_{2}$ z operacijo navadnega seštevanja in množenja. Še kakšen drug primer Boolovega kolobarja pa najlaže dobimo tako, da skupaj vzamemo več kopij $\mathbb{Z}_{2}$. Še več, da se pokazati, da so prav vsi Boolovi kolobarji izomorfni nekemu številu kopij $\mathbb{Z}_{2}$.\\
+\begin{example}
+Najbolj enostaven Boolovega kolobarja je kar kolobar $\mathbb{Z}_{2}$ z operacijo navadnega seštevanja in množenja. Še kakšen drug primer Boolovega kolobarja pa najlaže dobimo tako, da skupaj vzamemo več kopij $\mathbb{Z}_{2}$. Še več, da se pokazati, da so prav vsi Boolovi kolobarji izomorfni nekemu številu kopij $\mathbb{Z}_{2}$. Boolov kolobar moči $2^3$ je prikazan na sliki (\ref{im:boolean_ring_z_3}).
+\end{example}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=1]
+  \node (one) at (0,0) {$111 $};
+  \node (two) at (-2,-4) {$001 $};
+  \node (three) at (0,-4) {$010$};
+  \node (five) at (2,-4) {$100$};
+  
+  \node (four) at (-2,-2) {$011$};
+  \node (six) at (0,-2) {$101$};
+  \node (nine) at (2,-2) {$110$};
+  
+  \node (zero) at (0,-6) {$000$};
+  
+  \draw (zero) -- (two) -- (four) -- (one) -- (six) -- (two);  
+  \draw (zero) -- (three) -- (four);
+  \draw (zero) -- (five) -- (six);
+  \draw (three) -- (nine);
+  \draw (one) -- (nine) -- (five);
+   
+    
+  \end{tikzpicture}
+    \caption{Mreža na kolobarju $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$}
+    \label{im:boolean_ring_z_3}
+  \end{figure} 
 
 \begin{theorem}
 Boolov kolobar ima karakteristiko $2$ in je komutativen.
@@ -938,6 +966,50 @@ V boolovem kolobarju ničelni element sovpada z minimalnim elementom mreže. Pra
 $$ a \land 0 = a  0 = 0 $$ $$ a \lor 0 = a + 0 + a0 = a $$ 
 $$ a \land 1 = 1a = a $$ $$ a \lor 1 = a + 1 + a = 1 $$
 
+\subsection{Lastnosti in primeri boolovih kolobarjev}
+
+Ugotovili smo že da je poljubno kopij $\mathbb{Z}_2$ Boolov kolobar, če pa si pobližje pogledamo sliko (\ref{im:boolean_ring_z_3}) in sliko (\ref{im:divisors_of_30_hasse_diagram}) vidimo da sta si izomorfni, zanima nas ali bi lahko to kako posplošili.
+
+\begin{statement}
+Boolov kolobar moči $2^n$ je izomorfen mreži vseh deliteljev naravnega števila $m$, ki ima $n$ različnih praštevilskih deliteljev, ne deli pa ga kvadrat kakega praštevila.
+\end{statement}
+
+\begin{proof}
+(Zgolj skica) naj bo $m = p_1p_2 \dots p_n$, potem je vsak delitelj števila $m$ oblike $k = p_1^{i_1}p_2^{i_2} \dots p_n^{i_n}$, kjer $i \in \{0,1\}$. Izomorfizem bo potem kar $\varphi(p_1^{i_1}p_2^{i_2} \dots p_n^{i_n}) = (i_1, i_2, \dots, i_n)$, ki je očitno bijektiven, to da pa ohranja red v obeh smereh pa preprosto preverimo z računom.
+\end{proof}
+
+\begin{remark}
+Da se pokazati tudi, da sta dva Boolova kolobarja izomorfna natanko tedaj, ko imata enako število elementov ter da imajo Boolovi kolobarji $2^n$ elementov za neko naravno število $n$.
+\end{remark}
+\\
+\\
+Če bi hassejev diagram Boolovega kolobarja iz $n$ kopij narisali kot graf v prostoru $\mathbb{R}^n$, kjer bi se koordinate vozlišč diagrama skladale bi dobili ravno $n$-dimenzionalni graf hiperkocke. To preprosto vidimo tako, da je vsak element v diagramu povezan zgolj z tistimi elementi, ki imajo različno natanko eno koordinato, to lepo vidimo na sliki (\ref{im:boolean_ring_z_3}) in sliki (\ref{im:boolean_ring_hasse_diagram}).
+\begin{figure}[h]
+\begin{subfigure}[b]{0.5\textwidth}
+\centering
+\includegraphics[width=0.48\textwidth, height=4cm]{bool1}
+\caption{Boolov kolobar $\mathbb{Z}_2$}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.5\textwidth}
+\centering
+\includegraphics[width=0.48\textwidth, height=4cm]{bool2}
+\caption{Boolov kolobar $\mathbb{Z}_2 \oplus \mathbb{Z}_2$}
+\end{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
+\centering
+\includegraphics[width=0.48\textwidth, height=4cm]{bool3}
+\caption{Boolov kolobar $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.5\textwidth}
+\centering
+\includegraphics[width=0.48\textwidth, height=4cm]{bool4}
+\caption{Boolov kolobar $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$}
+\end{subfigure}
+\caption{Primeri Boolovih kolboarjev}
+\label{im:boolean_ring_hasse_diagram}
+\end{figure}
 
 \pagebreak
 \section{Literatura}
