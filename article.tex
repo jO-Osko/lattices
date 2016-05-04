@@ -734,7 +734,36 @@ V mreži deliteljev števila $30$ urejeni glede na deljivost velja da je komplem
 \newpage
 \section{Homomorfizmi mrež}
 %Sliki mrež, ki sta si izomorfni
-Če si pogledamo zgornji mreži opazimo, da se zdita zelo podobni. Tako kot pri vseh algebrskih strukturah tudi tukaj definiramo pojem homomorfizma, s pomočjo katerega bomo lahko podobne objekte med seboj "enačili".
+
+\begin{figure}[h]
+  \begin{subfigure}[b]{0.5\textwidth}
+  \begin{tikzpicture}[scale=0.8]
+  \node (one) at (0,2) {$\{0,1\}$};
+  \node (a) at (-3,0) {$\{0\}$};
+  \node (d) at (3,0) {$\{1\}$};
+  \node (zero) at (0,-2) {$\{ \ \}$};
+  \draw (zero) -- (a) -- (one)  -- (d) -- (zero);
+  \end{tikzpicture}
+  \caption{Mreža $(\{0,1\}, \subseteq)$}
+  \label{im:divisors_of_30_with_sublattices}
+  \end{subfigure}
+\hfill
+  \begin{subfigure}[b]{0.5\textwidth}
+  \begin{tikzpicture}[scale=0.8]
+    \node (one) at (0,2) {$6$};
+  \node (a) at (-3,0) {$2$};
+  \node (d) at (3,0) {$3$};
+  \node (zero) at (0,-2) {$1$};
+  \draw (zero) -- (a) -- (one)  -- (d) -- (zero);
+  \end{tikzpicture}
+    \caption{Mreža deliteljev števila $6$}
+    \label{im:lattice_1234_with_sublattices}
+  \end{subfigure}
+  \caption{Izomorfni mreži}
+  \label{im:isomorph_lattices}
+\end{figure}
+
+Če si pogledamo zgornji mreži na sliki (\ref{im:isomorph_lattices}) opazimo, da se zdita zelo podobni. Tako kot pri vseh algebrskih strukturah tudi tukaj definiramo pojem homomorfizma, s pomočjo katerega bomo lahko podobne objekte med seboj "enačili".
 \newline
 \newline
 \begin{definition}
@@ -811,8 +840,26 @@ Da ugotovimo, da je to res šibkejši pogoj od distributivnosti si poglejmo, da 
 $$  (a \lor b) \land c = (a \land c) \lor (b \land c) =a \lor (b \land c) $$
 To pa je ravno pogoj modularnosti.
 Tu smo uporabili distributivnost in nato predpostavko $a \leq c$.
-Da pa pokažemo da obratno ni res, pa si poglejmo naslednji primer:\\
+Da pa pokažemo da obratno ni res, pa si poglejmo mrežo na sliki (\ref{im:modular_non_distributive_lattice})\\
 %Slika neke male modulske mreže, ki ni distributivna.
+
+  \begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=1]
+  \node (one) at (0,0) {$30 $};
+  \node (two) at (-2,-2) {$2 $};
+  \node (three) at (0,-2) {$3 $};
+  \node (five) at (2,-2) {$5 $};
+  
+  \node (zero) at (0,-4) {$1 $};
+  
+  \draw (zero) -- (two) -- (one) -- (three) -- (zero) -- (five) -- (one); 
+  
+  \end{tikzpicture}
+  \caption{Modulska mreža, ki ni distributivna}
+  \label{im:modular_non_distributive_lattice}
+  \end{figure}
+
 
 Preden se lotimo naslednjega primera pa si poglejmo še formulo, ki velja za prav vsako mrežo. \\
 Naj bodo $a, b, c \in L$ in naj velja $a \leq c$. Ker je $a \leq c$ in $a \leq (a \lor b)$ sledi, da je $$a \leq (a \lor b) \land c$$Vemo tudi, da velja, da je $b \land c \leq b \leq a \lor b.$ in $b \land c \leq c$. Torej je tudi 
@@ -890,8 +937,6 @@ $$ (a \land b) \lor (a \land c) = ab \lor ac = ab + ac + abc $$
 V boolovem kolobarju ničelni element sovpada z minimalnim elementom mreže. Prav tako tudi element $1$.
 $$ a \land 0 = a  0 = 0 $$ $$ a \lor 0 = a + 0 + a0 = a $$ 
 $$ a \land 1 = 1a = a $$ $$ a \lor 1 = a + 1 + a = 1 $$
-
-
 
 
 \end{document}
