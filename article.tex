@@ -1,12 +1,13 @@
 \documentclass[a4paper]{article}
 %AMDG
 \usepackage{amsmath, amsthm, amssymb}
-\usepackage{hyperref}
+
 \usepackage[slovene]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{epigraph}
 \usepackage{pdftexcmds}
+\usepackage{hyperref}
 \usepackage{fancyref, nameref}
 \usepackage{epigraph}
 \usepackage{cleveref}
@@ -18,9 +19,8 @@
 \usepackage{multirow}
 \usepackage{mathtools}
 \usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
 \usepackage[justification=centering]{caption}
+\usepackage{subcaption}
 \graphicspath{ {img/} }
 
 \usepackage{tikz}
@@ -785,19 +785,19 @@ kar pa ravno pomeni, da je $f(a)$ $\leq$ $f(b).$
 Bijektivna preslikava iz $L_{1}$ v $L_{2}$ je izomorfizem, če ohranja smer urejenosti  iz $L_{1}$ v $L_{2}$ in nazaj.
 \end{theorem}
 \begin{proof}
-Naj bosta $a, b \in L_{1}$. Ker je $a \leq a \land b$ in je tudi $b \leq a \land b$, potem zaradi ohranjanja smeri velja:
-$$ f(a) \leq f(a \land b), f(b) \leq f(a \land b) $$
-Ker je sta oba $f(a)$ in $f(b)$ manjša od $f(a \land b)$ je tudi njun infinum manjši od  $f(a \land b)$.
-$$ f(a) \land f(b) \leq f(a \land b) $$
-S tem smo pokazali, da je $f(a \land b)$ spodnja meja elementov $f(a$ in $f(b).$ Pokažimo, da je to še natačna spodnja meja. \\
-Denimo, da $f(c) \leq f(a \land b)$. To pomeni, da je 
+Naj bosta $a, b \in L_{1}$. Ker je $a \land b \leq a$ in je tudi $a \land b \leq b$, potem zaradi ohranjanja smeri velja:
+$$f(a \land b) \leq f(a), f(a \land b) \leq f(b) $$
+Ker je $f(a \land b)$ manjši od obeh $f(a)$ in $f(b)$ je manjši tudi od njunega infinuma.
+$$ f(a \land b) \leq )f(a) \land f(b) $$
+S tem smo pokazali, da je $f(a \land b)$ spodnja meja elementov $f(a)$ in $f(b).$ Pokažimo, da je to še natačna spodnja meja. \\
+Denimo, da $f(c) \leq f(a)\land f(b)$. To pomeni, da je 
 $$ f(c) \leq f(a)$$ $$ f(c) \leq f(b) $$
-Ker preslikava ohranja red v obe smeri velja
+Ker preslikava ohranja red v obe smeri velja:
 $$ c \leq a $$
 $$ c \leq b $$
 In zato tudi manjši od infinuma teh dveh elementov. $ c \leq a \land b$.\\
 Uporabimo sedaj preslikavo in ohranjanje smeri, ter dobimo:
-$$ f(c) \leq f(a) \land f(b) $$
+$$ f(c) \leq f(a \land b) $$
 Pokazali smo, da je vsaka druga spodnja meja elementov $f(a)$ in $f(b)$ manjša od  $f(a \land b)$. Po definiciji supremuma sedaj sledi 
 $$ f(a \land b) = f(a) \land f(b) $$
 Enakost 
@@ -1014,13 +1014,13 @@ Da se pokazati tudi, da sta dva Boolova kolobarja izomorfna natanko tedaj, ko im
 \pagebreak
 \section{Literatura}
 \begin{itemize}
-\item dodaj Cohena
-\item dodaj Vidava
+\item P. M. Cohn {\em Basic Algebra},  cop. 2012.
+\item Ivan Vidav {\em Algebra}, cop. 2010.
 \item Predavanja iz algebraične kombinatorike dostopna na \url{http://www.math.cornell.edu/~levine/18.312/}
 \item \url{https://en.wikipedia.org/wiki/Partially_ordered_set}
 \item \url{https://en.wikipedia.org/wiki/Lattice_\%28order\%29}
 \item \url{https://en.wikipedia.org/wiki/Modular_lattice}
-\item \url{https://en.wikipedia.org/wiki/Distributive_lattice}đ
+\item \url{https://en.wikipedia.org/wiki/Distributive_lattice}
 \item \url{http://www-rohan.sdsu.edu/~gawron/mathling/course_core/lectures/posets_slides.pdf}
 \item \url{http://www.math.hawaii.edu/~jb/math618/os9uh.pdf}
 
