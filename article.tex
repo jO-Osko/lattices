@@ -119,6 +119,7 @@
 \newpage
 
 \section{Uvod}
+\label{sec:uvod}
 
 Mreža je množica z dodatno strukturo (delno urejenostjo), ki zadošča poguju, da ima poljuben par elementov infimum in supremum. Najprej si bomo pogledali mreže s stališča matematične logike in urejenosti, kasneje pa si jih bomo ogledali še s stališča algebraičnih operacij nad njimi, ter pokazali, zakaj sta ta dva pogleda ekvivalentna.
 
@@ -296,6 +297,7 @@ Poljubna končna mreža je tudi polna mreža. Preprosto za infumum in supremum v
 \end{example}
 
 \section{Osnovni primeri mrež}
+\label{sec:osnovni_primeri}
 
 Od prej se spomnimo, je poljubna podmnožica $\mathbb{R}$, urejena glede na relacijo $\leq$ mreža. Za poljubni števili $x,y$ velja: $x \lor y = max\{x,y\}$ in $x \land y = min\{x,y\}$, seveda pa sta tako infimum kot supremum v mreži. Opazimo, da so te množice vedno liearno urejene.
 \\\\
@@ -377,7 +379,7 @@ Delno urejene množice lahko predstavimo zgolj s Hassejevim diagramom. Poglejmo 
     \node (e) at (1,-1.5) {$3$};
     \draw (a) -- (b) -- (c) -- (d) -- (e) -- (a);
   \end{tikzpicture}
-  \caption{$(\{1,2,3,4,6\}, |)$, je mreža}  
+  \caption{$(\{1,2,3,4,12\}, |)$, je mreža}  
   \label{im:divisors_of_6_lattice}
   \end{subfigure}
 
@@ -447,6 +449,7 @@ Takoj opazimo, da je tako kot mreža $(\mathbb{N}, \mid)$ tudi ta mreža omejena
 \end{remark}
 
 \section{Zakoni v mrežah}
+\label{sec:zakoni_v_mrezah}
 
 Mreže smo si do sedaj pogledali s stališča linearne urejenosti, kmalu pa bomo videli tudi, da lahko zgolj iz nekaterih zakonov, ki veljajo za infimume in supremume na poljubni množici za to množico dobimo delno urejenost in tako iz množice skupaj s temi zakoni tudi mrežo.
 \\
@@ -504,6 +507,7 @@ Analogno dokažemo, da je infimum $x \land y$.
 \end{proof}
 
 \section{Podmreže, enote in komplementarne mreže}
+\label{sec:podmreze_enote_komplementarne}
 
 \subsection{Podmreže}
 
@@ -733,6 +737,7 @@ V mreži deliteljev števila $30$ urejeni glede na deljivost velja da je komplem
   \end{figure}  
 \newpage
 \section{Homomorfizmi mrež}
+\label{sec:homomorfizmi_mrez}
 %Sliki mrež, ki sta si izomorfni
 
 \begin{figure}[h]
@@ -806,6 +811,7 @@ dokažemo na analogen način. Pokazali smo, da je bijektivna preslikava, ki ohra
 \end{proof} 
 
 \section{Distributivne mreže}
+\label{sec:distributivne_mreze}
 Za mrežo pravimo, da je \textbf{distributivna}, če zanjo veljata naslednja zakona:
 $$ (f(a) \land f(b)) \lor f(c) = (f(a) \lor f(c)) \land (f(b) \lor f(c))$$
 $$ (f(a) \lor f(b)) \land f(c) = (f(a) \land f(c)) \lor (f(b) \land f(c))$$
@@ -830,6 +836,7 @@ Torej je v distributivnih mrežah komplement elementa, v primeru da obstaja, le 
 \end{example}
 
 \section{Modulske mreže}
+\label{sec:modulske_mreze}
 Pogoj distributivnosti je zahteven pogoj in marsikatere mreže, ki so uporabne, pogoju distributivnosti ne zadoščajo. Zadoščajo pa nekoliko lažjemu pogoju, ki ga imenujemo modularni zakon.\\
 \begin{definition}
 Mreža L je modulska, če za vsak $a$, $b$, $c$ $\in$ $L$, pri pogoju, da je $a$ $\leq$ $c$, velja:
@@ -892,7 +899,10 @@ $$(H_{1}H_{2}) \cap H_{3}\leq H_{1}(H_{2} \cap H_{3})$$
 in zaradi antisimetričnosti sledi enakost.
 $$(H_{1}H_{2}) \cap H_{3} = H_{1}(H_{2} \cap H_{3})$$
 \end{proof}
+
 \section{Boolovi kolobarji}
+\label{sec:boolovi_kolobarji}
+
 \begin{definition}
 Boolov kolobar $K$ je kolobar, v katerem je vsak element idempotenten. Torej $\forall a \in K$ velja,
 $$ a^2 = a $$
@@ -1025,5 +1035,11 @@ Da se pokazati tudi, da sta dva Boolova kolobarja izomorfna natanko tedaj, ko im
 \item \url{http://www.math.hawaii.edu/~jb/math618/os9uh.pdf}
 
 \end{itemize}
+
+
+\section*{Opomba o avtorstvu}
+Kot je bilo dogovorjeno je bil seminar sestavljen iz dveh delov.\\
+Filip Koprivec je spisal poglavja: Uvod (\ref{sec:uvod}), Osnovni primeri mrež (\ref{sec:osnovni_primeri}), Podmreže, enote in komplementarne mreže (\ref{sec:podmreze_enote_komplementarne}) in Boolovi kolobarji (\ref{sec:boolovi_kolobarji}).\\
+Samo Kralj se spisal poglavja: Zakoni v mrežah (\ref{sec:zakoni_v_mrezah}), Homomorfizmi mrež (\ref{sec:homomorfizmi_mrez}), Distributivne mreže (\ref{sec:distributivne_mreze}) in Modulske mreže (\ref{sec:modulske_mreze}).
 
 \end{document}
