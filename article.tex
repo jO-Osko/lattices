@@ -23,6 +23,7 @@
 \usepackage{subcaption}
 \graphicspath{ {img/} }
 
+
 \usepackage{tikz}
 
 
@@ -43,13 +44,13 @@
 \newcounter{environment:definition_counter}
 
 \newenvironment{definition}[1][\unskip]
-{\vspace{0.5cm}\refstepcounter{environment:definition_counter}\textbf{Definicija \arabic{environment:definition_counter}: \textbf{#1} }\itshape}
+{\vspace{0.5cm}\refstepcounter{environment:definition_counter}\textbf{Definicija \arabic{environment:definition_counter}: \textbf{#1} }}
 {\bigskip}
 
 \newcounter{environment:theorem_counter}
 
 \newenvironment{theorem}[1][\unskip]
-{\refstepcounter{environment:theorem_counter}\textbf{Izrek \arabic{environment:theorem_counter}:\textit{#1}}\\}
+{\refstepcounter{environment:theorem_counter}\textbf{Izrek \arabic{environment:theorem_counter}:\textit{#1}}\itshape\\}
 {\bigskip}
 
 \newcounter{environment:statement_counter}
@@ -78,6 +79,8 @@
 
 %should rethink this
 \newtheorem{lemma}{Lema}
+
+
 
 \newcommand{\subscript}[2]{$#1 _ #2$}
 
@@ -624,7 +627,7 @@ Naravno nas zanima, ali lahko iz že obstoječih mrež na preprost način dobimo
 
 \begin{proof}
 Preprosto preverimo obstoj imfimuma in supremuma\\ 
-Vzemimo poljubna $x',y' \in \mathcal{L}(x,y)$ in preverimo zaprtost\\ $x \geq x' \lor y' \geq x' \land y' \geq y$
+Vzemimo poljubna $x',y' \in \mathcal{L}(x,y)$ in preverimo zaprtost: $x \geq x' \lor y' \geq x' \land y' \geq y$
 \end{proof}
 
 \subsection{Enote in komplementi}
@@ -640,7 +643,7 @@ Ob preučevanju do sedaj predstavljenih mrež smo opazili, da so nekateri njihov
 \end{definition}
 
 \begin{corollary}
-Če v mreži $\mathcal{L}$ obstajata $0$ in $1$, potem za poljuben $x \in \mathcal{L}$ veljjo naslednje trditve:
+Če v mreži $\mathcal{L}$ obstajata $0$ in $1$, potem za poljuben $x \in \mathcal{L}$ veljajo naslednje trditve:
 \begin{itemize}
 \item $x \lor 1 = 1$
 \item $x \lor 0 = x$
@@ -689,7 +692,7 @@ Obstoj komplementarnega elementa v mreži z $0$ in $1$ ni zagotovljen, prav tako
 
 \begin{example}
 \begin{example_case}
-Lep primer komplementarnih prostorov so vektorski podprostori vektorskega prostora $V$, ki je opremljen s skalarnim produktom. Tu je infimum dveh podprostorov kar njun presek, medtem ko je supremum njuna direktna vsota. $1$ je kar celoten prostor $V$, medtem ko je $0$ njegov ničelni podprostor. Tako je komplement poljubnega podprostora kar njegov ortogonalni komplement, tako je presek dveh komplementarnih elementov ničelni prostor, direktna vsota pa kar celoten prostor $V$.
+Lep primer komplementarnih prostorov so vektorski podprostori vektorskega prostora $V$, ki je opremljen s skalarnim produktom. Tu je infimum dveh podprostorov kar njun presek, medtem ko je supremum njuna direktna vsota. $1$ je kar celoten prostor $V$, medtem ko je $0$ njegov ničelni podprostor. Tako je komplement poljubnega podprostora kar njegov ortogonalni komplement, presek dveh komplementarnih elementov pa ničelni prostor, direktna vsota pa kar celoten prostor $V$.
 \end{example_case}
 \begin{example_case}
 Drug primer komplementarne mreže je mreža sestavljena iz ravnine ter na njej ležečih premic in točk. Tako je komplement premice poljubna točka, ki na njej ne leži, komplement točke pa je poljubna premica, ki ne vsebuje te točke. Vidimo, da ima lahko element več komplementov (celo neskončno).
@@ -698,7 +701,7 @@ Drug primer komplementarne mreže je mreža sestavljena iz ravnine ter na njej l
 V mreži $(\{1,2,3,4\}, \subseteq)$ so komplementi posameznih elementov kar njihovi komplementi v smislu teorije množic, prav tako vidimo, da ima vsak element natančno en komplement
 \end{example_case}
 \begin{example_case}
-V mreži deliteljev števila $30$ urejeni glede na deljivost velja da je komplement elementa $x$ kar $\frac{30}{x}$, ta lastnost pa nam nakazuje neko zelo pomembno značilnost takih mrež, ki jo bomo spoznali v nadaljevanju, komplementi so lepo vidni na sliki (\ref{im:lattice_30_with_some_complements}).
+V mreži deliteljev števila $30$ urejeni glede na deljivost velja, da je komplement elementa $x$ kar $\frac{30}{x}$, kar je lepo prikazano na sliki (\ref{im:lattice_30_with_some_complements}). Ta lastnost pa nam nakazuje neko zelo pomembno značilnost takih mrež, ki jo bomo spoznali v nadaljevanju.
 \end{example_case}
 \end{example}
 
@@ -787,20 +790,20 @@ kar pa ravno pomeni, da je $f(a)$ $\leq$ $f(b).$
 \newline
 
 \begin{theorem}
-Bijektivna preslikava iz $L_{1}$ v $L_{2}$ je izomorfizem, če ohranja smer urejenosti  iz $L_{1}$ v $L_{2}$ in nazaj.
+Bijektivna preslikava iz $L_{1}$ v $L_{2}$ je izomorfizem, če ohranja urejenost iz $L_{1}$ v $L_{2}$ in nazaj.
 \end{theorem}
 \begin{proof}
 Naj bosta $a, b \in L_{1}$. Ker je $a \land b \leq a$ in je tudi $a \land b \leq b$, potem zaradi ohranjanja smeri velja:
 $$f(a \land b) \leq f(a), f(a \land b) \leq f(b) $$
 Ker je $f(a \land b)$ manjši od obeh $f(a)$ in $f(b)$ je manjši tudi od njunega infinuma.
-$$ f(a \land b) \leq )f(a) \land f(b) $$
+$$ f(a \land b) \leq f(a) \land f(b) $$
 S tem smo pokazali, da je $f(a \land b)$ spodnja meja elementov $f(a)$ in $f(b).$ Pokažimo, da je to še natačna spodnja meja. \\
 Denimo, da $f(c) \leq f(a)\land f(b)$. To pomeni, da je 
 $$ f(c) \leq f(a)$$ $$ f(c) \leq f(b) $$
 Ker preslikava ohranja red v obe smeri velja:
 $$ c \leq a $$
 $$ c \leq b $$
-In zato tudi manjši od infinuma teh dveh elementov. $ c \leq a \land b$.\\
+zato pa je $c$ tudi manjši od infinuma teh dveh elementov. $ c \leq a \land b$.\\
 Uporabimo sedaj preslikavo in ohranjanje smeri, ter dobimo:
 $$ f(c) \leq f(a \land b) $$
 Pokazali smo, da je vsaka druga spodnja meja elementov $f(a)$ in $f(b)$ manjša od  $f(a \land b)$. Po definiciji supremuma sedaj sledi 
@@ -825,23 +828,26 @@ Linearno urejeno množico $L$ lahko hitro prevedemo na prejšnji primer. To stor
 $$ a \rightarrow \{ x \in L  |  x \leq a \}$$
 Od tukaj naprej pa iz prejšnega primera vemo, da veljajo distributivni zakoni.
 \end{example_case}\\
-Ena izmed lepih lastnosti distributivnih mrež je ta, da če ima nek $a \in L$ komplement, potem je ta komplement gotovo en sam. Recimo, da ima $a \in L$ dva komplementa $a_{1}$ in $a_{2}$.\\
-Sledi:
+Ena izmed lepih lastnosti distributivnih mrež je ta, da če ima nek $a \in L$ komplement, potem je ta komplement gotovo en sam. Recimo, da ima $a \in L$ dva komplementa $a_{1}$ in $a_{2}$. Sledi:
 $$ a_{2} = 1 \land a_{2} = (a_{1} \lor a) \land a_{2} = (a_{1} \land a_{2}) \lor (a \land a_{2}) $$
 Ker velja $a \land a_{2} = 0$ in $(a_{1} \land a_{2}) \lor 0 = a_{1} \land a_{2},$ dobimo:
 $$ a_{2} = a_{2} \land a_{1} $$ 
-To pa je ekvivalentno, da je $a_{2} \leq a_{1}$. Z analognim razmislekom dobimo še $a_{1} \leq a_{2}$ in od tod zaradi antisimetričnosti sledi:
-$$ a_{1} = a_{2} $$
+To pa je ekvivalentno pogoju $a_{2} \leq a_{1}$. Z analognim razmislekom dobimo še $a_{1} \leq a_{2}$ in od tod zaradi antisimetričnosti sledi: $ a_{1} = a_{2} $
 Torej je v distributivnih mrežah komplement elementa, v primeru da obstaja, le en sam. Seveda pa nam nič ne zagotavlja, da bi element distributivne mreže komplement sploh imel.
 \end{example}
 
 \section{Modulske mreže}
 \label{sec:modulske_mreze}
-Pogoj distributivnosti je zahteven pogoj in marsikatere mreže, ki so uporabne, pogoju distributivnosti ne zadoščajo. Zadoščajo pa nekoliko lažjemu pogoju, ki ga imenujemo modularni zakon.\\
+
+
+Pogoj distributivnosti je zahteven pogoj in marsikatere mreže, ki so uporabne, pogoju distributivnosti ne zadoščajo. Zadoščajo pa nekoliko lažjemu pogoju, ki ga imenujemo modularni zakon.
+
 \begin{definition}
-Mreža L je modulska, če za vsak $a$, $b$, $c$ $\in$ $L$, pri pogoju, da je $a$ $\leq$ $c$, velja:
+Mreža $\mathcal{L}$ je modulska, če za vsak $a, b, c \in \mathcal{L}$, pri pogoju, da je burek $a \leq c$, velja:
 $$ (a \lor b) \land c = a \lor (b \land c)$$
-\end{definition}\\
+\end{definition}
+
+
 Da ugotovimo, da je to res šibkejši pogoj od distributivnosti si poglejmo, da so distributivne mreže hkrati tudi modulske, obratno pa ni res.
 Če je mreža distributivna namreč velja:
 $$  (a \lor b) \land c = (a \land c) \lor (b \land c) =a \lor (b \land c) $$
@@ -868,21 +874,19 @@ Da pa pokažemo da obratno ni res, pa si poglejmo mrežo na sliki (\ref{im:modul
   \end{figure}
 
 
-Preden se lotimo naslednjega primera pa si poglejmo še formulo, ki velja za prav vsako mrežo. \\
-Naj bodo $a, b, c \in L$ in naj velja $a \leq c$. Ker je $a \leq c$ in $a \leq (a \lor b)$ sledi, da je $$a \leq (a \lor b) \land c$$Vemo tudi, da velja, da je $b \land c \leq b \leq a \lor b.$ in $b \land c \leq c$. Torej je tudi 
+Preden se lotimo naslednjega primera, si poglejmo še formulo, ki velja za prav vsako mrežo. Naj bodo $a, b, c \in L$ in naj velja $a \leq c$. Ker je $a \leq c$ in $a \leq (a \lor b)$ sledi, da je $$a \leq (a \lor b) \land c$$Vemo tudi, da velja, da je $b \land c \leq b \leq a \lor b.$ in $b \land c \leq c$. Torej je tudi 
 $$ b \land c \leq (a \lor b) \land c $$
 Iz te in zgornje ugotovitve pa vidimo, da velja še
 $$ a \lor (b \land c) \leq (a \lor b) \land c $$
 
-Za lep primer modulskih mrež pa bomo pokazali, da je množica podgrup edink grupe $G$, urejena glede na vsebovanost, modulska mreža.\\
-Naprej preverimo, da je to sploh mreža. Množica gotovo ni prazna, saj vemo, da sta $\{ 1 \}$ in $G$ podgrupi edinki. \\
-Naj bosta $H$ in $K$ poljubni podgrupi $G$. Za infinum dveh podrup edink vemo, da je $H \cap K$ najmanjša podgrupa, ki ju vsebuje. Za supremum dveh podgrup pa $H \cup K$ seveda ni nujno podgrupa. Vemo pa, da je najmanjša podgrupa, ki  $H$ in $K$ vsebuje, podgrupa:
+Za lep primer modulskih mrež pa bomo pokazali, da je množica podgrup edink grupe $G$, urejena glede na vsebovanost, modulska mreža. Naprej preverimo, da je to sploh mreža. Množica gotovo ni prazna, saj vemo, da sta $\{ 1 \}$ in $G$ podgrupi edinki. Naj bosta $H$ in $K$ poljubni podgrupi $G$. Za infinum dveh podrup edink vemo, da je $H \cap K$ najmanjša podgrupa, ki ju vsebuje. Za supremum dveh podgrup pa $H \cup K$ seveda ni nujno podgrupa. Vemo pa, da je najmanjša podgrupa, ki  $H$ in $K$ vsebuje, podgrupa:
+
 $$ HK = \{ hk | h \in H, k \in K \}$$
 
 Za dano podgrupo pa se hitro prepičamo, da je tudi edinka.
 Naj bo $ c \in G$ in 
 $$ c  h k  c^{-1} = c h c^{-1}  c k c^{-1} $$
-Ker sta $H$ in $K$ edinki velja $c h c^{-1} \in H$ in $c k c^{-1} \in K$. Od tod pa, da je $chkc^{-1} \in HK$. Sledi, da je HK podgrupa edinka.\\
+Ker sta $H$ in $K$ edinki velja $c h c^{-1} \in H$ in $c k c^{-1} \in K$. Od tod pa, da je $chkc^{-1} \in HK$. Sledi, da je HK podgrupa edinka.
 
 \begin{theorem}
 Mreža podgrup edink grupe $G$ je modulska.
@@ -892,23 +896,22 @@ Naj bo $G$ grupa in naj bodo $H_{1}, H_{2}, H_{3} \triangleleft G$. Od zgoraj ž
 $$ H_{1}(H_{2} \cap H_{3}) \leq (H_{1}H_{2}) \cap H_{3}$$
 Pokazati moramo še, da velja obratno.  Torej:
 $$(H_{1}H_{2}) \cap H_{3}\leq H_{1}(H_{2} \cap H_{3})$$
-V množici $(H_{1}H_{2}) \cap H_{3}$ so vsi elementi, za katere velja enakost $ab = c$, kjer je $a \in H_{1}$, $b \in H_{2}$ in $c \in H_{3}.$. Zapišimo drugače: $b = a^{-1}c$. Ker je $H_{1} \subseteq H_{3}$ je $a^{-1} \in H_{3}$ in sledi, da je $a^{-1}c = b \in H_{3}$.\\
-Od tod sledi, da je $b \in H_{2}H_{3}$ in zaključimo, da je $ab \in H_{1}(H_{2} \cap H_{3})$.\\
+V množici $(H_{1}H_{2}) \cap H_{3}$ so vsi elementi, za katere velja enakost $ab = c$, kjer je $a \in H_{1}$, $b \in H_{2}$ in $c \in H_{3}.$. Zapišimo drugače: $b = a^{-1}c$. Ker je $H_{1} \subseteq H_{3}$ je $a^{-1} \in H_{3}$ in sledi, da je $a^{-1}c = b \in H_{3}$. 
+Od tod sledi, da je $b \in H_{2}H_{3}$ in zaključimo, da je $ab \in H_{1}(H_{2} \cap H_{3})$. 
 S tem smo pokazali:
 $$(H_{1}H_{2}) \cap H_{3}\leq H_{1}(H_{2} \cap H_{3})$$
 in zaradi antisimetričnosti sledi enakost.
 $$(H_{1}H_{2}) \cap H_{3} = H_{1}(H_{2} \cap H_{3})$$
 \end{proof}
 
-\section{Boolovi kolobarji}
+\section{Booleovi kolobarji}
 \label{sec:boolovi_kolobarji}
 
 \begin{definition}
-Boolov kolobar $K$ je kolobar, v katerem je vsak element idempotenten. Torej $\forall a \in K$ velja,
-$$ a^2 = a $$
+Booleov kolobar $K$ je kolobar, v katerem je vsak element idempotenten. Torej $$\forall a \in K. \ a^2 =a$$
 \end{definition}\\
 \begin{example}
-Najbolj enostaven Boolovega kolobarja je kar kolobar $\mathbb{Z}_{2}$ z operacijo navadnega seštevanja in množenja. Še kakšen drug primer Boolovega kolobarja pa najlaže dobimo tako, da skupaj vzamemo več kopij $\mathbb{Z}_{2}$. Še več, da se pokazati, da so prav vsi Boolovi kolobarji izomorfni nekemu številu kopij $\mathbb{Z}_{2}$. Boolov kolobar moči $2^3$ je prikazan na sliki (\ref{im:boolean_ring_z_3}).
+Najbolj enostaven Booleovega kolobarja je kar kolobar $\mathbb{Z}_{2}$ z operacijo navadnega seštevanja in množenja. Še kakšen drug primer Booleovega kolobarja pa najlaže dobimo tako, da skupaj vzamemo več kopij $\mathbb{Z}_{2}$. Še več, da se pokazati, da so prav vsi Booleovi kolobarji izomorfni nekemu številu kopij $\mathbb{Z}_{2}$. Booleov kolobar moči $2^3$ je prikazan na sliki (\ref{im:boolean_ring_z_3}).
 \end{example}
 
 \begin{figure}[h]
@@ -938,7 +941,7 @@ Najbolj enostaven Boolovega kolobarja je kar kolobar $\mathbb{Z}_{2}$ z operacij
   \end{figure} 
 
 \begin{theorem}
-Boolov kolobar ima karakteristiko $2$ in je komutativen.
+Booleov kolobar ima karakteristiko $2$ in je komutativen.
 \end{theorem}
 \begin{proof}
 Vemo, da velja 
@@ -952,7 +955,7 @@ $$ (a + b)^2 = (a + b) $$
 $$ a^2 + ab + ba + b^2 = a + b $$
 Nato pa sledi $ab = - ba$. Zaradi karakteristike $2$ pa sledi $ab = ba$.
 \end{proof}
-Pokažimo sedaj, da lahko iz boolovega kolobarja pridemo do mreže. V ta namen definirajmo operaciji supremum in infinum in pokažimo, da zadoščata aksimom mreže.
+Pokažimo sedaj, da lahko iz Booleovega kolobarja pridemo do mreže. V ta namen definirajmo operaciji supremum in infinum in pokažimo, da zadoščata aksimom mreže.
 $$ a \lor b = a + b + ab $$
 $$ a \land b = ab $$
 \begin{enumerate}
@@ -963,61 +966,61 @@ $$ a \land a = aa = a $$
 $$ (a \lor b) \lor c = (a + b + ab) \lor c = a + b + c + ab + ac + bc + abc $$
 $$ a \lor (b \lor c)  = a \lor (b + c + bc) = a + b + c + ab + ac + bc + abc$$
 $$ (a \land b) \land c = (ab)c = a(bc) = a \land (b \land c)$$
-\item(Absorpcija)
+\item(Absorbcija)
 $$ a \land (a \lor b) = a \land (a + b + ab) = a^2 + ab + ab = a$$
 $$ a \lor (a \land b) = a \lor ab = a + ab + a^2b = a $$
 \end{enumerate}
-S tem smo pokazali, da je boolov kolobar z operacijama supremum in infinum kot smo ju definirali, zgoraj mreža.
+S tem smo pokazali, da je Booleov kolobar z operacijama supremum in infinum kot smo ju definirali, zgoraj mreža.
 
-Za boolove kolobarje pa velja še celo več. Velja namreč, da je ta mreža distributivna. To najlaže pokažemo kar z direktnim računom.
+Za Booleove kolobarje pa velja še celo več. Velja namreč, da je ta mreža distributivna. To najlaže pokažemo kar z direktnim računom.
 $$ a \land (b \lor c) = a \land (b + c + bc) = ab + ac + abc $$
 $$ (a \land b) \lor (a \land c) = ab \lor ac = ab + ac + abc $$
-V boolovem kolobarju ničelni element sovpada z minimalnim elementom mreže. Prav tako tudi element $1$.
+V Booleovem kolobarju ničelni element sovpada z minimalnim elementom mreže. Prav tako tudi element $1$.
 $$ a \land 0 = a  0 = 0 $$ $$ a \lor 0 = a + 0 + a0 = a $$ 
 $$ a \land 1 = 1a = a $$ $$ a \lor 1 = a + 1 + a = 1 $$
 
-\subsection{Lastnosti in primeri boolovih kolobarjev}
+\subsection{Lastnosti in primeri Booleovih kolobarjev}
 
-Ugotovili smo že da je poljubno kopij $\mathbb{Z}_2$ Boolov kolobar, če pa si pobližje pogledamo sliko (\ref{im:boolean_ring_z_3}) in sliko (\ref{im:divisors_of_30_hasse_diagram}) vidimo da sta si izomorfni, zanima nas ali bi lahko to kako posplošili.
+Ugotovili smo že da je poljubno kopij $\mathbb{Z}_2$ Booleov kolobar, če pa si pobližje pogledamo sliko (\ref{im:boolean_ring_z_3}) in sliko (\ref{im:divisors_of_30_hasse_diagram}) vidimo da sta si izomorfni. Zanima nas, ali bi lahko to kako posplošili.
 
 \begin{statement}
-Boolov kolobar moči $2^n$ je izomorfen mreži vseh deliteljev naravnega števila $m$, ki ima $n$ različnih praštevilskih deliteljev, ne deli pa ga kvadrat kakega praštevila.
+Booleov kolobar moči $2^n$ je izomorfen mreži vseh deliteljev naravnega števila $m$, ki ima $n$ različnih praštevilskih deliteljev, ne deli pa ga kvadrat kakega praštevila.
 \end{statement}
 
 \begin{proof}
-(Zgolj skica) naj bo $m = p_1p_2 \dots p_n$, potem je vsak delitelj števila $m$ oblike $k = p_1^{i_1}p_2^{i_2} \dots p_n^{i_n}$, kjer $i \in \{0,1\}$. Izomorfizem bo potem kar $\varphi(p_1^{i_1}p_2^{i_2} \dots p_n^{i_n}) = (i_1, i_2, \dots, i_n)$, ki je očitno bijektiven, to da pa ohranja red v obeh smereh pa preprosto preverimo z računom.
+(Zgolj skica) naj bo $m = p_1p_2 \dots p_n$, potem je vsak delitelj števila $m$ oblike $k = p_1^{i_1}p_2^{i_2} \dots p_n^{i_n}$, kjer $i \in \{0,1\}$. Pripdajoč izomorfizem bo potem kar $\varphi(p_1^{i_1}p_2^{i_2} \dots p_n^{i_n} ) = (i_1, i_2, \dots, i_n)$, ki je očitno bijektiven, to da pa ohranja red v obeh smereh pa preprosto preverimo z računom.
 \end{proof}
 
 \begin{remark}
-Da se pokazati tudi, da sta dva Boolova kolobarja izomorfna natanko tedaj, ko imata enako število elementov ter da imajo Boolovi kolobarji $2^n$ elementov za neko naravno število $n$.
+Da se pokazati tudi, da sta dva Booleova kolobarja izomorfna natanko tedaj, ko imata enako število elementov ter da imajo Booleovi kolobarji $2^n$ elementov za neko naravno število $n$.
 \end{remark}
 \\
 \\
-Če bi hassejev diagram Boolovega kolobarja iz $n$ kopij narisali kot graf v prostoru $\mathbb{R}^n$, kjer bi se koordinate vozlišč diagrama skladale bi dobili ravno $n$-dimenzionalni graf hiperkocke. To preprosto vidimo tako, da je vsak element v diagramu povezan zgolj z tistimi elementi, ki imajo različno natanko eno koordinato, to lepo vidimo na sliki (\ref{im:boolean_ring_z_3}) in sliki (\ref{im:boolean_ring_hasse_diagram}).
+Če bi Hassejev diagram Booleovega kolobarja iz $n$ kopij narisali kot graf v prostoru $\mathbb{R}^n$, kjer bi se koordinate vozlišč diagrama skladale bi dobili ravno $n$-dimenzionalni graf hiperkocke. To preprosto vidimo tako, da je vsak element v diagramu povezan zgolj z tistimi elementi, ki imajo različno natanko eno koordinato, to lepo vidimo na sliki (\ref{im:boolean_ring_z_3}) in sliki (\ref{im:boolean_ring_hasse_diagram}).
 \begin{figure}[h]
 \begin{subfigure}[b]{0.5\textwidth}
 \centering
 \includegraphics[width=0.48\textwidth, height=4cm]{bool1}
-\caption{Boolov kolobar $\mathbb{Z}_2$}
+\caption{Booleov kolobar $\mathbb{Z}_2$}
 \end{subfigure}
 \hfill
 \begin{subfigure}[b]{0.5\textwidth}
 \centering
 \includegraphics[width=0.48\textwidth, height=4cm]{bool2}
-\caption{Boolov kolobar $\mathbb{Z}_2 \oplus \mathbb{Z}_2$}
+\caption{Booleov kolobar $\mathbb{Z}_2 \oplus \mathbb{Z}_2$}
 \end{subfigure}
 \begin{subfigure}[b]{0.5\textwidth}
 \centering
 \includegraphics[width=0.48\textwidth, height=4cm]{bool3}
-\caption{Boolov kolobar $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$}
+\caption{Booleov kolobar $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$}
 \end{subfigure}
 \hfill
 \begin{subfigure}[b]{0.5\textwidth}
 \centering
 \includegraphics[width=0.48\textwidth, height=4cm]{bool4}
-\caption{Boolov kolobar $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$}
+\caption{Booleov kolobar $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$}
 \end{subfigure}
-\caption{Primeri Boolovih kolboarjev}
+\caption{Primeri Booleovih kolboarjev}
 \label{im:boolean_ring_hasse_diagram}
 \end{figure}
 
@@ -1039,7 +1042,7 @@ Da se pokazati tudi, da sta dva Boolova kolobarja izomorfna natanko tedaj, ko im
 
 \section*{Opomba o avtorstvu}
 Kot je bilo dogovorjeno je bil seminar sestavljen iz dveh delov.\\
-Filip Koprivec je spisal poglavja: Uvod (\ref{sec:uvod}), Osnovni primeri mrež (\ref{sec:osnovni_primeri}), Podmreže, enote in komplementarne mreže (\ref{sec:podmreze_enote_komplementarne}) in Boolovi kolobarji (\ref{sec:boolovi_kolobarji}).\\
+Filip Koprivec je spisal poglavja: Uvod (\ref{sec:uvod}), Osnovni primeri mrež (\ref{sec:osnovni_primeri}), Podmreže, enote in komplementarne mreže (\ref{sec:podmreze_enote_komplementarne}) in Booleovi kolobarji (\ref{sec:boolovi_kolobarji}).\\
 Samo Kralj se spisal poglavja: Zakoni v mrežah (\ref{sec:zakoni_v_mrezah}), Homomorfizmi mrež (\ref{sec:homomorfizmi_mrez}), Distributivne mreže (\ref{sec:distributivne_mreze}) in Modulske mreže (\ref{sec:modulske_mreze}).
 
 \end{document}
