@@ -135,11 +135,11 @@ Naj bo $\mathcal{L}$ množica, relacija $\leq$ je \textbf{(šibka) delna urejeno
 \item antisimetrična ($a \leq b \land b \leq a \implies a = b$)
 \item tranzitivna ($a \leq b \land b \leq c \implies a \leq c$)
 \end{itemize}
-Pišemo $a$ je manjši ali enak $b$, občasno tudi $a$ je pod $b$.
+Govorimo $a$ je manjši ali enak $b$, občasno tudi $a$ je pod $b$.
 \end{definition}
 
 \begin{remark}
-Zgolj iz preprostosti definiramo še drugo relacijo $a \geq b \iff b \leq a$, ki je očitno tudi delna urejenost.
+Za lažje izražanje definiramo še drugo relacijo $a \geq b \iff b \leq a$, ki je očitno tudi delna urejenost.
 \end{remark}
 \\
 \\
@@ -156,11 +156,14 @@ Tipičen primer delne urejenosti je kar sama motivacija za vpeljavo relacije. Vz
 Relacija deljivosti ($\mid$) na množici $\mathbb{N}$ je delna urejenost.
 \end{statement}
 \begin{proof}
-Preverili bomo da ta relacija zadošča vsem zahtevam. Spomnimo se, da $a$ deli $b$ natanko tedaj, kadar obstaja tako celo število $k$, da zadosti enakosti $b = ka$, oziroma $a \mid b \iff \exists k \in \mathbb{Z}. \ b = ka$.
+Preverili bomo da ta relacija zadošča vsem zahtevam. Spomnimo se, da $a$ deli $b$ natanko tedaj, kadar obstaja tako celo število $k$, da zadosti enakosti $b = ka$, oziroma 
+$$ a \mid b \iff \exists k \in \mathbb{Z}. \ b = ka.$$
 \begin{itemize}
-\item Refleksivnost: $a = 1*a$, torej $a \mid a$
-\item Antisimetričnost: $a \mid b \implies b = k_1a$, $b \mid a \implies a = k_2b$, vstavimo $a$ v prvo enakost in dobimo $b = k_1k_2 b$, torej $k_1 = k_2^{-1}$, torej $k_1 = k_2 = 1$ in dobimo $b = a$
-\item Tranzitivnost: $a \mid b \land b \mid c \implies a \mid c$, vemo torej $b = k_1a$ in $c = k_2b$, vstavimo prvo enakost v drugo in dobimo $c = \underbrace{k_2k_1}_{\in \mathbb{Z}}a$ torej $a \mid c$.
+\item Refleksivnost: $a = 1*a$, torej $a \mid a$.
+\item Antisimetričnost:
+$$a \mid b \implies b = k_1a, \quad b \mid a \implies a = k_2b$$
+ vstavimo $a$ v prvo enakost in dobimo $b = k_1k_2 b$, torej $k_1 = k_2^{-1}$, torej $k_1 = k_2 = 1$ in dobimo $b = a$.
+\item Tranzitivnost: $$a \mid b \land b \mid c \implies a \mid c,$$ vemo torej $b = k_1a$ in $c = k_2b$, vstavimo prvo enakost v drugo in dobimo $c = \underbrace{k_2k_1}_{\in \mathbb{Z}}a$ torej $a \mid c$.
 \end{itemize}
 \end{proof}
 
@@ -169,21 +172,18 @@ Preprosto preverimo, da je za poljubno množico $\mathcal{A}$, relacija $\subset
 \end{remark}
 
 \begin{definition}
-Množica $\mathcal{L}$ je \textbf{linearno urejena}, če za poljubna $x,y$ velja $x \leq y$ ali  $y \leq x$ 
+Množica $\mathcal{L}$ je \textbf{linearno urejena}, če za poljubna $x,y$ velja $x \leq y$ ali  $y \leq x$. 
 \end{definition}
 
 \begin{example}
-Množica $\mathbb{N}$ z urejenostjo $\leq$ je linearno urejena, saj za poljubna $x$ in $y$ velja $x \leq y \lor y \leq x$, če pa velja $x=y$, potem pa sta pravilna celo oba dela izjave. Množica $\mathbb{N}$ urejena glede na relacijo deljivosti pa \textbf{ni} linearno urejena, saj za recimo dve poljubni praštevilo velja $p_1 \nmid p_2 \land p_2 \nmid p_1$.
+Množica $\mathbb{N}$ z urejenostjo $\leq$ je linearno urejena, saj za poljubna $x$ in $y$ velja $$x \leq y \lor y \leq x,$$ če pa velja $x=y$, potem pa sta pravilna celo oba dela izjave. Množica $\mathbb{N}$ urejena glede na relacijo deljivosti pa \textbf{ni} linearno urejena, saj za recimo dve poljubni praštevilo velja $$p_1 \nmid p_2 \land p_2 \nmid p_1.$$
 \end{example}
 \\
-\begin{remark}
-Pridstavitem linearno urejenih množic s Hassejevim diagramom nas spominja na premico, od torej tudi izraz. To je lepo vidno na sliki (\ref{im:natural_numbers_hasse_example}).
-\end{remark}
+Za lažjo predstavo mrež si lahko pomagamo s Hassejevimi diagrami. V primeru, ko je naša množica linearno urejena, nas Hassejev diagram spominja na premico in od tod sledi tudi izraz linearna urejenost.
 \\
-Za lepšo predstavo splošnih linearnih urejenih diagramov si pomagamo s Hassejevim diagramom, ki s pomočjo povezav med točkami prikaže relacije med njimi.
 
 \begin{definition}
-Naj bo $\mathcal{L}$ delno urejena množica glede na neko relacijo, ki o označimo z $\leq$. Hassejev diagram je graf, katerega točke so elementi $\mathcal{L}$, med točkama $x$ in $y$ pa je povazava natnko tedaj, kadar velja: $$ x \leq y \land \nexists z \in \mathcal{L}. \ x \leq z \leq y$$
+Naj bo $\mathcal{L}$ delno urejena množica glede na neko relacijo, ki jo označimo z $\leq$. Hassejev diagram je graf, katerega točke so elementi $\mathcal{L}$, med točkama $x$ in $y$ pa je povezava natanko tedaj, kadar velja: $$ x \leq y \land \nexists z \in \mathcal{L}. \ x \leq z \leq y$$
 \end{definition}
 
 \begin{figure}[h]
@@ -250,17 +250,17 @@ Naj bo $\mathcal{L}$ delno urejena množica glede na neko relacijo, ki o označi
 
 
 \begin{definition}
-$S$ je \textbf{supremum} $x$ in $y$, če velja: 
+Element $S$ je \textbf{supremum} elementov $x$ in $y$, če velja: 
 \begin{itemize}
 \item $S \geq x \land S \geq y$ (Zgornja meja)
 \item $\forall S' \in \mathcal{L} \implies (S' \geq x \land S' \geq y \implies S \leq S')$ (Je najmanjša zgornja meja)
 \end{itemize}
-Torej je $S$ natačna zgornja meja $x$ in $y$, če je njuna zgornja meja, hkrati pa je vsaka od $S$ različna zgornja meja večja ali enaka $S$. Označimo: $S = x \lor y$. 
+Torej je $S$ natančna zgornja meja $x$ in $y$, če je njuna zgornja meja, hkrati pa je vsaka od $S$ različna zgornja meja večja ali enaka $S$. Označimo: $S = x \lor y$. 
 \end{definition}
 
 
 \begin{definition}
-$s$ je \textbf{infimum} $x$ in $y$, če velja: 
+Element $s$ je \textbf{infimum} elementov $x$ in $y$, če velja: 
 \begin{itemize}
 \item $s \leq x \land s \leq y$ (Spodnja meja)
 \item $\forall s' \in \mathcal{L} \implies (s' \leq x \land s' \leq y \implies s' \leq s)$ (Je največja spodnja meja)
@@ -281,7 +281,7 @@ Za množico $\mathbb{N}$, ki je urejena glede na relacijo deljivosti in poljubni
 \end{example_case}
 \end{example}
 
-\subsection{Definicja mreže}
+\subsection{Definicija mreže}
 
 \begin{definition}
 Množica $\mathcal{L}$ je \textbf{mreža}, če za poljuben par $x,y$ v $\mathcal{L}$ obstajata infimum in supremum.
@@ -302,12 +302,13 @@ Poljubna končna mreža je tudi polna mreža. Preprosto za infumum in supremum v
 \section{Osnovni primeri mrež}
 \label{sec:osnovni_primeri}
 
-Od prej se spomnimo, je poljubna podmnožica $\mathbb{R}$, urejena glede na relacijo $\leq$ mreža. Za poljubni števili $x,y$ velja: $x \lor y = max\{x,y\}$ in $x \land y = min\{x,y\}$, seveda pa sta tako infimum kot supremum v mreži. Opazimo, da so te množice vedno liearno urejene.
+Od prej vemo, da je poljubna podmonožica $\mathbb{R}$, urejena glede na relacijo $\leq$ mreža.
+Za poljubni števili $x,y$ velja: $x \lor y = max\{x,y\}$ in $x \land y = min\{x,y\}$, seveda pa sta tako infimum kot supremum v mreži. Opazimo, da so te množice vedno linearno urejene.
 \\\\
-Množica naravnih števil pa nam poleg urejenosti z $\leq$ omogoča tudi ureditev z $\mid$. V tem primeru dobimo Hassejev diagram iz slike (\ref{im:natural_nubmers_divisibility_hasse_example}). Ta množica nima liearne ureditve, opazimo, pa da elementa $0$ in $1$ na nek način zaključujeta mrežo, saj so vsa naravna števila pod $0$ (delijo $0$), hkrati pa $1$ deli vsa ostala naravna števila. S slike tudi lepo opazimo, da s v prvem nivoju urejenosti samo preštevila, v drugem nivoju urejenosti števila z natančno dvema deliteljema in v $n$-tem, nivoju ptevila z $n$ delitelji.
+Množica naravnih števil pa nam poleg urejenosti z $\leq$ omogoča tudi ureditev z $\mid$. V tem primeru dobimo Hassejev diagram iz slike (\ref{im:natural_nubmers_divisibility_hasse_example}). Ta množica nima linearne ureditve. Opazimo pa, da elementa $0$ in $1$ na nek način zaključujeta mrežo, saj so vsa naravna števila pod $0$ (delijo $0$), hkrati pa $1$ deli vsa ostala naravna števila. S slike tudi lepo opazimo, da so v prvem nivoju urejenosti samo praštevila, v drugem nivoju urejenosti števila z natančno dvema deliteljema in v $n$-tem nivoju praštevila z $n$ delitelji.
 \\\\
 \begin{remark}
-Če v naravna števila vključimo tudi $0$, potem formula za supremum in infimum glede na najmanjše skupne večkratnike in največje skupne delitelje ne deluje več kadar je eden izmed argumentov $0$.
+Če v naravna števila vključimo tudi $0$, potem formula za supremum in infimum glede na najmanjše skupne večkratnike in največje skupne delitelje ne deluje več, kadar je eden izmed argumentov $0$.
 \end{remark}
 
 \begin{figure}
@@ -334,7 +335,7 @@ Množica naravnih števil pa nam poleg urejenosti z $\leq$ omogoča tudi uredite
 \label{im:divisors_of_30_hasse_diagram}
 \end{figure}
 
-Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega števila. To lepo vidmo na sliki (\ref{im:divisors_of_30_hasse_diagram}).
+Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega števila. To lepo vidimo na sliki (\ref{im:divisors_of_30_hasse_diagram}).
 
 Delno urejene množice lahko predstavimo zgolj s Hassejevim diagramom. Poglejmo si nekaj množic, ki niso mreže in razložimo zakaj ne.
 
@@ -470,17 +471,13 @@ Za poljubno mrežo $\mathcal{L}$ in poljubne $x,y,z \in \mathcal{L}$ veljajo nas
 \begin{proof}\leavevmode
 \begin{itemize}
 \item Idempotentnost: Zaradi relfeksivnosti velja $x \leq x$ in je torej tako zgornja kot spodnja meja $x, x$, prav tako pa so vse ostale spodnje ali zgornje meje manjše ali večje od $x$.
-\item Komutativnost: Preprosto sledi iz definicije, saj je meja neodvisna od vrstnega reda elementov
+\item Komutativnost: Preprosto sledi iz definicije, saj je meja neodvisna od vrstnega reda elementov.
 \item Asociativnost: Preverimo za $\lor$: \\
-Naj bo $a = (x \lor y) \lor z$ in $b = x \lor (y \lor z)$ \\ 
-Iz definicje ali sledi $a \geq z$ in $a \geq (x \lor y)$ in torej $a \geq x, a \geq y$ \\ 
-Potem velja tudi $a \geq (y \lor z)$ in $a \geq x \lor (y \lor z)$ torej $a \geq b$\\ 
-Podobno postopamo za nasprotno stran in tako dobimo $b \geq a$, ker pa je zaradi antisimetričnosti relacije mogoče zgolj, kadar velja $a=b$\\
-Na analogen način preverimo tudi za $\land$, samo da $a$ in $b$ omejimo navzgor.
-\item Absorbcija: Preverimo za $x \land (x \lor y) = x$:\\
-Iz definicije $\lor$ vemo $x \leq (x \lor y)$ in $x \leq x$ torej $x \leq x \land (x \lor y)$\\ 
-Iz definicije $\land$ pa sledi $x \geq x \land (x \lor y)$\\
-Torej $x \leq x \land (x \lor y)$ in $x \geq x \land (x \lor y)$, dobimo $x = x \land (x \lor y)$\\
+Naj bo $a = (x \lor y) \lor z$ in $b = x \lor (y \lor z)$. Iz definicje ali sledi $a \geq z$ in $a \geq (x \lor y)$ in torej $a \geq x, a \geq y$. Potem velja tudi $a \geq (y \lor z)$ in $a \geq x \lor (y \lor z)$ torej $a \geq b$. 
+Podobno postopamo za nasprotno stran in tako dobimo $b \geq a$. Od tod pa zaradi antisimetričnosti relacije velja $a=b$.\\
+Na analogen način preverimo tudi za $\land$, le da $a$ in $b$ omejimo navzgor.
+\item Absorbcija: Preverimo za $x \land (x \lor y) = x$. Iz definicije $\lor$ vemo $x \leq (x \lor y)$ in $x \leq x$, torej $x \leq x \land (x \lor y)$. Iz definicije $\land$ pa sledi $x \geq x \land (x \lor y)$.
+Torej $x \leq x \land (x \lor y)$ in $x \geq x \land (x \lor y)$, dobimo $x = x \land (x \lor y)$.\\
 Drugo enakost preverimo analogno.
 \end{itemize}
 \end{proof}
@@ -489,23 +486,24 @@ Pomembno ugotovitev pa nam prinaša naslednji izrek, ki nam pove, da sta si ta d
 \\
 \\
 \begin{theorem}
-Če imamo množico $\mathcal{L}$, za katero sta definirani operaciji $\lor, \land$ in če za te dve operacji veljajo zgornji zakoni(idempotentnost, komutativost, asociativnost, absorbcija), potem je ta množica mreža.
+Če imamo množico $\mathcal{L}$, za katero sta definirani operaciji $\lor, \land$ in če za ti dve operacji veljajo zgornji zakoni (idempotentnost, komutativost, asociativnost, absorbcija), potem je ta množica mreža.
 \end{theorem}
 
 \begin{proof}
 Najprej si s pomočjo supremuma in infimuma definirajo relacijo delne urejenosti.\\
 Definiramo: $x \leq y \iff x \land y = x$ in preverimo, da to ustreza zahtevam delne urejenosti:
 \begin{itemize}
-\item Refleksivnost: $x \land x = x \implies x \leq x$
-\item Antisimetričnost: $x \leq y$ in $y \leq x$, torej $x \land y = x$ in $y \land x = y$, uporabimo komutativnost in dobimo $x = y$
-\item Tranzitivnost: $x \leq y$ in $y \leq z$ torej velja $x = x \land y$ in $y = y \land z$ \\ Namesto $y$ uporabimo $y \land z$ in dobimo $x = x \land (y \land z) = (x \land y) \land z = x \land z$ torej  $x \leq z$\\
-Da ustreza relaciji na mreži moramo preveriti še da velja: $x \land y = x \iff x \lor y = y$:\\ 
-Uporabimo zadnji zakon in dobimo $x \lor y = (x \lor y) \land y = y$, v drugo smer pa postopamo identično.
+\item Refleksivnost: $x \land x = x \implies x \leq x$.
+\item Antisimetričnost: $x \leq y$ in $y \leq x$, torej $x \land y = x$ in $y \land x = y$, uporabimo komutativnost in dobimo $x = y$.
+\item Tranzitivnost: $x \leq y$ in $y \leq z$ torej velja $x = x \land y$ in $y = y \land z$.  Namesto $y$ uporabimo $y \land z$ in dobimo $$x = x \land (y \land z) = (x \land y) \land z = x \land z$$ torej  $x \leq z$.\\
 \end{itemize}
+Da ustreza relaciji na mreži moramo preveriti še da velja: $$x \land y = x \iff x \lor y = y.$$\\ 
+Uporabimo zadnji zakon in dobimo $x \lor y = (x \lor y) \land y = y$, v drugo smer pa postopamo identično.
 
-Da pa bo množica skupaj s to operacijo mreža, moramo še preveriti obstoj supremuma in infimuma za poljubna dva elementa. \\
+
+Da pa bo množica skupaj s to operacijo mreža, moramo preveriti še obstoj supremuma in infimuma za poljubna dva elementa. \\
 Za supremum se ponuja $x \lor y$. Vemo, da je $x \lor y \geq x$, $x \lor y \geq y$ po definicji relacije $\leq$. Preverimo, še da je to natančna zgornja meja. Naj bo $z$ neka druga zgornja meja, velja torej $z \lor x = z \lor y = z$. Potem velja $(x \lor y) \lor z = x \lor (y \lor z) = z$, kar pomeni da $x \lor y \leq z$ in je torej natančna zgornja meja.\\
-Analogno dokažemo, da je infimum $x \land y$. 
+Analogno dokažemo, da je infimum $x$ in $y$ element $x \land y$. 
 
 \end{proof}
 
@@ -515,9 +513,9 @@ Analogno dokažemo, da je infimum $x \land y$.
 \subsection{Podmreže}
 
 Prej smo že podali primer, da je množica $\mathbb{N}$ z relacijo $\mid$ mreža, prav tako pa je mreža tudi množica vseh deliteljev števila $30$ urejena glede na enako relacijo. Naravno nas zanima, ali lahko podobno kot pri drugih algebraičnih strukturah tudi pri mrežah najdemo podstrukture, ki bi ustrezale našim pričakovanjem.
-
+\newpage
 \begin{definition}
-Neprazna množica $\mathcal{M} \subseteq \mathcal{L}$ je \textbf{podmreža}, če je tudi sama mreža za isti operaciji in se na njih ujema. Povedano drugače $\forall x,y \in \mathcal{M}. \ x \lor y \in \mathcal{M}$ in $x \land y \in \mathcal{M}$.
+Neprazna množica $\mathcal{M} \subseteq \mathcal{L}$ je \textbf{podmreža}, če je tudi sama mreža za isti operaciji in se na njih ujema. Povedano drugače $$\forall x,y \in \mathcal{M}. \ x \lor y \in \mathcal{M}, \  x \land y \in \mathcal{M}.$$
 \end{definition}
 
 \begin{example}
