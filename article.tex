@@ -334,10 +334,9 @@ Množica naravnih števil pa nam poleg urejenosti z $\leq$ omogoča tudi uredite
 \caption{Mreža deliteljev števila $30$ urejena glede na relacijo deljivosti}
 \label{im:divisors_of_30_hasse_diagram}
 \end{figure}
+\leavevmode
 
-Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega števila. To lepo vidimo na sliki (\ref{im:divisors_of_30_hasse_diagram}).
-
-Delno urejene množice lahko predstavimo zgolj s Hassejevim diagramom. Poglejmo si nekaj množic, ki niso mreže in razložimo zakaj ne.
+Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega števila. To lepo vidimo na sliki (\ref{im:divisors_of_30_hasse_diagram}). Delno urejene množice si lahko predstavimo tudi zgolj s Hassejevim diagramom. Poglejmo si nekaj množic, ki niso mreže in razložimo zakaj ne.
 
 \begin{figure}[h]
   \begin{subfigure}[h]{0.3\textwidth}
@@ -391,9 +390,7 @@ Delno urejene množice lahko predstavimo zgolj s Hassejevim diagramom. Poglejmo 
 \label{im:not_lattice_example}
   \end{figure}
 
-Če si pogledamo sliko (\ref{im:not_lattice_example}) lahko hitro vidimo, zakaj te množici nista mreži. Množica na sliki (\ref{im:not_lattice_1}) ni mreža, saj elementa $c$ in $f$ nimata natančno določenega supremuma. Vidimo, da bi to lahko bila tako element $e$ kot tudi element $b$, vendar pa ju med samo ne moremo primerjati. Množica na sliki (\ref{im:not_lattice_1}) zato ni mreža. Bi pa postala mreža, če bi odstranili povezamo med $c$ in $e$.
-\\\\
-Če pa pogledamo sliko (\ref{im:not_lattice_2}) vidimo, da je problematičen element $f$. Tako recimo elementa $c \lor f = a$, medtem, ko je $c \land f$ nedoločen in zato množica ni mreža, bi pa to postala, če bi iz nje odstranili element $f$ in tako dobili mrežo vseh deliteljev števila $12$. 
+Če si pogledamo sliko (\ref{im:not_lattice_example}) lahko hitro vidimo, zakaj te množici nista mreži. Množica na sliki (\ref{im:not_lattice_1}) ni mreža, saj elementa $c$ in $f$ nimata natančno določenega supremuma. Vidimo, da bi to lahko bila tako element $e$ kot tudi element $b$, vendar pa ju med samo ne moremo primerjati. Množica na sliki (\ref{im:not_lattice_1}) zato ni mreža. Bi pa postala mreža, če bi odstranili povezamo med $c$ in $e$. Če pa pogledamo sliko (\ref{im:not_lattice_2}) vidimo, da je problematičen element $f$. Tako recimo elementa $c \lor f = a$, medtem, ko je $c \land f$ nedoločen in zato množica ni mreža, bi pa to postala, če bi iz nje odstranili element $f$ in tako dobili mrežo vseh deliteljev števila $12$. 
 \\\\
 \begin{figure}
 \centering
@@ -442,12 +439,8 @@ Delno urejene množice lahko predstavimo zgolj s Hassejevim diagramom. Poglejmo 
 \label{im:hasse_diagram_natural_subset}
 \end{figure}
 
-Pomemben primer mreže je tudi potenčna množica poljubne množice urejena glede na relacijo inkluzije ($\subseteq$), to lepo vidimo na sliki (\ref{im:hasse_diagram_natural_subset}). Da se prepričamo, da je ta množica mreža, preprosto preverimo supremume in infimume. 
+Pomemben primer mreže je tudi potenčna množica poljubne množice urejena glede na relacijo inkluzije ($\subseteq$), to lepo vidimo na sliki (\ref{im:hasse_diagram_natural_subset}). Da se prepričamo, da je ta množica mreža, preprosto preverimo supremume in infimume. Vidimo, da velja $x \lor y = x \cup y$ in $x \land y = x \cap y$, kar nam pojasni, zakaj se občasno za označevanje supremuma in infimuma uporablja oznaki $\cap, \cup$, saj naravno sledita iz potenčne množice kot mreže. Takoj opazimo, da je tako kot mreža $(\mathbb{N}, \mid)$ tudi ta mreža omejena, saj je $\{\}$ pod vsemi ostalimi, $\mathbb{N}$ pa nad vsemi. Prav tako pa vidimo da v $n$ tem nivoju nastopajo vse možne $n$-elementne podmnožice začetne množice.
 
-Vidimo, da velja $x \lor y = x \cup y$ in $x \land y = x \cap y$, kar nam pojasni, zakaj se občasno za označevanje supremuma in infimuma uporablja oznaki $\cap, \cup$, saj naravno sledita iz potenčne množice kot mreže.
-
-Takoj opazimo, da je tako kot mreža $(\mathbb{N}, \mid)$ tudi ta mreža omejena, saj je $\{\}$ pod vsemi ostalimi, $\mathbb{N}$ pa nad vsemi. Prav tako pa vidimo da v $n$ tem nivoju nastopajo vse možne $n$-elementne podmnožice začetne množice.
-\\\\
 \begin{remark}
 Če bi za mrežo vzeli potenčno množico kakšne končne množice bi lahko s pomočjo kombinatorike lepo prešteli število množic v posameznem nivoju. Tako je za množico moči $n$ v $k$-tem nivoju $\binom {n}{k}$ elementov. Seštevek množic po vseh nivojih pa ravno $2^n$, torej ravno moč potenčne množice.
 \end{remark}
@@ -770,8 +763,7 @@ V mreži deliteljev števila $30$ urejeni glede na deljivost velja, da je komple
 \end{figure}
 
 Če si pogledamo zgornji mreži na sliki (\ref{im:isomorph_lattices}) opazimo, da se zdita zelo podobni. Tako kot pri vseh algebrskih strukturah tudi tukaj definiramo pojem homomorfizma, s pomočjo katerega bomo lahko podobne objekte med seboj "enačili".
-\newline
-\newline
+
 \begin{definition}
 Naj bosta $L_{1}$ in $L_{2}$ mreži. Funkcija $f$ : $L_{1}$ $\rightarrow$ $L_{2}$ je homomorfizem, če velja:
 $$f(a\land b) = f(a) \land f(b) $$
@@ -953,7 +945,7 @@ $$ (a + b)^2 = (a + b) $$
 $$ a^2 + ab + ba + b^2 = a + b $$
 Nato pa sledi $ab = - ba$. Zaradi karakteristike $2$ pa sledi $ab = ba$.
 \end{proof}
-Pokažimo sedaj, da lahko iz Booleovega kolobarja pridemo do mreže. V ta namen definirajmo operaciji supremum in infinum in pokažimo, da zadoščata aksimom mreže.
+Pokažimo sedaj, da lahko iz Booleovega kolobarja pridemo do mreže. V ta namen definirajmo operaciji supremum in infinum in pokažimo, da zadoščata aksimom mreže (idempotentnost, komutaticnost, asociativnost, absorbcija).
 $$ a \lor b = a + b + ab $$
 $$ a \land b = ab $$
 \begin{enumerate}
@@ -995,6 +987,8 @@ Da se pokazati tudi, da sta dva Booleova kolobarja izomorfna natanko tedaj, ko i
 \\
 \\
 Če bi Hassejev diagram Booleovega kolobarja iz $n$ kopij narisali kot graf v prostoru $\mathbb{R}^n$, kjer bi se koordinate vozlišč diagrama skladale bi dobili ravno $n$-dimenzionalni graf hiperkocke. To preprosto vidimo tako, da je vsak element v diagramu povezan zgolj z tistimi elementi, ki imajo različno natanko eno koordinato, to lepo vidimo na sliki (\ref{im:boolean_ring_z_3}) in sliki (\ref{im:boolean_ring_hasse_diagram}).
+
+
 \begin{figure}[h]
 \begin{subfigure}[b]{0.5\textwidth}
 \centering
@@ -1021,7 +1015,7 @@ Da se pokazati tudi, da sta dva Booleova kolobarja izomorfna natanko tedaj, ko i
 \caption{Primeri Booleovih kolboarjev}
 \label{im:boolean_ring_hasse_diagram}
 \end{figure}
-
+\clearpage
 \pagebreak
 \section{Literatura}
 \begin{itemize}
