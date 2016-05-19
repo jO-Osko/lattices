@@ -336,7 +336,7 @@ Množica naravnih števil pa nam poleg urejenosti z $\leq$ omogoča tudi uredite
 \end{figure}
 \leavevmode
 
-Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega števila. To lepo vidimo na sliki (\ref{im:divisors_of_30_hasse_diagram}). Delno urejene množice si lahko predstavimo tudi zgolj s Hassejevim diagramom. Poglejmo si nekaj množic, ki niso mreže in razložimo zakaj ne.
+Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega števila. To lepo vidimo na sliki (\ref{im:divisors_of_30_hasse_diagram}). Delno urejene množice si lahko predstavimo tudi zgolj s Hassejevim diagramom. Poglejmo si nekaj množic, ki niso mreže in razložimo zakaj ne. Če si pogledamo sliko (\ref{im:not_lattice_example}) lahko hitro vidimo, zakaj te množici nista mreži. Množica na sliki (\ref{im:not_lattice_1}) ni mreža, saj elementa $c$ in $f$ nimata natančno določenega supremuma. Vidimo, da bi to lahko bila tako element $e$ kot tudi element $b$, vendar pa ju med samo ne moremo primerjati. Množica na sliki (\ref{im:not_lattice_1}) zato ni mreža. Bi pa postala mreža, če bi odstranili povezamo med $c$ in $e$. Če pa pogledamo sliko (\ref{im:not_lattice_2}) vidimo, da je problematičen element $f$. Tako recimo elementa $c \lor f = a$, medtem, ko je $c \land f$ nedoločen in zato množica ni mreža, bi pa to postala, če bi iz nje odstranili element $f$ in tako dobili mrežo vseh deliteljev števila $12$. 
 
 \begin{figure}[h]
   \begin{subfigure}[h]{0.3\textwidth}
@@ -390,8 +390,6 @@ Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega š
 \label{im:not_lattice_example}
   \end{figure}
 
-Če si pogledamo sliko (\ref{im:not_lattice_example}) lahko hitro vidimo, zakaj te množici nista mreži. Množica na sliki (\ref{im:not_lattice_1}) ni mreža, saj elementa $c$ in $f$ nimata natančno določenega supremuma. Vidimo, da bi to lahko bila tako element $e$ kot tudi element $b$, vendar pa ju med samo ne moremo primerjati. Množica na sliki (\ref{im:not_lattice_1}) zato ni mreža. Bi pa postala mreža, če bi odstranili povezamo med $c$ in $e$. Če pa pogledamo sliko (\ref{im:not_lattice_2}) vidimo, da je problematičen element $f$. Tako recimo elementa $c \lor f = a$, medtem, ko je $c \land f$ nedoločen in zato množica ni mreža, bi pa to postala, če bi iz nje odstranili element $f$ in tako dobili mrežo vseh deliteljev števila $12$. 
-\\\\
 \begin{figure}
 \centering
 \begin{tikzpicture} % should make python program :(
