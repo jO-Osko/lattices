@@ -124,7 +124,7 @@
 \section{Uvod}
 \label{sec:uvod}
 
-Mreža je množica z dodatno strukturo (delno urejenostjo), ki zadošča poguju, da ima poljuben par elementov infimum in supremum. Najprej si bomo pogledali mreže s stališča matematične logike in urejenosti, kasneje pa si jih bomo ogledali še s stališča algebraičnih operacij nad njimi, ter pokazali, zakaj sta ta dva pogleda ekvivalentna.
+Mreža je množica z dodatno strukturo (delno urejenostjo), ki zadošča pogoju, da ima poljuben par elementov infimum in supremum. Najprej si bomo pogledali mreže s stališča matematične logike in urejenosti, kasneje pa si jih bomo ogledali še s stališča algebraičnih operacij nad njimi, ter pokazali, zakaj sta ta dva pogleda ekvivalentna.
 
 
 \subsection{Osnovne definicje}
@@ -336,7 +336,7 @@ Množica naravnih števil pa nam poleg urejenosti z $\leq$ omogoča tudi uredite
 \end{figure}
 \leavevmode
 
-Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega števila. To lepo vidimo na sliki (\ref{im:divisors_of_30_hasse_diagram}). Delno urejene množice si lahko predstavimo tudi zgolj s Hassejevim diagramom. Poglejmo si nekaj množic, ki niso mreže in razložimo zakaj ne. Če si pogledamo sliko (\ref{im:not_lattice_example}) lahko hitro vidimo, zakaj te množici nista mreži. Množica na sliki (\ref{im:not_lattice_1}) ni mreža, saj elementa $c$ in $f$ nimata natančno določenega supremuma. Vidimo, da bi to lahko bila tako element $e$ kot tudi element $b$, vendar pa ju med samo ne moremo primerjati. Množica na sliki (\ref{im:not_lattice_1}) zato ni mreža. Bi pa postala mreža, če bi odstranili povezamo med $c$ in $e$. Če pa pogledamo sliko (\ref{im:not_lattice_2}) vidimo, da je problematičen element $f$. Tako recimo elementa $c \lor f = a$, medtem, ko je $c \land f$ nedoločen in zato množica ni mreža, bi pa to postala, če bi iz nje odstranili element $f$ in tako dobili mrežo vseh deliteljev števila $12$. 
+Pomembne mreže pa predstavljajo tudi mreže deliteljev posameznega naravnega števila. To lepo vidimo na sliki (\ref{im:divisors_of_30_hasse_diagram}). Delno urejene množice si lahko predstavimo tudi zgolj s Hassejevim diagramom. Poglejmo si nekaj množic, ki niso mreže in razložimo zakaj ne. Če si pogledamo sliko (\ref{im:not_lattice_example}) lahko hitro vidimo, zakaj te množici nista mreži. Množica na sliki (\ref{im:not_lattice_1}) ni mreža, saj elementa $c$ in $f$ nimata natančno določenega supremuma. Vidimo, da bi to lahko bila tako element $e$ kot tudi element $b$, vendar pa ju med samo ne moremo primerjati. Množica na sliki (\ref{im:not_lattice_1}) zato ni mreža. Bi pa postala mreža, če bi odstranili povezamo med $c$ in $e$. Če pa pogledamo sliko (\ref{im:not_lattice_2}) vidimo, da je problematičen element $f$. Tako recimo $c \lor f = a$, medtem, ko je $c \land f$ nedoločen in zato množica ni mreža, bi pa to postala, če bi iz nje odstranili element $f$ in tako dobili mrežo vseh deliteljev števila $12$. 
 
 \begin{figure}[h]
   \begin{subfigure}[h]{0.3\textwidth}
@@ -514,7 +514,7 @@ Neprazna množica $\mathcal{M} \subseteq \mathcal{L}$ je \textbf{podmreža}, če
 Če vzamemo $\mathbb{R}$ z relacijo $\leq$, potem je poljubna podmnožica tudi podmreža.
 \end{example_case}
 \begin{example_case}
-Slik (\ref{im:divisors_of_30_with_sublattices} in \ref{im:lattice_1234_with_sublattices}) prikazujeti dva primera podmrež na že znanih mrežah. Tako sta na primer množica deliteljev števila $10$, kot tudi množica$\{2,6,10,30\}$ podmreža mreže deliteljev števila $30$ (slika \ref{im:divisors_of_30_with_sublattices}). Prav tako pa je $P(\{1,2,4\})$ podmreža mreže $P(\{1,2,3,4\})$ (slika \ref{im:lattice_1234_with_sublattices}).
+Sliki (\ref{im:divisors_of_30_with_sublattices} in \ref{im:lattice_1234_with_sublattices}) prikazujeti dva primera podmrež na že znanih mrežah. Tako sta na primer množica deliteljev števila $10$, kot tudi množica$\{2,6,10,30\}$ podmreža mreže deliteljev števila $30$ (slika \ref{im:divisors_of_30_with_sublattices}). Prav tako pa je $P(\{1,2,4\})$ podmreža mreže $P(\{1,2,3,4\})$ (slika \ref{im:lattice_1234_with_sublattices}).
 \end{example_case}
 \end{example}
 
@@ -605,7 +605,7 @@ Slik (\ref{im:divisors_of_30_with_sublattices} in \ref{im:lattice_1234_with_subl
 
 
 
-Naravno nas zanima, ali lahko iz že obstoječih mrež na preprost način dobimo podmreže, če si pogledamo prejšnje primere lahko iz vseh razen modrega na sliki (\ref{im:divisors_of_30_with_sublattices}) ugotovimo da so to podmreže sestavljene iz elementoc, ki so med dvema elementoma v mreži. Zanima nas, ali lahko to posplošimo.
+Naravno nas zanima, ali lahko iz že obstoječih mrež na preprost način dobimo podmreže, če si pogledamo prejšnje primere lahko iz vseh razen modrega na sliki (\ref{im:divisors_of_30_with_sublattices}) ugotovimo da so to podmreže sestavljene iz elementov, ki so med dvema elementoma v mreži. Zanima nas, ali lahko to posplošimo.
 \\
 
 
@@ -616,7 +616,7 @@ Naravno nas zanima, ali lahko iz že obstoječih mrež na preprost način dobimo
 
 \begin{proof}
 Preprosto preverimo obstoj imfimuma in supremuma\\ 
-Vzemimo poljubna $x',y' \in \mathcal{L}(x,y)$ in preverimo zaprtost: $x \geq x' \lor y' \geq x' \land y' \geq y$
+Vzemimo poljubna $x',y' \in \mathcal{L}(x,y)$ in preverimo zaprtost: $$x \geq x' \lor y' \geq x' \land y' \geq y$$
 \end{proof}
 
 \subsection{Enote in komplementi}
